@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/component/email.dart';
 import 'package:mobile/component/login.dart';
-import 'package:mobile/component/regisProvider.dart';
+import 'package:mobile/Provider/regisProvider.dart';
 import 'package:provider/provider.dart';
 
 class MyRegister extends StatefulWidget {
@@ -186,9 +186,14 @@ class _MyRegisterState extends State<MyRegister> {
                               prov.emailEmpty = prov.emailController.text.isEmpty;
                               prov.passwordEmpty = prov.passwordController.text.isEmpty;
                               prov.repasswordEmpty = prov.repasswordController.text.isEmpty;
+                              prov.usernameController.clear();
+                              prov.nohandphoneController.clear();
+                              prov.emailController.clear();
+                              prov.passwordController.clear();
+                              prov.repasswordController.clear();
 
                               if (!prov.isUserNameEmpty && !prov.isNoHandphoneEmpty &&!prov.isEmailEmpty && !prov.isPasswordEmpty && !prov.isRePasswordEmpty){
-                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const MyLogin()));
+                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const MyEmail()));
                               }
                             },
                             style: ElevatedButton.styleFrom(
@@ -207,7 +212,7 @@ class _MyRegisterState extends State<MyRegister> {
                           alignment: Alignment.bottomCenter,
                           child: TextButton(
                             onPressed: (){
-                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const MyEmail()));
+                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const MyLogin()));
                             }, 
                           child: const Text(
                             "Sudah punya akun? Masuk disini", 

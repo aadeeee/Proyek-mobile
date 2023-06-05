@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/Provider/loginProvider.dart';
 import 'package:mobile/component/daftar.dart';
+import 'package:mobile/component/email.dart';
 import 'package:mobile/component/home.dart';
-import 'package:mobile/component/loginProvider.dart';
 import 'package:provider/provider.dart';
 
 class MyLogin extends StatefulWidget {
@@ -135,6 +136,8 @@ class _MyLoginState extends State<MyLogin> {
                           alignment: Alignment.bottomCenter,
                           child: TextButton(
                             onPressed: (){
+                              prov.usernameController.clear();
+                              prov.passwordController.clear();
                               Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const MyRegister()));
                             }, 
                           child: const Text(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MyEmailProvider extends ChangeNotifier {
+
   // Email Activation Provider
   TextEditingController codeController = TextEditingController();
 

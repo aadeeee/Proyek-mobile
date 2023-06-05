@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/component/emailProvider.dart';
+import 'package:mobile/Provider/emailProvider.dart';
+import 'package:mobile/component/email_succes.dart';
+import 'package:mobile/component/home.dart';
 import 'package:mobile/component/login.dart';
 import 'package:provider/provider.dart';
 
@@ -17,7 +19,7 @@ class _MyEmailState extends State<MyEmail> {
     return Scaffold(
         body: ListView(
       padding: EdgeInsets.only(
-          top: 40, left: 20, right: 20), // Jarak vertikal antara teks
+          top: 40, left: 20, right: 20), 
       children: [
         Text(
           'Silahkan Aktivasi\nAkun Anda!',
@@ -55,17 +57,18 @@ class _MyEmailState extends State<MyEmail> {
           child: ElevatedButton(
             onPressed: () {
               prov.codeEmpty = prov.codeController.text.isEmpty;
+              prov.codeController.clear();
 
               if (!prov.isCodeEmpty) {
-                Navigator.pushReplacement(
-                    context, MaterialPageRoute(builder: (_) => const MyLogin()));
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (_) => const EmailSuccess()));
               }
             },
             style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.purple,
                 minimumSize: const Size.fromHeight(60),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20))),
+                    borderRadius: BorderRadius.circular(15))),
             child: const Text(
               "AKTIVASI AKUN",
               style: TextStyle(fontSize: 20),
