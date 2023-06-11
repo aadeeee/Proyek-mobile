@@ -21,6 +21,8 @@ class MyRegisProvider extends ChangeNotifier {
   bool isPasswordEmpty = false;
   bool isRePasswordEmpty = false;
 
+
+
   set userNameEmpty(value) {
     isUserNameEmpty = value;
     notifyListeners();
@@ -52,19 +54,7 @@ class MyRegisProvider extends ChangeNotifier {
   bool get getUPasswordIsEmpty => isPasswordEmpty;
   bool get getRePasswordIsEmpty => isRePasswordEmpty;
 
-  // Email Activation Provider
-  TextEditingController codeController = TextEditingController();
-
-  TextEditingController get getCodeController => codeController;
-
-  bool get getCodeIsEmpty => isCodeEmpty;
-
-  bool isCodeEmpty = false;
   
-  set codeEmpty(value) {
-    isCodeEmpty = value;
-    notifyListeners();
-  }
 
   
 }

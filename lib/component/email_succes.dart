@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/component/home.dart';
+import 'package:mobile/component/login.dart';
 
 class EmailSuccess extends StatefulWidget {
   const EmailSuccess({super.key});
@@ -13,7 +13,7 @@ class _EmailSuccessState extends State<EmailSuccess> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: ListView(
-      padding: EdgeInsets.only(top: 40, left: 20, right: 20),
+      padding: const EdgeInsets.only(top: 40, left: 20, right: 20),
       children: [
         Padding(
           padding: const EdgeInsets.only(bottom: 20),
@@ -33,8 +33,8 @@ class _EmailSuccessState extends State<EmailSuccess> {
                 color: Colors.purple[700]),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20 ,top: 10, bottom: 25),
+        const Padding(
+          padding: EdgeInsets.only(left: 20, right: 20 ,top: 10, bottom: 25),
           child: Text(
             'Akun Anda sudah diaktivasi dengan verifikasi kode melalui email',
             style: TextStyle(fontSize: 16.0),
@@ -45,7 +45,7 @@ class _EmailSuccessState extends State<EmailSuccess> {
           child: ElevatedButton(
             onPressed: () {
               Navigator.pushReplacement(
-                  context, MaterialPageRoute(builder: (_) => const MyHome()));
+                  context, MaterialPageRoute(builder: (_) =>  MyLogin()));
             },
             style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.purple,

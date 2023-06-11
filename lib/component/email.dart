@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/Provider/emailProvider.dart';
 import 'package:mobile/component/email_succes.dart';
-import 'package:mobile/component/home.dart';
-import 'package:mobile/component/login.dart';
 import 'package:provider/provider.dart';
 
 class MyEmail extends StatefulWidget {
@@ -18,21 +16,21 @@ class _MyEmailState extends State<MyEmail> {
     var prov = Provider.of<MyEmailProvider>(context);
     return Scaffold(
         body: ListView(
-      padding: EdgeInsets.only(
+      padding: const EdgeInsets.only(
           top: 40, left: 20, right: 20), 
       children: [
-        Text(
+        const Text(
           'Silahkan Aktivasi\nAkun Anda!',
           style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
         ),
-        Padding(
-          padding: const EdgeInsets.only(top: 10, bottom: 25),
+        const Padding(
+          padding: EdgeInsets.only(top: 10, bottom: 25),
           child: Text(
             'Sebelum Anda masuk, Anda harus mengaktivasi akun Anda dengan kode yang sudah dikirimkan ke alamat email Anda',
             style: TextStyle(fontSize: 16.0),
           ),
         ),
-        Text(
+        const Text(
           'Kode',
           style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w600),
         ),
