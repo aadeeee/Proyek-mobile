@@ -5,7 +5,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile/Provider/regisProvider.dart';
 import 'package:mobile/component/daftar.dart';
 import 'package:mobile/component/home.dart';
+import 'package:mobile/component/login.dart';
 import 'package:provider/provider.dart';
+
+import 'Provider/homeProvider.dart';
 
 // void main() {
 //   runApp(ChangeNotifierProvider(create: (_) => MyData(), child: const MyApp()));
@@ -15,7 +18,8 @@ void main() {
     MultiProvider(providers: [
       ChangeNotifierProvider(create: (_) => MyRegisProvider()),
       ChangeNotifierProvider(create: (_) => MyEmailProvider()),
-      ChangeNotifierProvider(create: (_) => MyLoginProvider())
+      ChangeNotifierProvider(create: (_) => MyLoginProvider()),
+      ChangeNotifierProvider(create: (_) => MyHomeProvider()),
     ], child: const MyApp()),
   );
 }
@@ -42,7 +46,7 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.interTextTheme(Theme.of(context).textTheme),
         primarySwatch: Colors.purple,
       ),
-      home: MyHome(),
+      home: MyRegister(),
     );
   }
 }

@@ -12,7 +12,6 @@ class MyRegister extends StatefulWidget {
 }
 
 class _MyRegisterState extends State<MyRegister> {
-  bool _obsecureText = true;
   @override
   Widget build(BuildContext context) {
     var prov = Provider.of<MyRegisProvider>(context);
@@ -131,7 +130,7 @@ class _MyRegisterState extends State<MyRegister> {
                         Padding(
                           padding: const EdgeInsets.all(10),
                           child: TextField(
-                            obscureText: _obsecureText,
+                            obscureText: prov.getObsecureText,
                             controller: prov.passwordController,
                             decoration: InputDecoration(
                                 prefixIcon: const Icon(
@@ -139,10 +138,10 @@ class _MyRegisterState extends State<MyRegister> {
                                   color: Colors.black,
                                 ),
                                 suffixIcon: IconButton(icon: Icon(
-                                  _obsecureText ? Icons.visibility_off :  Icons.visibility
+                                  prov.getObsecureText ? Icons.visibility_off :  Icons.visibility
                                 ), onPressed: () { 
                                   setState(() {
-                                    _obsecureText = !_obsecureText;
+                                    prov.setObsecureText = !prov.getObsecureText;
                                   });
                                  }),
                                 border: OutlineInputBorder(
@@ -163,7 +162,7 @@ class _MyRegisterState extends State<MyRegister> {
                         Padding(
                           padding: const EdgeInsets.all(10),
                           child: TextField(
-                            obscureText: _obsecureText,
+                            obscureText: prov.getObsecureText,
                             controller: prov.repasswordController,
                             decoration: InputDecoration(
                                 prefixIcon: const Icon(
@@ -171,10 +170,10 @@ class _MyRegisterState extends State<MyRegister> {
                                   color: Colors.black,
                                 ),
                                 suffixIcon: IconButton(icon: Icon(
-                                  _obsecureText ? Icons.visibility_off :  Icons.visibility
+                                  prov.getObsecureText ? Icons.visibility_off :  Icons.visibility
                                 ), onPressed: () { 
                                   setState(() {
-                                    _obsecureText = !_obsecureText;
+                                    prov.setObsecureText = !prov.getObsecureText;
                                   });
                                  }),
                                 border: OutlineInputBorder(

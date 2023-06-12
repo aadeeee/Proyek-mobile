@@ -12,7 +12,6 @@ class MyLogin extends StatefulWidget {
 }
 
 class _MyLoginState extends State<MyLogin> {
-  bool _obsecureText = true;
   @override
   Widget build(BuildContext context) {
     var prov = Provider.of<MyLoginProvider>(context);
@@ -85,7 +84,7 @@ class _MyLoginState extends State<MyLogin> {
                         Padding(
                           padding: const EdgeInsets.all(10),
                           child: TextField(
-                            obscureText: _obsecureText,
+                            obscureText: prov.getObsecureText,
                             controller: prov.passwordController,
                             decoration: InputDecoration(
                                 prefixIcon: const Icon(
@@ -93,12 +92,12 @@ class _MyLoginState extends State<MyLogin> {
                                   color: Colors.black,
                                 ),
                                 suffixIcon: IconButton(
-                                    icon: Icon(_obsecureText
+                                    icon: Icon(prov.getObsecureText
                                         ? Icons.visibility_off
                                         : Icons.visibility),
                                     onPressed: () {
                                       setState(() {
-                                        _obsecureText = !_obsecureText;
+                                        prov.setObsecureText = !prov.getObsecureText;
                                       });
                                     }),
                                 border: OutlineInputBorder(
@@ -125,12 +124,13 @@ class _MyLoginState extends State<MyLogin> {
                                   prov.passwordController.text.isEmpty;
 
                               if (!prov.isUserNameEmpty &&
-                                  !prov.isPasswordEmpty) {
+                                  !prov.isPasswordEmpty ) {
                                 Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(
                                         builder: (_) => const MyMain()));
                               }
+                              
                             },
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.purple,

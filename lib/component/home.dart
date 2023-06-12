@@ -1,6 +1,8 @@
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:mobile/Provider/homeProvider.dart';
+import 'package:provider/provider.dart';
 
 class MyHome extends StatefulWidget {
   @override
@@ -8,7 +10,6 @@ class MyHome extends StatefulWidget {
 }
 
 class _MyHomeState extends State<MyHome> {
-  int _currentIndex = 0;
 
   final List<Map<String, dynamic>> _carouselItems = [
     {
@@ -36,6 +37,7 @@ class _MyHomeState extends State<MyHome> {
 
   @override
   Widget build(BuildContext context) {
+    var prov = Provider.of<MyHomeProvider>(context);
     return Column(
       children: [
         Column(
@@ -62,7 +64,7 @@ class _MyHomeState extends State<MyHome> {
                     autoPlay: true,
                     onPageChanged: (index, reason) {
                       setState(() {
-                        _currentIndex = index;
+                       prov.setIndex = index;
                       });
                     },
                   ),
@@ -74,7 +76,7 @@ class _MyHomeState extends State<MyHome> {
                   child: Column(
                     children: [
                       Text(
-                        _carouselItems[_currentIndex]['caption'],
+                        _carouselItems[prov.getIndex]['caption'],
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
@@ -97,7 +99,7 @@ class _MyHomeState extends State<MyHome> {
                   margin: EdgeInsets.symmetric(horizontal: 2.0),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: _currentIndex == index ? Colors.blue : Colors.grey,
+                    color: prov.getIndex == index ? Colors.blue : Colors.grey,
                   ),
                 );
               }).toList(),
@@ -127,7 +129,7 @@ class _MyHomeState extends State<MyHome> {
                     autoPlay: true,
                     onPageChanged: (index, reason) {
                       setState(() {
-                        _currentIndex = index;
+                        prov.setIndex = index;
                       });
                     },
                   ),
@@ -139,7 +141,7 @@ class _MyHomeState extends State<MyHome> {
                   child: Column(
                     children: [
                       Text(
-                        _carouselItems[_currentIndex]['caption'],
+                        _carouselItems[prov.getIndex]['caption'],
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,

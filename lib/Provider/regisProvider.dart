@@ -54,7 +54,14 @@ class MyRegisProvider extends ChangeNotifier {
   bool get getUPasswordIsEmpty => isPasswordEmpty;
   bool get getRePasswordIsEmpty => isRePasswordEmpty;
 
-  
+  bool _obsecureText = true;
+
+  get getObsecureText => _obsecureText;
+
+  set setObsecureText(value){
+    _obsecureText = value;
+    notifyListeners();
+  }
 
   
 }
