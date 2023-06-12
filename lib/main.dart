@@ -4,6 +4,7 @@ import 'package:mobile/Provider/loginProvider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile/Provider/regisProvider.dart';
 import 'package:mobile/component/daftar.dart';
+import 'package:mobile/component/home.dart';
 import 'package:provider/provider.dart';
 
 // void main() {
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.interTextTheme(Theme.of(context).textTheme),
         primarySwatch: Colors.purple,
       ),
-      home: MyRegister(),
+      home: MyHome(),
     );
   }
 }

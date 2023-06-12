@@ -51,7 +51,7 @@ class _MyHomeState extends State<MyHome> {
                           margin: EdgeInsets.symmetric(horizontal: 5.0),
                           child: Image.asset(
                             item['image'],
-                            fit: BoxFit.cover,
+                            fit: BoxFit.fill,
                           ),
                         );
                       },
@@ -105,6 +105,53 @@ class _MyHomeState extends State<MyHome> {
             
           ],
         ),
+        Stack(
+              children: [
+                CarouselSlider(
+                  items: _carouselItems.map((item) {
+                    return Builder(
+                      builder: (BuildContext context) {
+                        return Container(
+                          margin: EdgeInsets.symmetric(horizontal: 10),
+                          child:Image.asset(
+                              item['image'],
+                              width: 100,
+                              fit: BoxFit.fitWidth,
+                          ),
+                        );
+                      },
+                    );
+                  }).toList(),
+                  options: CarouselOptions(
+                    height: 130.0,
+                    autoPlay: true,
+                    onPageChanged: (index, reason) {
+                      setState(() {
+                        _currentIndex = index;
+                      });
+                    },
+                  ),
+                ),
+                Positioned(
+                  bottom: 10.0,
+                  left: 0,
+                  right: 0,
+                  child: Column(
+                    children: [
+                      Text(
+                        _carouselItems[_currentIndex]['caption'],
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold,
+                          decoration: TextDecoration.none
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
         
       ],
     );

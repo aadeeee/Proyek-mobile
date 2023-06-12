@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/component/Pelanggan.dart';
-import 'package:mobile/component/daftar.dart';
-import 'package:mobile/component/home_.dart';
+import 'package:mobile/component/home.dart';
 import 'package:mobile/component/produk.dart';
 import 'package:mobile/component/profil.dart';
 import 'package:mobile/component/transaksi.dart';
@@ -25,7 +24,6 @@ class _MyMainState extends State<MyMain> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Home')),
       body: pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
