@@ -26,7 +26,7 @@ class _MyRegisterState extends State<MyRegister> {
                 height: 170,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(150),
-                    color: Colors.purple),
+                    color: Color(0xffFD61876E)),
               )),
           Positioned(
               top: 100,
@@ -36,7 +36,7 @@ class _MyRegisterState extends State<MyRegister> {
                 height: 100,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
-                    color: Colors.purple),
+                    color: Color(0xffFD61876E)),
               )),
           Align(
             alignment: Alignment.center,
@@ -222,7 +222,7 @@ class _MyRegisterState extends State<MyRegister> {
                               }
                             },
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.purple,
+                                backgroundColor: Color(0xffFD61876E),
                                 minimumSize: const Size.fromHeight(60),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(15))),
@@ -244,7 +244,7 @@ class _MyRegisterState extends State<MyRegister> {
                               child: const Text(
                                 "Sudah punya akun? Masuk disini",
                                 style: TextStyle(
-                                    color: Colors.purple, fontSize: 16),
+                                    color: Color(0xffFD61876E), fontSize: 16),
                               )),
                         )
                       ]),

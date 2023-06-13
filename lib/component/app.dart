@@ -27,7 +27,7 @@ class _MyMainState extends State<MyMain> {
       body: pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.purple,
+        backgroundColor: Color(0xffFD61876E),
         selectedItemColor: Colors.grey,
         showUnselectedLabels: false,
         currentIndex: _currentIndex,
@@ -40,24 +40,24 @@ class _MyMainState extends State<MyMain> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
           label: 'Beranda',
-          backgroundColor: Colors.purple[700]),
+          backgroundColor: Color(0xffFD61876E)),
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
           label: 'Transaksi',
-           backgroundColor: Colors.purple[700]),
+           backgroundColor: Color(0xffFD61876E)),
           BottomNavigationBarItem(
             icon: Icon(Icons.euro,
             ),
           label: 'Produk',
-           backgroundColor: Colors.purple[700]),
+           backgroundColor: Color(0xffFD61876E)),
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
           label: 'Pelanggan',
-           backgroundColor: Colors.purple[700]),
+           backgroundColor: Color(0xffFD61876E)),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
           label: 'Profil',
-           backgroundColor: Colors.purple[700])
+           backgroundColor: Color(0xffFD61876E))
         ]),
     );
   }

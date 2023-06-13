@@ -3,6 +3,7 @@ import 'package:mobile/Provider/emailProvider.dart';
 import 'package:mobile/Provider/loginProvider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile/Provider/regisProvider.dart';
+
 import 'package:mobile/component/daftar.dart';
 import 'package:mobile/component/home.dart';
 import 'package:mobile/component/login.dart';
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         textTheme: GoogleFonts.interTextTheme(Theme.of(context).textTheme),
-        primarySwatch: Colors.purple,
+       
       ),
       home: MyRegister(),
     );

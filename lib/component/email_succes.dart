@@ -30,7 +30,7 @@ class _EmailSuccessState extends State<EmailSuccess> {
             style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
-                color: Colors.purple[700]),
+                color: Color(0xffFD61876E)),
           ),
         ),
         const Padding(
@@ -48,7 +48,7 @@ class _EmailSuccessState extends State<EmailSuccess> {
                   context, MaterialPageRoute(builder: (_) =>  MyLogin()));
             },
             style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.purple,
+                backgroundColor: Color(0xffFD61876E),
                 minimumSize: const Size.fromHeight(60),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15))),

@@ -63,7 +63,7 @@ class _MyEmailState extends State<MyEmail> {
               }
             },
             style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.purple,
+                backgroundColor: Color(0xffFD61876E),
                 minimumSize: const Size.fromHeight(60),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15))),
