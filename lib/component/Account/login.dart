@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/Provider/loginProvider.dart';
-import 'package:mobile/component/daftar.dart';
+import 'package:mobile/Provider/regisProvider.dart';
+import 'package:mobile/component/Account/daftar.dart';
 import 'package:mobile/component/app.dart';
 import 'package:provider/provider.dart';
 
@@ -14,7 +14,8 @@ class MyLogin extends StatefulWidget {
 class _MyLoginState extends State<MyLogin> {
   @override
   Widget build(BuildContext context) {
-    var prov = Provider.of<MyLoginProvider>(context);
+    // var prov = Provider.of<MyLoginProvider>(context);
+    var prov = Provider.of<MyRegisProvider>(context);
     return Scaffold(
       body: Stack(
         children: [
@@ -26,7 +27,7 @@ class _MyLoginState extends State<MyLogin> {
                 height: 170,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(150),
-                    color: Color(0xffFD61876E)),
+                    color: const Color(0xffFD61876E)),
               )),
           Positioned(
               top: 100,
@@ -84,7 +85,7 @@ class _MyLoginState extends State<MyLogin> {
                         Padding(
                           padding: const EdgeInsets.all(10),
                           child: TextField(
-                            obscureText: prov.getObsecureText,
+                            obscureText: prov.getObsecureTextPasswword,
                             controller: prov.passwordController,
                             decoration: InputDecoration(
                                 prefixIcon: const Icon(
@@ -92,12 +93,13 @@ class _MyLoginState extends State<MyLogin> {
                                   color: Colors.black,
                                 ),
                                 suffixIcon: IconButton(
-                                    icon: Icon(prov.getObsecureText
+                                    icon: Icon(prov.getObsecureTextPasswword
                                         ? Icons.visibility_off
                                         : Icons.visibility),
                                     onPressed: () {
                                       setState(() {
-                                        prov.setObsecureText = !prov.getObsecureText;
+                                        prov.setObsecureTextPassword =
+                                            !prov.getObsecureTextPasswword;
                                       });
                                     }),
                                 border: OutlineInputBorder(
@@ -124,13 +126,18 @@ class _MyLoginState extends State<MyLogin> {
                                   prov.passwordController.text.isEmpty;
 
                               if (!prov.isUserNameEmpty &&
-                                  !prov.isPasswordEmpty ) {
-                                Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (_) => const MyMain()));
+                                  !prov.isPasswordEmpty) {
+                                prov.Login = {
+                                  "userName": prov.usernameController.text,
+                                  "password": prov.passwordController.text
+                                };
+                                if (prov.getAuth) {
+                                  Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (_) => const MyMain()));
+                                }
                               }
-                              
                             },
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: Color(0xffFD61876E),
@@ -159,7 +166,8 @@ class _MyLoginState extends State<MyLogin> {
                                   const Text(
                                     "Belum punya akun? daftar disini",
                                     style: TextStyle(
-                                        color: Color(0xffFD61876E), fontSize: 16),
+                                        color: Color(0xffFD61876E),
+                                        fontSize: 16),
                                   ),
                                 ],
                               )),

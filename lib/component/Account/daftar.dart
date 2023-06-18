@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/component/email.dart';
-import 'package:mobile/component/login.dart';
+import 'package:mobile/component/Email/email.dart';
+import 'package:mobile/component/Account/login.dart';
 import 'package:mobile/Provider/regisProvider.dart';
 import 'package:provider/provider.dart';
 
@@ -130,20 +130,23 @@ class _MyRegisterState extends State<MyRegister> {
                         Padding(
                           padding: const EdgeInsets.all(10),
                           child: TextField(
-                            obscureText: prov.getObsecureText,
+                            obscureText: prov.getObsecureTextPasswword,
                             controller: prov.passwordController,
                             decoration: InputDecoration(
                                 prefixIcon: const Icon(
                                   Icons.lock,
                                   color: Colors.black,
                                 ),
-                                suffixIcon: IconButton(icon: Icon(
-                                  prov.getObsecureText ? Icons.visibility_off :  Icons.visibility
-                                ), onPressed: () { 
-                                  setState(() {
-                                    prov.setObsecureText = !prov.getObsecureText;
-                                  });
-                                 }),
+                                suffixIcon: IconButton(
+                                    icon: Icon(prov.getObsecureTextPasswword
+                                        ? Icons.visibility_off
+                                        : Icons.visibility),
+                                    onPressed: () {
+                                      setState(() {
+                                        prov.setObsecureTextPassword =
+                                            !prov.getObsecureTextPasswword;
+                                      });
+                                    }),
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(15),
                                     borderSide:
@@ -156,26 +159,28 @@ class _MyRegisterState extends State<MyRegister> {
                                 errorText: prov.isPasswordEmpty == true
                                     ? "wajib diisi"
                                     : null),
-                            
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(10),
                           child: TextField(
-                            obscureText: prov.getObsecureText,
+                            obscureText: prov.getObsecureTextRePasswword,
                             controller: prov.repasswordController,
                             decoration: InputDecoration(
                                 prefixIcon: const Icon(
                                   Icons.lock,
                                   color: Colors.black,
                                 ),
-                                suffixIcon: IconButton(icon: Icon(
-                                  prov.getObsecureText ? Icons.visibility_off :  Icons.visibility
-                                ), onPressed: () { 
-                                  setState(() {
-                                    prov.setObsecureText = !prov.getObsecureText;
-                                  });
-                                 }),
+                                suffixIcon: IconButton(
+                                    icon: Icon(prov.getObsecureTextRePasswword
+                                        ? Icons.visibility_off
+                                        : Icons.visibility),
+                                    onPressed: () {
+                                      setState(() {
+                                        prov.setObsecureTextRePassword =
+                                            !prov.getObsecureTextRePasswword;
+                                      });
+                                    }),
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(15),
                                     borderSide:
@@ -204,21 +209,30 @@ class _MyRegisterState extends State<MyRegister> {
                                   prov.passwordController.text.isEmpty;
                               prov.repasswordEmpty =
                                   prov.repasswordController.text.isEmpty;
-                              prov.usernameController.clear();
-                              prov.nohandphoneController.clear();
-                              prov.emailController.clear();
-                              prov.passwordController.clear();
-                              prov.repasswordController.clear();
 
                               if (!prov.isUserNameEmpty &&
                                   !prov.isNoHandphoneEmpty &&
                                   !prov.isEmailEmpty &&
                                   !prov.isPasswordEmpty &&
                                   !prov.isRePasswordEmpty) {
-                                Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (_) => const MyEmail()));
+                                if (prov.passwordController.text ==
+                                    prov.repasswordController.text) {
+                                  prov.ADDUSER = {
+                                    "userName": prov.usernameController.text,
+                                    "password": prov.passwordController.text,
+                                    "email": prov.emailController.text,
+                                    "handphone": prov.nohandphoneController
+                                  };
+                                  prov.usernameController.clear();
+                                  prov.nohandphoneController.clear();
+                                  prov.emailController.clear();
+                                  prov.passwordController.clear();
+                                  prov.repasswordController.clear();
+                                  Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (_) => const MyEmail()));
+                                }
                               }
                             },
                             style: ElevatedButton.styleFrom(

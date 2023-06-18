@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/Provider/emailProvider.dart';
-import 'package:mobile/component/email_succes.dart';
+import 'package:mobile/component/Email/email_succes.dart';
 import 'package:provider/provider.dart';
 
 class MyEmail extends StatefulWidget {

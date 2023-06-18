@@ -1,17 +1,21 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile/Provider/homeProvider.dart';
+import 'package:mobile/Provider/regisProvider.dart';
 import 'package:provider/provider.dart';
 
 class MyHome extends StatefulWidget {
+  const MyHome({super.key});
   @override
-  _MyHomeState createState() => _MyHomeState();
+  State<MyHome> createState() => _MyHomeState();
 }
 
 class _MyHomeState extends State<MyHome> {
   @override
   Widget build(BuildContext context) {
     var prov = Provider.of<MyHomeProvider>(context);
+    var prov2 = Provider.of<MyRegisProvider>(context);
+
     var tmp = prov.jsonData['data'];
     return Scaffold(
       body: Column(
@@ -29,14 +33,16 @@ class _MyHomeState extends State<MyHome> {
                             margin: EdgeInsets.symmetric(horizontal: 3.0),
                             child: Image.asset(
                               item['image'],
-                              fit: BoxFit.fill,
+                              width: 200,
+                              height: 150,
+                              fit: BoxFit.fitWidth,
                             ),
                           );
                         },
                       );
                     }).toList(),
                     options: CarouselOptions(
-                      height: 300.0,
+                      height: 200.0,
                       autoPlay: true,
                       onPageChanged: (index, reason) {
                         setState(() {
@@ -46,7 +52,7 @@ class _MyHomeState extends State<MyHome> {
                     ),
                   ),
                   Positioned(
-                    bottom: 10.0,
+                    bottom: 9.0,
                     left: 0,
                     right: 0,
                     child: Column(
@@ -74,15 +80,18 @@ class _MyHomeState extends State<MyHome> {
                     margin: EdgeInsets.symmetric(horizontal: 2.0),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: prov.getIndex == index ? Color(0xffFD61876E) : Colors.grey,
+                      color: prov.getIndex == index
+                          ? Color(0xffFD61876E)
+                          : Colors.grey,
                     ),
                   );
                 }).toList(),
               ),
             ],
           ),
+         
           Padding(
-            padding: const EdgeInsets.only(left: 15, top: 15),
+            padding: const EdgeInsets.only(left: 15, top: 5),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -94,26 +103,24 @@ class _MyHomeState extends State<MyHome> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(0),
             child: SizedBox(
-              height: 250,
+              height: 190,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: tmp.length,
                 itemBuilder: (context, index) => Card(
+                  color: Colors.white10,
                   child: Container(
                     child: Column(
                       children: [
                         Image.asset(
                           tmp[index]['image'],
-                          width: 150,
+                          width: 130,
+                          height: 150,
                           fit: BoxFit.fitHeight,
-                          height: 200,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10),
-                          child: Text('${tmp[index]['name']}'),
-                        ),
+                        Text('${tmp[index]['name']}'),
                       ],
                     ),
                   ),

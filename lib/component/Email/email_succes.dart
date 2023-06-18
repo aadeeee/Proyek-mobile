@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/component/login.dart';
+import 'package:mobile/component/Account/login.dart';
 
 class EmailSuccess extends StatefulWidget {
   const EmailSuccess({super.key});
@@ -44,6 +44,7 @@ class _EmailSuccessState extends State<EmailSuccess> {
           padding: const EdgeInsets.only(left: 20, right: 20),
           child: ElevatedButton(
             onPressed: () {
+              
               Navigator.pushReplacement(
                   context, MaterialPageRoute(builder: (_) =>  MyLogin()));
             },

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/component/Pelanggan.dart';
+import 'package:mobile/component/Pelanggan/Pelanggan.dart';
 import 'package:mobile/component/home.dart';
+import 'package:mobile/component/Profil/profil.dart';
+import 'package:mobile/component/Transaksi/transaksi.dart';
 import 'package:mobile/component/produk.dart';
-import 'package:mobile/component/profil.dart';
-import 'package:mobile/component/transaksi.dart';
 
 class MyMain extends StatefulWidget {
   const MyMain({super.key});
@@ -38,24 +38,23 @@ class _MyMainState extends State<MyMain> {
         },
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: ImageIcon(AssetImage('assets/images/beranda.png')),
           label: 'Beranda',
           backgroundColor: Color(0xffFD61876E)),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+           icon: ImageIcon(AssetImage('assets/images/transaksi.png')),
           label: 'Transaksi',
            backgroundColor: Color(0xffFD61876E)),
           BottomNavigationBarItem(
-            icon: Icon(Icons.euro,
-            ),
+            icon: ImageIcon(AssetImage('assets/images/produk.png')),
           label: 'Produk',
            backgroundColor: Color(0xffFD61876E)),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: ImageIcon(AssetImage('assets/images/pelanggan.png')),
           label: 'Pelanggan',
            backgroundColor: Color(0xffFD61876E)),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: ImageIcon(AssetImage('assets/images/user.png')),
           label: 'Profil',
            backgroundColor: Color(0xffFD61876E))
         ]),
