@@ -44,12 +44,9 @@ class _MyProductState extends State<MyProduct>
       body: TabBarView(
         controller: _tabController,
         children: [
-          // Content of Tab 1
           Center(
             child: MyProductList(),
           ),
-
-          // Content of Tab 2
           Center(
             child: Text('Tab 2'),
           ),
