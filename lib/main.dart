@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/Provider/emailProvider.dart';
-import 'package:mobile/Provider/loginProvider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile/Provider/produkprovider.dart';
+import 'package:mobile/Provider/profilProvider.dart';
 import 'package:mobile/Provider/regisProvider.dart';
-import 'package:mobile/component/Account/daftar.dart';
 import 'package:mobile/component/app.dart';
 import 'package:provider/provider.dart';
 import 'Provider/homeProvider.dart';
@@ -17,8 +16,8 @@ void main() {
     MultiProvider(providers: [
       ChangeNotifierProvider(create: (_) => MyRegisProvider()),
       ChangeNotifierProvider(create: (_) => MyEmailProvider()),
-      ChangeNotifierProvider(create: (_) => MyLoginProvider()),
       ChangeNotifierProvider(create: (_) => MyHomeProvider()),
+      ChangeNotifierProvider(create: (_) => ProfilProvider()),
       ChangeNotifierProvider(create: (_) => MyProductProvider()),
       
     ], child: const MyApp()),

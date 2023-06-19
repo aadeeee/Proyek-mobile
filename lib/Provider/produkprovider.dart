@@ -60,6 +60,10 @@ class MyProductProvider extends ChangeNotifier {
   bool get getPriceIsEmpty => isPriceEmpty;
   bool get getImageUrlIsEmpty => isImageUrlEmpty;
 
+  get getterswitchvalue => null;
+
+  set setterswitchValue(bool setterswitchValue) {}
+
   set AddProduct(value) {
     if (_descriptionController.text.length != 0 &&
         _nameController.text.length != 0 &&

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/Provider/produkprovider.dart';
 import 'package:mobile/component/Account/login.dart';
 import 'package:mobile/component/Profil/myEditProfil.dart';
 import 'package:mobile/component/Profil/pemeriksaKeamanan.dart';
+import 'package:provider/provider.dart';
 
 class MyProfil extends StatefulWidget {
   const MyProfil({super.key});
@@ -11,17 +13,9 @@ class MyProfil extends StatefulWidget {
 }
 
 class _MyProfilState extends State<MyProfil> {
-  bool isSwitched = false;
-  Color backgroundColor = Colors.white;
-
-  void toggleSwitch(bool value) {
-    setState(() {
-      isSwitched = value;
-      backgroundColor = isSwitched ? Colors.black : Colors.white;
-    });
-  }
   @override
   Widget build(BuildContext context) {
+    var prov = Provider.of<MyProductProvider>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xffFD61876E),
@@ -127,21 +121,22 @@ class _MyProfilState extends State<MyProfil> {
                         },
                       ),
                     ),
-                    Container(
-                      color: backgroundColor,
-                      child: Center(
-                        child: Switch(
-                          value: isSwitched,
-                          onChanged: toggleSwitch,
-                          activeColor: Colors.black,
-                          inactiveThumbColor: Colors.white,
-                          inactiveTrackColor: Colors.grey,
-                        ),
-                      ),
-                    ),
                   ],
                 ),
               ),
+              Padding(
+            padding: const EdgeInsets.all(25.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("Ubah Tema"),
+                Switch(value: prov.getterswitchvalue, 
+                onChanged: (value) {
+                  prov.setterswitchValue = value;
+                })
+              ],
+            ),
+          ),
 
               Padding(
                 padding: const EdgeInsets.only(top: 50),
