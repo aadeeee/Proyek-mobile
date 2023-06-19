@@ -3,7 +3,7 @@ import 'package:mobile/component/Pelanggan/Pelanggan.dart';
 import 'package:mobile/component/home.dart';
 import 'package:mobile/component/Profil/profil.dart';
 import 'package:mobile/component/Transaksi/transaksi.dart';
-import 'package:mobile/component/produk.dart';
+import 'package:mobile/component/Produk/produk.dart';
 
 class MyMain extends StatefulWidget {
   const MyMain({super.key});

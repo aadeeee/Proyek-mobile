@@ -5,31 +5,31 @@ class MyProductProvider extends ChangeNotifier {
     {
       "name": 'Sapu',
       "description": 'Nagata',
-      "price": 10000.0,
+      "price": 35000,
       "imageUrl": 'assets/images/sapu.png',
     },
     {
       "name": 'Botol Minum',
       "description": 'Lock & Lock',
-      "price": 75000.0,
+      "price": 750000,
       "imageUrl": 'assets/images/botol-minum.png',
     },
     {
       "name": 'Meja',
       "description": 'IKEA',
-      "price": 1750000.0,
+      "price": 1750000,
       "imageUrl": 'assets/images/meja.png',
     },
     {
       "name": 'Kipas',
       "description": 'Polytron',
-      "price": 25000.0,
+      "price": 250000,
       "imageUrl": 'assets/images/kipas.png',
     },
     {
       "name": 'Kursi',
       "description": 'IKEA',
-      "price": 20.0,
+      "price": 350000,
       "imageUrl": 'assets/images/kursi.png',
     },
   ];

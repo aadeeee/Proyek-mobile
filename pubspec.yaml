@@ -35,7 +35,10 @@ dependencies:
   flutter_launcher_icons: ^0.13.1
   google_fonts: ^4.0.4
   intl: ^0.18.1
+  flutter_otp_text_field: ^1.1.1
   provider: ^6.0.5
+  quickalert: ^1.0.1
+  image_picker: ^0.8.9
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -76,6 +79,43 @@ flutter:
     - assets/images/produk.png
     - assets/images/pelanggan.png
     - assets/images/user.png
+    - assets/images/bahasa.png
+    - assets/images/email.png
+    - assets/images/iconbahasa.png
+    - assets/images/iconemail.png
+    - assets/images/iconpengaturan.png
+    - assets/images/icontema.png
+    - assets/images/konfirmasi.png
+    - assets/images/no hp.png
+    - assets/images/pemeriksakeamanan.png
+    - assets/images/pengaturan.png
+    - assets/images/phone.png
+    - assets/images/bahasa.png
+    - assets/images/editprofile.png
+    - assets/images/keamanan.png
+    - assets/images/iconKeamanan.png
+    - assets/images/keamanan.png
+    - assets/images/otp.png
+    - assets/images/kalender.png
+    - assets/images/profile.jpg
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     # An image asset can refer to one or more resolution-specific "variants", see
     # https://flutter.dev/assets-and-images/#resolution-aware
     # For details regarding adding assets from package dependencies, see

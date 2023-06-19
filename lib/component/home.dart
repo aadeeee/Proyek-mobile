@@ -89,7 +89,6 @@ class _MyHomeState extends State<MyHome> {
               ),
             ],
           ),
-         
           Padding(
             padding: const EdgeInsets.only(left: 15, top: 5),
             child: Row(
@@ -99,6 +98,10 @@ class _MyHomeState extends State<MyHome> {
                   'Produk Terlaris',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: Icon(Icons.shopping_bag_outlined),
+                )
               ],
             ),
           ),
@@ -120,7 +123,10 @@ class _MyHomeState extends State<MyHome> {
                           height: 150,
                           fit: BoxFit.fitHeight,
                         ),
-                        Text('${tmp[index]['name']}'),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 9),
+                          child: Text('${tmp[index]['name']}'),
+                        ),
                       ],
                     ),
                   ),
@@ -131,15 +137,35 @@ class _MyHomeState extends State<MyHome> {
           Padding(
             padding: const EdgeInsets.only(left: 15, top: 7),
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
                   'Pelanggan Favorit',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: Icon(Icons.people_outline),
+                )
               ],
             ),
           ),
+          ListTile(
+            
+            title: Column(
+              children: [
+                RichText(text: TextSpan(text: 'Yudi'),
+                ),
+                Text("fds")
+              ],
+            ),
+            
+            trailing: Icon(Icons.phone_android_outlined),
+            onTap: () {
+              
+              
+            },
+          )
         ],
       ),
     );

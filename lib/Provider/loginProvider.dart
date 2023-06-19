@@ -34,23 +34,6 @@ class MyLoginProvider extends ChangeNotifier {
     notifyListeners();
   }
   
-
-  // UserModel? user;
-
-  // void register(bool username, bool password) {
-  //   user = UserModel(username: username, password: password);
-  //   notifyListeners();
-  // }
-
-  // bool login(String username, String password) {
-
-  //   if (user != null && user!.username == username && user!.password == password) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
-  
 }
 
 class UserModel{

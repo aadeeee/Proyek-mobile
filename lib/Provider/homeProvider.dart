@@ -18,19 +18,19 @@ class MyHomeProvider extends ChangeNotifier {
       'caption': 'Beautiful Landscape',
     },
     {
-      'image': 'assets/images/toko1.png',
+      'image': 'assets/images/toko2.png',
       'caption': 'Beautiful store',
     },
     {
-      'image': 'assets/images/toko1.png',
+      'image': 'assets/images/toko3.png',
       'caption': 'Beautiful Landscape',
     },
     {
-      'image': 'assets/images/toko1.png',
+      'image': 'assets/images/toko4.png',
       'caption': 'Beautiful Landscape',
     },
     {
-      'image': 'assets/images/toko1.png',
+      'image': 'assets/images/toko5.png',
       'caption': 'Beautiful Landscape',
     },
     
@@ -41,22 +41,22 @@ class MyHomeProvider extends ChangeNotifier {
   final _jsonData = {
     "data": [
       {
-        "name": "Produk 1",
-        'image': 'assets/images/toko1.png',
+        "name": "Sapu",
+        'image': 'assets/images/sapu.png',
       },
       {
-        "name": "Produk 1",
-        'image': 'assets/images/toko1.png',
+        "name": "Botol Minum",
+        'image': 'assets/images/botol-minum.png',
         
       },
       {
-        "name": "Produk 1",
-        'image': 'assets/images/toko1.png',
+        "name": "Kipas",
+        'image': 'assets/images/kipas.png',
         
       },
       {
-        "name": "Produk 1",
-        'image': 'assets/images/toko1.png',
+        "name": "Meja",
+        'image': 'assets/images/meja.png',
         
       },
     ]
@@ -70,13 +70,20 @@ class MyHomeProvider extends ChangeNotifier {
     return json.decode(tmp);
     
   }
-  Status _status = Status.card;
 
-  get status => _status;
-  set status(value) {
-    _status = value;
-    notifyListeners();
-  }
+
+  List _pelanggan = [
+    {
+      'nama': 'Yudi',
+      'hp':'0852-5141-9882'
+    },
+    {
+      'nama': 'Dila',
+      'hp':'0823-7827-9829'
+    }
+  ];
+  
+  List get dataPelanggan => _pelanggan;
 }
 
 

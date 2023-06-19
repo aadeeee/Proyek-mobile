@@ -3,6 +3,7 @@ import 'package:mobile/component/Email/email.dart';
 import 'package:mobile/component/Account/login.dart';
 import 'package:mobile/Provider/regisProvider.dart';
 import 'package:provider/provider.dart';
+import 'package:quickalert/quickalert.dart';
 
 class MyRegister extends StatefulWidget {
   const MyRegister({super.key});
@@ -232,6 +233,24 @@ class _MyRegisterState extends State<MyRegister> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (_) => const MyEmail()));
+                                } else {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        
+                                        content: Text('Data yang Anda masukkan tidak sesuai, cek kembali data Anda.'),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: Text('OK'),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
                                 }
                               }
                             },

@@ -137,7 +137,27 @@ class _MyLoginState extends State<MyLogin> {
                                       MaterialPageRoute(
                                           builder: (_) => const MyMain()));
                                 }
+                                else {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        
+                                        content: Text('Nama dan kata sandi Anda tidak sesuai atau belum terdaftar, cek kembali data Anda'),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: Text('OK'),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                }
                               }
+
                             },
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: Color(0xffFD61876E),

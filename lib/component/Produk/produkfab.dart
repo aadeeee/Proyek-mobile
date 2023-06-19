@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/Provider/produkprovider.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
+
 
 class MyProductList extends StatefulWidget {
   @override
@@ -8,6 +10,7 @@ class MyProductList extends StatefulWidget {
 }
 
 class _MyProductListState extends State<MyProductList> {
+  final rupiahFormat = NumberFormat.currency(locale: 'ID',symbol: "",decimalDigits: 0);
 
   @override
   void dispose() {
@@ -27,11 +30,12 @@ class _MyProductListState extends State<MyProductList> {
               leading: Image.asset(product["imageUrl"]),
               title: Text(product["name"]),
               subtitle: Text(product["description"]),
-              trailing: Container(
+              trailing: 
+              Container(
                 width: 112,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [Text('Rp.'), Text("${product['price']},00")],
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [Text('Rp.'),Text(rupiahFormat.format((product['price'])))],
                 ),
               ),
             ),

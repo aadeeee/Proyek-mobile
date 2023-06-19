@@ -6,7 +6,6 @@ import 'package:mobile/Provider/produkprovider.dart';
 import 'package:mobile/Provider/regisProvider.dart';
 import 'package:mobile/component/Account/daftar.dart';
 import 'package:mobile/component/app.dart';
-import 'package:mobile/component/produk.dart';
 import 'package:provider/provider.dart';
 import 'Provider/homeProvider.dart';
 
