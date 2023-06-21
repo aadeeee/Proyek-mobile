@@ -15,23 +15,23 @@ class MyHomeProvider extends ChangeNotifier {
   final List<Map<String, dynamic>> _carouselItems = [
     {
       'image': 'assets/images/toko1.png',
-      'caption': 'Beautiful Landscape',
+      'caption': 'Produk Baru ',
     },
     {
       'image': 'assets/images/toko2.png',
-      'caption': 'Beautiful store',
+      'caption': '',
     },
     {
       'image': 'assets/images/toko3.png',
-      'caption': 'Beautiful Landscape',
+      'caption': '',
     },
     {
       'image': 'assets/images/toko4.png',
-      'caption': 'Beautiful Landscape',
+      'caption': '',
     },
     {
       'image': 'assets/images/toko5.png',
-      'caption': 'Beautiful Landscape',
+      'caption': '',
     },
     
   ];

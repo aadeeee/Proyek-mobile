@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:mobile/component/Pelanggan/Customer.dart';
 
 class MyCustomer extends StatefulWidget {
   const MyCustomer({super.key});
@@ -12,7 +12,11 @@ class _MyCustomerState extends State<MyCustomer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Pelanggan'),),
+      appBar: AppBar(
+        
+        title: Text('Data Pelanggan'), 
+      backgroundColor: Color(0xffFD61876E),),
+      body: MyCustomerList(),
     );
   }
 }

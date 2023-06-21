@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:mobile/component/Produk/produkBeli.dart';
 import 'package:mobile/component/Produk/produkfab.dart';
 
 class MyProduct extends StatefulWidget {
@@ -16,11 +18,7 @@ class _MyProductState extends State<MyProduct>
     _tabController = TabController(length: 2, vsync: this);
   }
 
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
-  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -28,15 +26,13 @@ class _MyProductState extends State<MyProduct>
       appBar: AppBar(
         backgroundColor: Color(0xffFD61876E),
         title: Text('Produk',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w600,
-            )),
+            style: GoogleFonts.inter(fontWeight: FontWeight.w600, fontSize: 20)
+            ),
         bottom: TabBar(
           indicatorColor: Colors.white,
           controller: _tabController,
           tabs: [
-            Tab(text: 'Penjualan'),
+            Tab(text: 'Penjualan',),
             Tab(text: 'Pembelian'),
           ],
         ),
@@ -48,7 +44,7 @@ class _MyProductState extends State<MyProduct>
             child: MyProductList(),
           ),
           Center(
-            child: Text('Tab 2'),
+            child: MyProductListBeli(),
           ),
         ],
       ),

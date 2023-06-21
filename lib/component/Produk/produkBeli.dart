@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile/Provider/produkprovider.dart';
-import 'package:mobile/component/Produk/deskripsi.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 
-class MyProductList extends StatefulWidget {
-  const MyProductList({super.key});
+
+class MyProductListBeli extends StatefulWidget {
   @override
-  _MyProductListState createState() => _MyProductListState();
+  _MyProductLisBeliState createState() => _MyProductLisBeliState();
 }
 
-class _MyProductListState extends State<MyProductList> {
-  final rupiahFormat =
-      NumberFormat.currency(locale: 'ID', symbol: "", decimalDigits: 0);
+class _MyProductLisBeliState extends State<MyProductListBeli> {
+  final rupiahFormat = NumberFormat.currency(locale: 'ID',symbol: "",decimalDigits: 0);
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,23 +28,18 @@ class _MyProductListState extends State<MyProductList> {
           final product = prov.Product[index];
           return Card(
             child: ListTile(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (_) => MyDescription(data: prov.Product[index],)));
-              },
               leading: Image.asset(product["imageUrl"]),
               title: Text(product["name"]),
               subtitle: Text(product["description"]),
-              trailing: Container(
+              onTap: () {
+                
+              },
+              trailing: 
+              Container(
                 width: 112,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text('Rp.'),
-                    Text(rupiahFormat.format((product['price'])))
-                  ],
+                  children: [Text('Rp.'),Text(rupiahFormat.format((product['price'])))],
                 ),
               ),
             ),
@@ -58,8 +56,7 @@ class _MyProductListState extends State<MyProductList> {
                 insetPadding: EdgeInsets.zero,
                 child: Scaffold(
                   appBar: AppBar(
-                    backgroundColor: Color(0xffFD61876E),
-                    title: Text('Tambah Produk', style: GoogleFonts.inter()),
+                    title: Text('Tambah Produk',style: GoogleFonts.inter()),
                     centerTitle: false,
                     automaticallyImplyLeading: false,
                     leading: IconButton(
@@ -74,15 +71,13 @@ class _MyProductListState extends State<MyProductList> {
                             "description": prov.getDescriptionController.text,
                             "price": double.parse(prov.getPriceController.text),
                             "imageUrl": prov.getImageUrlController.text,
-                            "code": prov.getCodeController.text,
-                            "amount":
-                                double.parse(prov.getAmountController.text),
-                            "date": prov.getDateController.text,
                           };
                           Navigator.of(context).pop();
                         },
-                        child: Text('Tambah',
-                            style: GoogleFonts.inter(color: Colors.white)),
+                        child: Text(
+                          'Tambah',
+                          style: GoogleFonts.inter(color: Colors.white)
+                        ),
                       ),
                     ],
                   ),
@@ -90,13 +85,6 @@ class _MyProductListState extends State<MyProductList> {
                     padding: const EdgeInsets.all(16.0),
                     child: Column(
                       children: [
-                        TextField(
-                          controller: prov.getCodeController,
-                          decoration: InputDecoration(
-                              labelText: 'Kode Produk',
-                              errorText:
-                                  prov.isCodeEmpty ? "wajib diisi" : null),
-                        ),
                         TextField(
                           controller: prov.getNameController,
                           decoration: InputDecoration(
@@ -127,20 +115,6 @@ class _MyProductListState extends State<MyProductList> {
                               labelText: 'Link gambar',
                               errorText:
                                   prov.isImageUrlEmpty ? "wajib diisi" : null),
-                        ),
-                        TextField(
-                          controller: prov.getAmountController,
-                          decoration: InputDecoration(
-                              labelText: 'Jumlah Penjualan',
-                              errorText:
-                                  prov.isAmountEmpty ? "wajib diisi" : null),
-                        ),
-                        TextField(
-                          controller: prov.getDateController,
-                          decoration: InputDecoration(
-                              labelText: 'Tanggal Penjualan',
-                              errorText:
-                                  prov.isDateEmpty ? "wajib diisi" : null),
                         ),
                       ],
                     ),

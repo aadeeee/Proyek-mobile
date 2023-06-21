@@ -18,155 +18,168 @@ class _MyHomeState extends State<MyHome> {
 
     var tmp = prov.jsonData['data'];
     return Scaffold(
-      body: Column(
-        children: [
-          Column(
-            children: [
-              Stack(
-                children: [
-                  CarouselSlider(
-                    items: prov.carouselItem.map((item) {
-                      return Builder(
-                        builder: (BuildContext context) {
-                          return Container(
-                            width: MediaQuery.of(context).size.width,
-                            margin: EdgeInsets.symmetric(horizontal: 3.0),
-                            child: Image.asset(
-                              item['image'],
-                              width: 200,
-                              height: 150,
-                              fit: BoxFit.fitWidth,
-                            ),
-                          );
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Column(
+              children: [
+                Stack(
+                  children: [
+                    CarouselSlider(
+                      items: prov.carouselItem.map((item) {
+                        return Builder(
+                          builder: (BuildContext context) {
+                            return Container(
+                              width: MediaQuery.of(context).size.width,
+                              margin: EdgeInsets.symmetric(horizontal: 3.0),
+                              child: Image.asset(
+                                item['image'],
+                                width: 200,
+                                height: 150,
+                                fit: BoxFit.fitWidth,
+                              ),
+                            );
+                          },
+                        );
+                      }).toList(),
+                      options: CarouselOptions(
+                        height: 200.0,
+                        autoPlay: true,
+                        onPageChanged: (index, reason) {
+                          setState(() {
+                            prov.setIndex = index;
+                          });
                         },
-                      );
-                    }).toList(),
-                    options: CarouselOptions(
-                      height: 200.0,
-                      autoPlay: true,
-                      onPageChanged: (index, reason) {
-                        setState(() {
-                          prov.setIndex = index;
-                        });
-                      },
+                      ),
                     ),
-                  ),
-                  Positioned(
-                    bottom: 9.0,
-                    left: 0,
-                    right: 0,
-                    child: Column(
-                      children: [
-                        Text(
-                          prov.carouselItem[prov.getIndex]['caption'],
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.bold,
-                              decoration: TextDecoration.none),
-                        ),
-                      ],
+                    Positioned(
+                      bottom: 9.0,
+                      left: 0,
+                      right: 0,
+                      child: Column(
+                        children: [
+                          Text(
+                            prov.carouselItem[prov.getIndex]['caption'],
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.bold,
+                                decoration: TextDecoration.none),
+                          ),
+                        ],
+                      ),
                     ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: prov.carouselItem.map((item) {
+                    int index = prov.carouselItem.indexOf(item);
+                    return Container(
+                      width: 10.0,
+                      height: 10.0,
+                      margin: EdgeInsets.symmetric(horizontal: 2.0),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: prov.getIndex == index
+                            ? Color(0xffFD61876E)
+                            : Colors.grey,
+                      ),
+                    );
+                  }).toList(),
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 15, top: 10),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Produk Terlaris',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Icon(Icons.shopping_bag_outlined),
+                  )
                 ],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: prov.carouselItem.map((item) {
-                  int index = prov.carouselItem.indexOf(item);
-                  return Container(
-                    width: 10.0,
-                    height: 10.0,
-                    margin: EdgeInsets.symmetric(horizontal: 2.0),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: prov.getIndex == index
-                          ? Color(0xffFD61876E)
-                          : Colors.grey,
-                    ),
-                  );
-                }).toList(),
-              ),
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 15, top: 5),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Produk Terlaris',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 10),
-                  child: Icon(Icons.shopping_bag_outlined),
-                )
-              ],
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(0),
-            child: SizedBox(
-              height: 190,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: tmp.length,
-                itemBuilder: (context, index) => Card(
-                  color: Colors.white10,
-                  child: Container(
-                    child: Column(
-                      children: [
-                        Image.asset(
-                          tmp[index]['image'],
-                          width: 130,
-                          height: 150,
-                          fit: BoxFit.fitHeight,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 9),
-                          child: Text('${tmp[index]['name']}'),
-                        ),
-                      ],
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: SizedBox(
+                height: 190,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: tmp.length,
+                  itemBuilder: (context, index) => Card(
+                    color: Colors.white10,
+                    child: Container(
+                      child: Column(
+                        children: [
+                          Image.asset(
+                            tmp[index]['image'],
+                            width: 130,
+                            height: 150,
+                            fit: BoxFit.fitHeight,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 9),
+                            child: Text('${tmp[index]['name']}'),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 15, top: 7),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  'Pelanggan Favorit',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 10),
-                  child: Icon(Icons.people_outline),
-                )
-              ],
+            Padding(
+              padding: const EdgeInsets.only(left: 15,top: 15),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text(
+                    'Pelanggan Favorit',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Icon(Icons.people_outline),
+                  )
+                ],
+              ),
             ),
-          ),
-          ListTile(
-            
-            title: Column(
-              children: [
-                RichText(text: TextSpan(text: 'Yudi'),
-                ),
-                Text("fds")
-              ],
+            ListTile(
+              leading: CircleAvatar(
+                child: Icon(Icons.person),
+                backgroundColor: Color(0xffFD61876E),
+              ),
+              title: Text('Max'),
+              subtitle: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('09242464234217'),
+                ],
+              ),
+            ),
+            ListTile(
+              leading: CircleAvatar(
+                child: Icon(Icons.person),
+                backgroundColor: Color(0xffFD61876E),
+              ),
+              title: Text('John'),
+              subtitle: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('09242464234217'),
+                ],
+              ),
             ),
             
-            trailing: Icon(Icons.phone_android_outlined),
-            onTap: () {
-              
-              
-            },
-          )
-        ],
+          ],
+        ),
       ),
     );
   }

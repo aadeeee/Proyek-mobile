@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/Provider/produkprovider.dart';
+
 import 'package:mobile/component/Account/login.dart';
 import 'package:mobile/component/Profil/myEditProfil.dart';
 import 'package:mobile/component/Profil/pemeriksaKeamanan.dart';
 import 'package:provider/provider.dart';
+
+import '../../Provider/profilProvider.dart';
 
 class MyProfil extends StatefulWidget {
   const MyProfil({super.key});
@@ -15,7 +17,7 @@ class MyProfil extends StatefulWidget {
 class _MyProfilState extends State<MyProfil> {
   @override
   Widget build(BuildContext context) {
-    var prov = Provider.of<MyProductProvider>(context);
+    var prov = Provider.of<ProfilProvider>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xffFD61876E),
@@ -23,9 +25,7 @@ class _MyProfilState extends State<MyProfil> {
           child: Text(
             "Toko Sejahtera",
             style: TextStyle(
-              fontSize: 20,
-              color: Colors.white,
-            ),
+                fontSize: 20, color: Colors.white, fontFamily: 'inter'),
           ),
         ),
       ),
@@ -57,12 +57,11 @@ class _MyProfilState extends State<MyProfil> {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Text(
-                  "Zeus",
-                  style: TextStyle(color: Colors.black),
+                  '${prov.namaToko}',
                 ),
               ),
               Text(
-                "zeus123@gmail.com",
+                "admin22996@gmail.com",
               ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
@@ -109,8 +108,7 @@ class _MyProfilState extends State<MyProfil> {
                               Border(bottom: BorderSide(color: Colors.grey))),
                       child: ListTile(
                         title: Text('Kalender'),
-                        leading: const ImageIcon(
-                            AssetImage('assets/images/kalender.png')),
+                        leading: Icon(Icons.calendar_month),
                         iconColor: Colors.black,
                         onTap: () {
                           showDatePicker(
@@ -121,22 +119,23 @@ class _MyProfilState extends State<MyProfil> {
                         },
                       ),
                     ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("Ubah Tema"),
+                          Switch(
+                              value: prov.getterswitchvalue,
+                              onChanged: (value) {
+                                prov.setterswitchValue = value;
+                              })
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
-              Padding(
-            padding: const EdgeInsets.all(25.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text("Ubah Tema"),
-                Switch(value: prov.getterswitchvalue, 
-                onChanged: (value) {
-                  prov.setterswitchValue = value;
-                })
-              ],
-            ),
-          ),
 
               Padding(
                 padding: const EdgeInsets.only(top: 50),

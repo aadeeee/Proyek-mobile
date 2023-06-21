@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile/Provider/regisProvider.dart';
 import 'package:mobile/component/Account/daftar.dart';
 import 'package:mobile/component/app.dart';
@@ -143,13 +144,13 @@ class _MyLoginState extends State<MyLogin> {
                                     builder: (BuildContext context) {
                                       return AlertDialog(
                                         
-                                        content: Text('Nama dan kata sandi Anda tidak sesuai atau belum terdaftar, cek kembali data Anda'),
+                                        content: Text('Nama dan kata sandi Anda tidak sesuai atau belum terdaftar, cek kembali data Anda',style: GoogleFonts.inter()),
                                         actions: [
                                           TextButton(
                                             onPressed: () {
                                               Navigator.of(context).pop();
                                             },
-                                            child: Text('OK'),
+                                            child: Text('OK',style: GoogleFonts.inter()),
                                           ),
                                         ],
                                       );
@@ -164,9 +165,9 @@ class _MyLoginState extends State<MyLogin> {
                                 minimumSize: const Size.fromHeight(60),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(15))),
-                            child: const Text(
+                            child:  Text(
                               "MASUK",
-                              style: TextStyle(fontSize: 20),
+                              style:GoogleFonts.inter(fontSize: 20)
                             ),
                           ),
                         ),
@@ -183,11 +184,10 @@ class _MyLoginState extends State<MyLogin> {
                               },
                               child: Column(
                                 children: [
-                                  const Text(
+                                   Text(
                                     "Belum punya akun? daftar disini",
-                                    style: TextStyle(
-                                        color: Color(0xffFD61876E),
-                                        fontSize: 16),
+                                    style:GoogleFonts.inter(fontSize: 16)
+                                    
                                   ),
                                 ],
                               )),

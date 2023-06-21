@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile/component/Account/login.dart';
 
 class EmailSuccess extends StatefulWidget {
@@ -27,17 +28,16 @@ class _EmailSuccessState extends State<EmailSuccess> {
           padding: const EdgeInsets.only(left: 20, right: 20),
           child: Text(
             'Selamat, akun\nAnda berhasil di\naktivasi',
-            style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Color(0xffFD61876E)),
+            
+            style: GoogleFonts.inter(fontSize: 30, fontWeight: FontWeight.bold)
+            
           ),
         ),
-        const Padding(
+        Padding(
           padding: EdgeInsets.only(left: 20, right: 20 ,top: 10, bottom: 25),
           child: Text(
             'Akun Anda sudah diaktivasi dengan verifikasi kode melalui email',
-            style: TextStyle(fontSize: 16.0),
+            style: GoogleFonts.inter(fontSize: 16)
           ),
         ),
         Padding(
@@ -53,9 +53,9 @@ class _EmailSuccessState extends State<EmailSuccess> {
                 minimumSize: const Size.fromHeight(60),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15))),
-            child: const Text(
+            child:  Text(
               "SELANJUTNYA",
-              style: TextStyle(fontSize: 20),
+              style: GoogleFonts.inter(fontSize: 20)
             ),
           ),
         ),

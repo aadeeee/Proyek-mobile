@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile/component/Email/email.dart';
 import 'package:mobile/component/Account/login.dart';
 import 'package:mobile/Provider/regisProvider.dart';
 import 'package:provider/provider.dart';
-import 'package:quickalert/quickalert.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MyRegister extends StatefulWidget {
   const MyRegister({super.key});
@@ -238,14 +239,15 @@ class _MyRegisterState extends State<MyRegister> {
                                     context: context,
                                     builder: (BuildContext context) {
                                       return AlertDialog(
-                                        
-                                        content: Text('Data yang Anda masukkan tidak sesuai, cek kembali data Anda.'),
+                                        content: Text(
+                                          'Data yang Anda masukkan tidak sesuai, cek kembali data Anda.',
+                                          style: GoogleFonts.inter()),
                                         actions: [
                                           TextButton(
                                             onPressed: () {
                                               Navigator.of(context).pop();
                                             },
-                                            child: Text('OK'),
+                                            child: Text('OK',style: GoogleFonts.inter()),
                                           ),
                                         ],
                                       );
@@ -259,27 +261,38 @@ class _MyRegisterState extends State<MyRegister> {
                                 minimumSize: const Size.fromHeight(60),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(15))),
-                            child: const Text(
+                            child: Text(
                               "DAFTAR",
-                              style: TextStyle(fontSize: 20),
+                              style: GoogleFonts.inter(fontSize: 20),
                             ),
                           ),
                         ),
-                        Align(
-                          alignment: Alignment.bottomCenter,
-                          child: TextButton(
-                              onPressed: () {
-                                Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (_) => const MyLogin()));
-                              },
-                              child: const Text(
-                                "Sudah punya akun? Masuk disini",
-                                style: TextStyle(
-                                    color: Color(0xffFD61876E), fontSize: 16),
-                              )),
-                        )
+                        
+                          Container(
+                            margin: EdgeInsets.symmetric(horizontal: 10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                     Text("Sudah Punya Akun ?",
+                                      style: GoogleFonts.inter(color: Color(0xffFD61876E), fontSize: 16)),
+                                  
+                                  TextButton(
+                                  onPressed: () {
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (_) => const MyLogin()));
+                                  },
+                                  child: Text(
+                                    "Masuk disini",
+                                    style: GoogleFonts.inter(color: Color(0xffFD61876E), fontSize: 16)
+                                    
+                                  )),
+                                ],
+                              ),
+                          ),
+                          
+                        
                       ]),
                     ),
                   )
