@@ -17,6 +17,7 @@ class _TransactionPageState extends State<TransactionPage> {
   final rupiahFormat =
       NumberFormat.currency(locale: 'ID', symbol: "", decimalDigits: 0);
   int _selectedIndex = 1;
+  DateTime? _selectedDate;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,7 @@ class _TransactionPageState extends State<TransactionPage> {
           return ListTile(
             title: Text(transaction['nama']),
             isThreeLine: true,
-            subtitle: Text('Rp. ${rupiahFormat.format(transaction['jumlah'])}\n${(transaction['tanggal'])}'),
+            subtitle: Text('Rp. ${rupiahFormat.format(transaction['jumlah'])}\n${DateFormat('yyyy/MM/dd').format(transaction['tanggal'])}'),
             trailing: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -136,7 +137,7 @@ class _TransactionPageState extends State<TransactionPage> {
                             final data = {
                               'nama': prov.getNamaController.text,
                               'jumlah': double.parse(prov.getJumlahController.text),
-                              'tanggal': DateTime.parse(prov.getTanggalController.text,) 
+                              'tanggal': _selectedDate ?? DateTime.now(), 
                             };
                             if (_selectedIndex == 1) {
                               prov.addTransaction(data);
@@ -148,6 +149,7 @@ class _TransactionPageState extends State<TransactionPage> {
                             prov.getTanggalController.clear();
                             setState(() {
                               _selectedIndex = 1;
+                              _selectedDate = null;
                             });
                             Navigator.of(context).pop();
                           },
