@@ -4,7 +4,7 @@ import 'package:mobile/component/Email/email.dart';
 import 'package:mobile/component/Account/login.dart';
 import 'package:mobile/Provider/regisProvider.dart';
 import 'package:provider/provider.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 
 class MyRegister extends StatefulWidget {
   const MyRegister({super.key});
@@ -28,7 +28,7 @@ class _MyRegisterState extends State<MyRegister> {
                 height: 170,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(150),
-                    color: Color(0xffFD61876E)),
+                    color: const Color(0xffFD61876E)),
               )),
           Positioned(
               top: 100,
@@ -38,7 +38,7 @@ class _MyRegisterState extends State<MyRegister> {
                 height: 100,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
-                    color: Color(0xffFD61876E)),
+                    color: const Color(0xffFD61876E)),
               )),
           Align(
             alignment: Alignment.center,
@@ -257,7 +257,7 @@ class _MyRegisterState extends State<MyRegister> {
                               }
                             },
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: Color(0xffFD61876E),
+                                backgroundColor: const Color(0xffFD61876E),
                                 minimumSize: const Size.fromHeight(60),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(15))),

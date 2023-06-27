@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/Provider/emailProvider.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile/Provider/pelangganProvider.dart';
 import 'package:mobile/Provider/produkprovider.dart';
 import 'package:mobile/Provider/profilProvider.dart';
 import 'package:mobile/Provider/regisProvider.dart';
-import 'package:mobile/component/Pelanggan/Customer.dart';
-import 'package:mobile/component/Produk/editProdukBeli.dart';
-
-import 'package:mobile/component/Profil/test.dart';
+import 'package:mobile/Provider/transaksiProvider.dart';
 import 'package:mobile/component/app.dart';
 import 'package:provider/provider.dart';
 import 'Provider/homeProvider.dart';
@@ -24,8 +20,9 @@ void main() {
       ChangeNotifierProvider(create: (_) => MyHomeProvider()),
       ChangeNotifierProvider(create: (_) => ProfilProvider()),
       ChangeNotifierProvider(create: (_) => CustomerProvider()),
+      ChangeNotifierProvider(create: (_) => TransactionProvider()),
       ChangeNotifierProvider(create: (_) => MyProductProvider()),
-    ], child: const MyApp()),
+    ], child:  const MyApp()),
   );
 }
 

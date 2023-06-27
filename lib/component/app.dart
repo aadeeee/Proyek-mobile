@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/Variabel/global.dart';
 import 'package:mobile/component/Pelanggan/Pelanggan.dart';
 import 'package:mobile/component/home.dart';
 import 'package:mobile/component/Profil/profil.dart';
@@ -16,7 +17,7 @@ class _MyMainState extends State<MyMain> {
   int _currentIndex = 0;
   final List<Widget> pages = [
     MyHome(),
-    MyTransaction(),
+    TransactionPage(),
     MyProduct(),
     MyCustomer(),
     MyProfil()
@@ -27,7 +28,7 @@ class _MyMainState extends State<MyMain> {
       body: pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Color(0xffFD61876E),
+        backgroundColor: primaryColor,
         selectedItemColor: Colors.grey,
         showUnselectedLabels: false,
         currentIndex: _currentIndex,

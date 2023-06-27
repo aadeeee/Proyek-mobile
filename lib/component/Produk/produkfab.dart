@@ -8,7 +8,7 @@ import 'package:intl/intl.dart';
 class MyProductList extends StatefulWidget {
   const MyProductList({super.key});
   @override
-  _MyProductListState createState() => _MyProductListState();
+  State<MyProductList> createState() => _MyProductListState();
 }
 
 class _MyProductListState extends State<MyProductList> {
@@ -33,7 +33,7 @@ class _MyProductListState extends State<MyProductList> {
               },
               leading: Image.asset(product["imageUrl"]),
               title: Text(product["name"]),
-              subtitle: Text(product["description"]),
+              subtitle: Text(product["merk"]),
               trailing: Container(
                 width: 112,
                 child: Row(
@@ -71,6 +71,7 @@ class _MyProductListState extends State<MyProductList> {
                         onPressed: () {
                           prov.AddProduct = {
                             "name": prov.getNameController.text,
+                            "merk": prov.getMerkController.text,
                             "description": prov.getDescriptionController.text,
                             "price": double.parse(prov.getPriceController.text),
                             "imageUrl": prov.getImageUrlController.text,
@@ -105,6 +106,13 @@ class _MyProductListState extends State<MyProductList> {
                                   prov.isNameEmpty ? "wajib diisi" : null),
                         ),
                         TextField(
+                          controller: prov.getMerkController,
+                          decoration: InputDecoration(
+                              labelText: 'Merek',
+                              errorText:
+                                  prov.isNameEmpty ? "wajib diisi" : null),
+                        ),
+                        TextField(
                           controller: prov.getDescriptionController,
                           decoration: InputDecoration(
                               labelText: 'Deskripsi',
@@ -130,6 +138,7 @@ class _MyProductListState extends State<MyProductList> {
                         ),
                         TextField(
                           controller: prov.getAmountController,
+                          keyboardType: TextInputType.number,
                           decoration: InputDecoration(
                               labelText: 'Jumlah Penjualan',
                               errorText:

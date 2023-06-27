@@ -15,18 +15,8 @@ class _MyEditBuyState extends State<MyEditBuy> {
   @override
   Widget build(BuildContext context) {
     var prov = Provider.of<MyProductProvider>(context);
-    return Scaffold(
-      body: ListView.builder(
-        itemCount: prov.Product.length,
-        itemBuilder: (context, index) {
-          final product = prov.Product[index];
-          return Card(
-            child: TextField(
-              controller: product['name'],
-            ),
-          );
-        },
-      ),
-    );
+    return Scaffold(body: Column(
+      
+    ));
   }
 }

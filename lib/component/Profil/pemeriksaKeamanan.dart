@@ -14,7 +14,6 @@ class MyPemeriksaKeamanan extends StatelessWidget {
           backgroundColor: Color(0xffFD61876E),
           leading: BackButton(
             onPressed: () => Navigator.pop(context, false),
-            // Icons.arrow_back,
             color: Colors.white,
           ),
           title: Text(

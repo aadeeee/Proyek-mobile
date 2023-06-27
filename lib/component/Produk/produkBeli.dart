@@ -6,8 +6,10 @@ import 'package:intl/intl.dart';
 
 
 class MyProductListBeli extends StatefulWidget {
+  const MyProductListBeli({super.key});
+
   @override
-  _MyProductLisBeliState createState() => _MyProductLisBeliState();
+  State<MyProductListBeli> createState() => _MyProductLisBeliState();
 }
 
 class _MyProductLisBeliState extends State<MyProductListBeli> {

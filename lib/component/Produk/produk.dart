@@ -4,8 +4,10 @@ import 'package:mobile/component/Produk/produkBeli.dart';
 import 'package:mobile/component/Produk/produkfab.dart';
 
 class MyProduct extends StatefulWidget {
+  const MyProduct({super.key});
+
   @override
-  _MyProductState createState() => _MyProductState();
+  State<MyProduct> createState() => _MyProductState();
 }
 
 class _MyProductState extends State<MyProduct>

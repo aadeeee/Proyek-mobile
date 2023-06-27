@@ -1,7 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile/Provider/homeProvider.dart';
-import 'package:mobile/Provider/regisProvider.dart';
 import 'package:provider/provider.dart';
 
 class MyHome extends StatefulWidget {
@@ -14,7 +13,6 @@ class _MyHomeState extends State<MyHome> {
   @override
   Widget build(BuildContext context) {
     var prov = Provider.of<MyHomeProvider>(context);
-    var prov2 = Provider.of<MyRegisProvider>(context);
 
     var tmp = prov.jsonData['data'];
     return Scaffold(
@@ -60,7 +58,7 @@ class _MyHomeState extends State<MyHome> {
                         children: [
                           Text(
                             prov.carouselItem[prov.getIndex]['caption'],
-                            style: TextStyle(
+                            style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 20.0,
                                 fontWeight: FontWeight.bold,
@@ -90,8 +88,8 @@ class _MyHomeState extends State<MyHome> {
                 ),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 15, top: 10),
+            const Padding(
+              padding: EdgeInsets.only(left: 15, top: 10),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -100,7 +98,7 @@ class _MyHomeState extends State<MyHome> {
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 10),
+                    padding: EdgeInsets.only(left: 10),
                     child: Icon(Icons.shopping_bag_outlined),
                   )
                 ],
@@ -135,8 +133,8 @@ class _MyHomeState extends State<MyHome> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 15,top: 15),
+            const Padding(
+              padding: EdgeInsets.only(left: 15,top: 15),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
@@ -145,13 +143,13 @@ class _MyHomeState extends State<MyHome> {
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 10),
+                    padding: EdgeInsets.only(left: 10),
                     child: Icon(Icons.people_outline),
                   )
                 ],
               ),
             ),
-            ListTile(
+            const ListTile(
               leading: CircleAvatar(
                 child: Icon(Icons.person),
                 backgroundColor: Color(0xffFD61876E),
@@ -164,7 +162,7 @@ class _MyHomeState extends State<MyHome> {
                 ],
               ),
             ),
-            ListTile(
+            const ListTile(
               leading: CircleAvatar(
                 child: Icon(Icons.person),
                 backgroundColor: Color(0xffFD61876E),

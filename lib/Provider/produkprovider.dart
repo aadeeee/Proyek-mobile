@@ -4,50 +4,55 @@ class MyProductProvider extends ChangeNotifier {
   final List _Product = [
     {
       "name": 'Sapu',
-      "description": 'Nagata',
+      'merk':"Nagata",
+      "description": '-Panjang Gagang Sapu Standard 110 cm\n-Bahan Non Recycle\n-Bahan Bulu Senar dan Mengkilap\n-Mengunakan bahan bulu Grade 1\n\nWarna:  pink, hijau, abu-abu, orange, biru',
       "price": 35000,
       "imageUrl": 'assets/images/sapu.png',
-      'code': 'p123ty',
+      'code': 'P123ty',
       'stock': 20,
       'date': '10/06/2023',
       'amount': 40
     },
     {
       "name": 'Botol Minum',
-      "description": 'Lock & Lock',
+      'merk':"Lock & Lock",
+      "description": '1. Kapasitas 2000ml & 1000ml & 500ml\n2. Botol minum ringan dan mudah dibawa ,Desain modis, unik dan epik.\n3. Tidak ada bau, sehat dan aman Ini dengan kaca borosilikat tinggi dan bahan silikon food grade terbaik.\n4. Sudah BPA FREE, jadi aman untuk anak-anak dan dewasa.\n5. Tahan terhadap panas dan dingin: -20 ° C-80 ° C suhu"',
       "price": 750000,
       "imageUrl": 'assets/images/botol-minum.png',
-      'code': 'p123ty',
+      'code': 'P123ty',
       'stock': '20',
       'date': '10/06/2023',
       'amount': 40
     },
     {
       "name": 'Meja',
-      "description": 'IKEA',
+      'merk':"Polytron",
+      "description": 'Ukuran Meja:70cm x 50cm x 70cm\n\n1. Papan Meja Terbuat Dari Multiplek 12mm\n2. Finishing Lapisan Meja Dengan Pvc/Tacosheet\n3. Kaki Besi Hollow Galvanis 25x25\n4. Wana Kaki Putih & Hitam Spray Gun Termasuk Alas Kaki Karet',
       "price": 1750000,
       "imageUrl": 'assets/images/meja.png',
-      'code': 'p123ty',
+      'code': 'P123ty',
       'stock': '20',
       'date': '10/06/2023',
       'amount': 40
     },
     {
-      "name": 'Kipas',
-      "description": 'Polytron',
+      "name": 'Kipas Poly',
+      'merk':"Polytron",
+      "description": '- Bilah Kipas 16 Inch\n- Kaki Bulat\n- Bahan Body: Plastik\n- Pengaturan kecepatan: 3 Speed\n- Dilengkapi dengan tombol lampu \n- Daya; 45 Watt, 220V/50Hz',
       "price": 250000,
       "imageUrl": 'assets/images/kipas.png',
-      'code': 'p123ty',
+      'code': 'P123ty',
       'stock': '20',
       'date': '10/06/2023',
       'amount': 40
     },
     {
       "name": 'Kursi',
-      "description": 'IKEA',
+      'merk':"IKEA",
+      "description": 'Tinggi Dudukan dari Lantai : +- 44 CM \nLebar Dudukan : +- 46 CM\nKedalaman Dudukan : +- 41 CM\nTinggi Sandaran - Lantai : +- 82 CM\nTinggi Sandaran - dudukan : +- 41 CM\n\nMaterial :Dudukan & sandaran : PP tebal (dove)\nRangka : Besi\nKaki : Kayu Solid',
       "price": 350000,
       "imageUrl": 'assets/images/kursi.png',
-      'code': 'p123ty',
+      'code': 'P123ty',
       'stock': '20',
       'date': '10/06/2023',
       'amount': 40
@@ -61,6 +66,7 @@ class MyProductProvider extends ChangeNotifier {
   TextEditingController _stockController = TextEditingController();
   TextEditingController _dateController = TextEditingController();
   TextEditingController _amountController = TextEditingController();
+  TextEditingController _merkController = TextEditingController();
   bool isNameEmpty = false;
   bool isDecriptionEmpty = false;
   bool isPriceEmpty = false;
@@ -69,6 +75,7 @@ class MyProductProvider extends ChangeNotifier {
   bool isStockEmpty = false;
   bool isDateEmpty = false;
   bool isAmountEmpty = false;
+  bool isMerkEmpty = false;
 
   List get Product => _Product;
 
@@ -80,6 +87,7 @@ class MyProductProvider extends ChangeNotifier {
   TextEditingController get getStockController => _stockController;
   TextEditingController get getDateController => _dateController;
   TextEditingController get getAmountController => _amountController;
+  TextEditingController get getMerkController => _amountController;
 
   bool get getNameIsEmpty => isNameEmpty;
   bool get getDescriptionIsEmpty => isDecriptionEmpty;
@@ -89,6 +97,7 @@ class MyProductProvider extends ChangeNotifier {
   bool get getStockIsEmpty => isImageUrlEmpty;
   bool get getDateIsEmpty => isImageUrlEmpty;
   bool get getAmountIsEmpty => isImageUrlEmpty;
+  bool get getMerkIsEmpty => isImageUrlEmpty;
 
   get context => null;
 
@@ -110,6 +119,7 @@ class MyProductProvider extends ChangeNotifier {
       _codeController.clear();
       _amountController.clear();
       _dateController.clear();
+      _merkController.clear();
     }
     if (_descriptionController.text.length == 0) {
       isDecriptionEmpty = true;
@@ -131,6 +141,9 @@ class MyProductProvider extends ChangeNotifier {
     }
     if (_dateController.text.length == 0) {
       isDateEmpty = true;
+    }
+    if (_merkController.text.length == 0) {
+      isMerkEmpty = true;
     }
     notifyListeners();
   }

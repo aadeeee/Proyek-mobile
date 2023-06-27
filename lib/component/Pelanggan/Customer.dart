@@ -1,19 +1,17 @@
-import 'dart:js_util';
-
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile/Provider/pelangganProvider.dart';
-import 'package:mobile/Provider/produkprovider.dart';
+
 import 'package:provider/provider.dart';
-import 'package:intl/intl.dart';
 
 class MyCustomerList extends StatefulWidget {
+  const MyCustomerList({super.key});
+
   @override
-  _MyCustomerListState createState() => _MyCustomerListState();
+  State<MyCustomerList> createState() => _MyCustomerListState();
 }
 
 class _MyCustomerListState extends State<MyCustomerList> {
-
+ String searchText = '';
   @override
   Widget build(BuildContext context) {
     var prov = Provider.of<CustomerProvider>(context);
@@ -22,25 +20,76 @@ class _MyCustomerListState extends State<MyCustomerList> {
           padding: const EdgeInsets.all(8.0),
           child: ListView(
             children: [
-              Row(
-                children: [
-                  FilterChip(
-                    label: Text("Pembelian"),
-                    selected: prov.getCountOrder,
-                    onSelected: (value) {
-                      prov.setCountOrder = value;
-                    },
-                  ),
-                  FilterChip(
-                    label: Text("5 Teratas"),
-                    selected: prov.getTopBuy,
-                    onSelected: (value) {
-                      prov.setTopBuy = value;
-                    },
-                  ),
-                ],
+              TextField(
+                controller: prov.getNameController,
+                onChanged: (value) {
+                  prov.searchCustomers(searchText);
+                },
+                decoration: InputDecoration(
+                  hintText: 'Cari...',
+                ),
               ),
-              
+              for (var i = 0; i < prov.searchCustomers(searchText).length; i++)
+              ListTile(
+                    leading: CircleAvatar(
+                      child: Icon(Icons.person),
+                      backgroundColor: Color(0xffFD61876E),
+                    ),
+                    title: Text("${prov.customers[i]['name']}"),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                            'Jumlah pembelian : ${prov.customers[i]['order']}'),
+                        Text('Telepon : ${prov.customers[i]['hp']}'),
+                        Divider(
+                          color: Colors.grey,
+                          thickness: 0.1,
+                        ),
+                      ],
+                    ),
+                  ),
+          //     Expanded(
+          //   child: ListView.builder(
+          //     itemCount: prov.filteredCustomers.length,
+          //     itemBuilder: (context, index) {
+          //        var customers = prov.filteredCustomers[index];
+          //       return ListTile(
+          //         title: Text(customers['name']),
+          //         // add other customer details if necessary
+          //       );
+          //     },
+          //   ),
+          // ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 17,
+                  right: 17,
+                ),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: FilterChip(
+                        label: Text("Pembelian"),
+                        selected: prov.getCountOrder,
+                        onSelected: (value) {
+                          prov.setCountOrder = value;
+                          prov.setTopBuy = false;
+                        },
+                      ),
+                    ),
+                    FilterChip(
+                      label: Text("5 Teratas"),
+                      selected: prov.getTopBuy,
+                      onSelected: (value) {
+                        prov.setTopBuy = value;
+                        prov.setCountOrder = false;
+                      },
+                    ),
+                  ],
+                ),
+              ),
               if (prov.getTopBuy)
                 for (var i = 0; i < prov.getTopBuyers().length; i++)
                   ListTile(
@@ -83,25 +132,27 @@ class _MyCustomerListState extends State<MyCustomerList> {
                       ],
                     ),
                   ),
-              for (var i = 0; i < prov.customers.length; i++)
-                ListTile(
-                  leading: CircleAvatar(
-                    child: Icon(Icons.person),
-                    backgroundColor: Color(0xffFD61876E),
+              if (!(prov.getCountOrder) && !(prov.getTopBuy))
+                for (var i = 0; i < prov.customers.length; i++)
+                  ListTile(
+                    leading: CircleAvatar(
+                      child: Icon(Icons.person),
+                      backgroundColor: Color(0xffFD61876E),
+                    ),
+                    title: Text("${prov.customers[i]['name']}"),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                            'Jumlah pembelian : ${prov.customers[i]['order']}'),
+                        Text('Telepon : ${prov.customers[i]['hp']}'),
+                        Divider(
+                          color: Colors.grey,
+                          thickness: 0.1,
+                        ),
+                      ],
+                    ),
                   ),
-                  title: Text("${prov.customers[i]['name']}"),
-                  subtitle: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('Jumlah pembelian : ${prov.customers[i]['order']}'),
-                      Text('Telepon : ${prov.customers[i]['hp']}'),
-                      Divider(
-                        color: Colors.grey,
-                        thickness: 0.1,
-                      ),
-                    ],
-                  ),
-                ),
             ],
           )),
       floatingActionButton: FloatingActionButton(
@@ -115,26 +166,14 @@ class _MyCustomerListState extends State<MyCustomerList> {
                 child: Scaffold(
                   appBar: AppBar(
                     backgroundColor: Color(0xffFD61876E),
-                    title: Text('Tambah pelanggan', style: GoogleFonts.inter()),
-                    centerTitle: false,
+                    title: Text('Tambah pelanggan',
+                        style: TextStyle(fontSize: 20)),
+                    centerTitle: true,
                     automaticallyImplyLeading: false,
                     leading: IconButton(
                       onPressed: () => Navigator.of(context).pop(),
                       icon: const Icon(Icons.close),
                     ),
-                    actions: [
-                      TextButton(
-                        onPressed: () {
-                          prov.addCustomer(
-                              prov.getNameController.text,
-                              int.parse(prov.getOrderController.text),
-                              prov.getPhoneController.text);
-                          Navigator.of(context).pop();
-                        },
-                        child: Text('Tambah',
-                            style: GoogleFonts.inter(color: Colors.white)),
-                      ),
-                    ],
                   ),
                   body: Column(
                     children: [
@@ -185,6 +224,27 @@ class _MyCustomerListState extends State<MyCustomerList> {
                               hintText: "Telepon",
                             )),
                       ),
+                      Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            prov.addCustomer(
+                                prov.getNameController.text,
+                                int.parse(prov.getOrderController.text),
+                                prov.getPhoneController.text);
+                            Navigator.of(context).pop();
+                          },
+                          child: Text(
+                            'Tambah',
+                            style: TextStyle(fontSize: 20),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Color(0xffFD61876E),
+                              minimumSize: const Size.fromHeight(60),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15))),
+                        ),
+                      )
                     ],
                   ),
                 ),
