@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/component/Profil/halKeamanan/nohp/kodeOtpNohp.dart';
 
+import '../../../../Variabel/global.dart';
+
 class MyNohp extends StatefulWidget {
   const MyNohp({super.key});
 
@@ -15,7 +17,7 @@ class _MyNohpState extends State<MyNohp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xffFD61876E),
+          backgroundColor: primaryColor,
           leading: BackButton(
             onPressed: () => Navigator.pop(context, false),
             // Icons.arrow_back,
@@ -78,10 +80,10 @@ class _MyNohpState extends State<MyNohp> {
                               hintStyle: TextStyle(fontSize: 13),
                               focusedBorder: UnderlineInputBorder(
                                   borderSide:
-                                      BorderSide(color: Color(0xffFD61876E))),
+                                      BorderSide(color: primaryColor)),
                               enabledBorder: UnderlineInputBorder(
                                   borderSide:
-                                      BorderSide(color: Color(0xffFD61876E)))),
+                                      BorderSide(color: primaryColor))),
                           onChanged: (value) {},
                         ),
                       ),
@@ -91,7 +93,7 @@ class _MyNohpState extends State<MyNohp> {
                           height: 50,
                           child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                  primary: Color(0xffFD61876E)),
+                                  primary: primaryColor),
                               onPressed: () {
                                 Navigator.push(
                                     context,

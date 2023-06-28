@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:mobile/component/Profil/halKeamanan/nohp/konfirmasi.dart';
 
+import '../../../../Variabel/global.dart';
+
 class MyOTPNohp extends StatefulWidget {
   const MyOTPNohp({super.key});
 
@@ -15,7 +17,7 @@ class _MyOTPNohpState extends State<MyOTPNohp> {
     return MaterialApp(
       home: Scaffold(
           appBar: AppBar(
-              backgroundColor: Color(0xffFD61876E),
+              backgroundColor: primaryColor,
               leading: BackButton(
                 onPressed: () => Navigator.pop(context, false),
                 // Icons.arrow_back,
@@ -50,14 +52,14 @@ class _MyOTPNohpState extends State<MyOTPNohp> {
                 child: Text(
                   'Kirim ulang kode',
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 12, color: Color(0xffFD61876E)),
+                  style: TextStyle(fontSize: 12, color: primaryColor),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 30.0),
                 child: OtpTextField(
                   numberOfFields: 5,
-                  borderColor: Color(0xffFD61876E),
+                  borderColor: primaryColor,
                   showFieldAsBox: true,
 
                   onCodeChanged: (String code) {},
@@ -79,7 +81,7 @@ class _MyOTPNohpState extends State<MyOTPNohp> {
                   height: 50,
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          primary: Color(0xffFD61876E)),
+                          primary: primaryColor),
                       onPressed: () {
                         Navigator.push(
                             context,

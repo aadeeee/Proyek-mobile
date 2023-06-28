@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/component/Profil/profil.dart';
 
+import '../../../../Variabel/global.dart';
+
 class MyConfirNohp extends StatefulWidget {
   const MyConfirNohp({super.key});
 
@@ -14,7 +16,7 @@ class _MyConfirNohpState extends State<MyConfirNohp> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xffFD61876E),
+          backgroundColor: primaryColor,
           leading: BackButton(
             onPressed: () {
               Navigator.push(

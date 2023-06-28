@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../Variabel/global.dart';
+
 class MyKataSandi extends StatefulWidget {
   const MyKataSandi({super.key});
 
@@ -14,7 +16,7 @@ class _MyKataSandiState extends State<MyKataSandi> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xffFD61876E),
+        backgroundColor: primaryColor,
         leading: BackButton(
           onPressed: () => Navigator.pop(context, false),
           // Icons.arrow_back,
@@ -66,10 +68,10 @@ class _MyKataSandiState extends State<MyKataSandi> {
                                 hintStyle: TextStyle(fontSize: 12.0),
                                 focusedBorder: OutlineInputBorder(
                                     borderSide:
-                                        BorderSide(color: Color(0xffFD61876E))),
+                                        BorderSide(color: primaryColor)),
                                 enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                        color: Color(0xffFD61876E))))),
+                                        color: primaryColor)))),
                       ),
                     ),
                     Padding(
@@ -98,10 +100,10 @@ class _MyKataSandiState extends State<MyKataSandi> {
                                 hintStyle: TextStyle(fontSize: 12.0),
                                 focusedBorder: OutlineInputBorder(
                                     borderSide:
-                                        BorderSide(color: Color(0xffFD61876E))),
+                                        BorderSide(color: primaryColor)),
                                 enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                        color: Color(0xffFD61876E))))),
+                                        color: primaryColor)))),
                       ),
                     ),
                     Padding(
@@ -123,10 +125,10 @@ class _MyKataSandiState extends State<MyKataSandi> {
                                 hintStyle: TextStyle(fontSize: 12.0),
                                 focusedBorder: OutlineInputBorder(
                                     borderSide:
-                                        BorderSide(color: Color(0xffFD61876E))),
+                                        BorderSide(color: primaryColor)),
                                 enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                        color: Color(0xffFD61876E))))),
+                                        color: primaryColor)))),
                       ),
                     ),
                     SizedBox(
@@ -140,7 +142,7 @@ class _MyKataSandiState extends State<MyKataSandi> {
                           height: 50,
                           child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                  primary: Color(0xffFD61876E)),
+                                  primary: primaryColor),
                               onPressed: () {
                                 if (_formState.currentState!.validate()) {
                                   // Navigator.push(
@@ -164,7 +166,7 @@ class _MyKataSandiState extends State<MyKataSandi> {
                             onPressed: () {},
                             child: Text(
                               'Lupa kata sandi',
-                              style: TextStyle(color: Color(0xffFD61876E)),
+                              style: TextStyle(color: primaryColor),
                             ))
                       ],
                     )),

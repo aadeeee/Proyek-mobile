@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/component/Pelanggan/Customer.dart';
 
+import '../../Variabel/global.dart';
+
 class MyCustomer extends StatefulWidget {
   const MyCustomer({super.key});
 
@@ -15,7 +17,7 @@ class _MyCustomerState extends State<MyCustomer> {
       appBar: AppBar(
         
         title: Text('Data Pelanggan'), 
-      backgroundColor: Color(0xffFD61876E),),
+      backgroundColor: primaryColor,),
       body: MyCustomerList(),
     );
   }

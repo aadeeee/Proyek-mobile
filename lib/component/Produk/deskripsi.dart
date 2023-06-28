@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../../Provider/produkprovider.dart';
+import '../../Variabel/global.dart';
 
 class MyDescription extends StatefulWidget {
   final data;
@@ -19,7 +20,7 @@ class _MyDescriptionState extends State<MyDescription> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xffFD61876E),
+        backgroundColor: primaryColor,
         leading: BackButton(
           onPressed: () => Navigator.pop(context, false),
           color: Colors.white,

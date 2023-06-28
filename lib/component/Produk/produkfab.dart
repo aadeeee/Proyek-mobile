@@ -5,6 +5,8 @@ import 'package:mobile/component/Produk/deskripsi.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 
+import '../../Variabel/global.dart';
+
 class MyProductList extends StatefulWidget {
   const MyProductList({super.key});
   @override
@@ -49,7 +51,7 @@ class _MyProductListState extends State<MyProductList> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Color(0xffFD61876E),
+        backgroundColor: primaryColor,
         onPressed: () {
           showDialog(
             context: context,
@@ -58,7 +60,7 @@ class _MyProductListState extends State<MyProductList> {
                 insetPadding: EdgeInsets.zero,
                 child: Scaffold(
                   appBar: AppBar(
-                    backgroundColor: Color(0xffFD61876E),
+                    backgroundColor: primaryColor,
                     title: Text('Tambah Produk', style: GoogleFonts.inter()),
                     centerTitle: false,
                     automaticallyImplyLeading: false,

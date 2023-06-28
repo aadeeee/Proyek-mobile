@@ -4,6 +4,8 @@ import 'package:flutter/src/widgets/framework.dart';
 
 import 'package:mobile/component/Profil/halKeamanan/katasandi/kodeOtpKataSandi.dart';
 
+import '../../../../Variabel/global.dart';
+
 class LupaKataSandi extends StatefulWidget {
   const LupaKataSandi({super.key});
 
@@ -17,7 +19,7 @@ class _LupaKataSandiState extends State<LupaKataSandi> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xffFD61876E),
+          backgroundColor: primaryColor,
           leading: BackButton(
             onPressed: () => Navigator.pop(context, false),
             // Icons.arrow_back,
@@ -70,10 +72,10 @@ class _LupaKataSandiState extends State<LupaKataSandi> {
                                   hintStyle: TextStyle(fontSize: 12.0),
                                   focusedBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                          color: Color(0xffFD61876E))),
+                                          color: primaryColor)),
                                   enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                          color: Color(0xffFD61876E))))),
+                                          color: primaryColor)))),
                         ),
                       ),
                       SizedBox(
@@ -87,7 +89,7 @@ class _LupaKataSandiState extends State<LupaKataSandi> {
                             height: 50,
                             child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                    primary: Color(0xffFD61876E)),
+                                    primary: primaryColor),
                                 onPressed: () {
                                   Navigator.push(
                                       context,
@@ -106,7 +108,7 @@ class _LupaKataSandiState extends State<LupaKataSandi> {
                               },
                               child: Text(
                                 'Kembali',
-                                style: TextStyle(color: Color(0xffFD61876E)),
+                                style: TextStyle(color: primaryColor),
                               ))
                         ],
                       )),

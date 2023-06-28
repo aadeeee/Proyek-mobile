@@ -3,6 +3,8 @@ import 'package:mobile/Provider/emailProvider.dart';
 import 'package:mobile/component/Email/email_succes.dart';
 import 'package:provider/provider.dart';
 
+import '../../Variabel/global.dart';
+
 class MyEmail extends StatefulWidget {
   const MyEmail({super.key});
 
@@ -63,7 +65,7 @@ class _MyEmailState extends State<MyEmail> {
               }
             },
             style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xffFD61876E),
+                backgroundColor: primaryColor,
                 minimumSize: const Size.fromHeight(60),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15))),

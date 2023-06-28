@@ -64,7 +64,7 @@ class _TransactionPageState extends State<TransactionPage> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Color(0xffFD61876E),
+        backgroundColor: primaryColor,
         onPressed: () {
           showDialog(
             context: context,
@@ -73,7 +73,7 @@ class _TransactionPageState extends State<TransactionPage> {
                 insetPadding: EdgeInsets.zero,
                 child: Scaffold(
                     appBar: AppBar(
-                      backgroundColor: Color(0xffFD61876E),
+                      backgroundColor: primaryColor,
                       title:
                           Text('Tambah Transaksi', style: GoogleFonts.inter()),
                       centerTitle: false,

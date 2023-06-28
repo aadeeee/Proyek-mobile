@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile/Provider/profilProvider.dart';
 import 'package:provider/provider.dart';
 
+import '../../Variabel/global.dart';
+
 class MyEditProfil extends StatefulWidget {
   const MyEditProfil({super.key});
 
@@ -16,7 +18,9 @@ class _MyEditProfilState extends State<MyEditProfil> {
     var prov = Provider.of<ProfilProvider>(context);
     return Scaffold(
       appBar: AppBar(
-          title: Text('Ubah Profil'), backgroundColor: Color(0xffFD61876E)),
+          title: Text('Ubah Profil'), 
+          backgroundColor: primaryColor)
+          ,
       body: Column(
         children: [
           Container(
@@ -27,7 +31,7 @@ class _MyEditProfilState extends State<MyEditProfil> {
                 width: 150,
                 height: 150,
                 decoration: BoxDecoration(
-                    border: Border.all(width: 4, color: Color(0xffFD61876E)),
+                    border: Border.all(width: 4, color: primaryColor),
                     boxShadow: [
                       BoxShadow(
                           spreadRadius: 2,
@@ -56,7 +60,7 @@ class _MyEditProfilState extends State<MyEditProfil> {
                   fillColor: Colors.black,
                   label: Text(
                     "Nama Pemilik Toko",
-                    style: GoogleFonts.inter(color: Color(0xffFD61876E)),
+                    style: GoogleFonts.inter(color: primaryColor),
                   ),
                 )),
           ),
@@ -74,7 +78,7 @@ class _MyEditProfilState extends State<MyEditProfil> {
                   fillColor: Colors.black,
                   label: Text(
                     "Nama Toko",
-                    style: GoogleFonts.inter(color: Color(0xffFD61876E)),
+                    style: GoogleFonts.inter(color: primaryColor),
                   ),
                 )),
           ),
@@ -92,7 +96,7 @@ class _MyEditProfilState extends State<MyEditProfil> {
                   fillColor: Colors.black,
                   label: Text(
                     "Alamat Toko",
-                    style: GoogleFonts.inter(color: Color(0xffFD61876E)),
+                    style: GoogleFonts.inter(color: primaryColor),
                   ),
                 )),
           ),
@@ -110,7 +114,7 @@ class _MyEditProfilState extends State<MyEditProfil> {
                   fillColor: Colors.black,
                   label: Text(
                     "Kategori Toko",
-                    style: GoogleFonts.inter(color: Color(0xffFD61876E)),
+                    style: GoogleFonts.inter(color: primaryColor),
                   ),
                 )),
           ),
@@ -128,7 +132,7 @@ class _MyEditProfilState extends State<MyEditProfil> {
               Navigator.pop(context);
             },
             style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xffFD61876E),
+                backgroundColor: primaryColor,
                 minimumSize: const Size.fromHeight(60),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15))),

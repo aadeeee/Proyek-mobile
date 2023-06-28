@@ -27,38 +27,38 @@ class _MyMainState extends State<MyMain> {
     return Scaffold(
       body: pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: primaryColor,
-        selectedItemColor: Colors.grey,
-        showUnselectedLabels: false,
-        currentIndex: _currentIndex,
-        onTap:(index){
-          setState(() {
-          _currentIndex = index;
-          });
-        },
-        items: [
-          BottomNavigationBarItem(
-            icon: ImageIcon(AssetImage('assets/images/beranda.png')),
-          label: 'Beranda',
-          backgroundColor: Color(0xffFD61876E)),
-          BottomNavigationBarItem(
-           icon: ImageIcon(AssetImage('assets/images/transaksi.png')),
-          label: 'Transaksi',
-           backgroundColor: Color(0xffFD61876E)),
-          BottomNavigationBarItem(
-            icon: ImageIcon(AssetImage('assets/images/produk.png')),
-          label: 'Produk',
-           backgroundColor: Color(0xffFD61876E)),
-          BottomNavigationBarItem(
-            icon: ImageIcon(AssetImage('assets/images/pelanggan.png')),
-          label: 'Pelanggan',
-           backgroundColor: Color(0xffFD61876E)),
-          BottomNavigationBarItem(
-            icon: ImageIcon(AssetImage('assets/images/user.png')),
-          label: 'Profil',
-           backgroundColor: Color(0xffFD61876E))
-        ]),
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: primaryColor,
+          selectedItemColor: Colors.grey,
+          showUnselectedLabels: false,
+          currentIndex: _currentIndex,
+          onTap: (index) {
+            setState(() {
+              _currentIndex = index;
+            });
+          },
+          items: [
+            BottomNavigationBarItem(
+                icon: ImageIcon(AssetImage('assets/images/beranda.png')),
+                label: 'Beranda',
+                backgroundColor: primaryColor),
+            BottomNavigationBarItem(
+                icon: ImageIcon(AssetImage('assets/images/transaksi.png')),
+                label: 'Transaksi',
+                backgroundColor: primaryColor),
+            BottomNavigationBarItem(
+                icon: ImageIcon(AssetImage('assets/images/produk.png')),
+                label: 'Produk',
+                backgroundColor: primaryColor),
+            BottomNavigationBarItem(
+                icon: ImageIcon(AssetImage('assets/images/pelanggan.png')),
+                label: 'Pelanggan',
+                backgroundColor: primaryColor),
+            BottomNavigationBarItem(
+                icon: ImageIcon(AssetImage('assets/images/user.png')),
+                label: 'Profil',
+                backgroundColor: primaryColor)
+          ]),
     );
   }
 }

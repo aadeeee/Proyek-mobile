@@ -5,6 +5,7 @@ import 'package:mobile/component/Account/login.dart';
 import 'package:mobile/Provider/regisProvider.dart';
 import 'package:provider/provider.dart';
 
+import '../../Variabel/global.dart';
 
 class MyRegister extends StatefulWidget {
   const MyRegister({super.key});
@@ -21,15 +22,16 @@ class _MyRegisterState extends State<MyRegister> {
       body: Stack(
         children: [
           Positioned(
-              top: -20,
-              left: -50,
-              child: Container(
+            top: -20,
+            left: -50,
+            child: Container(
                 width: 170,
                 height: 170,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(150),
-                    color: const Color(0xffFD61876E)),
-              )),
+                  borderRadius: BorderRadius.circular(150),
+                  color: primaryColor,
+                )),
+          ),
           Positioned(
               top: 100,
               right: -50,
@@ -240,14 +242,15 @@ class _MyRegisterState extends State<MyRegister> {
                                     builder: (BuildContext context) {
                                       return AlertDialog(
                                         content: Text(
-                                          'Data yang Anda masukkan tidak sesuai, cek kembali data Anda.',
-                                          style: GoogleFonts.inter()),
+                                            'Data yang Anda masukkan tidak sesuai, cek kembali data Anda.',
+                                            style: GoogleFonts.inter()),
                                         actions: [
                                           TextButton(
                                             onPressed: () {
                                               Navigator.of(context).pop();
                                             },
-                                            child: Text('OK',style: GoogleFonts.inter()),
+                                            child: Text('OK',
+                                                style: GoogleFonts.inter()),
                                           ),
                                         ],
                                       );
@@ -257,7 +260,7 @@ class _MyRegisterState extends State<MyRegister> {
                               }
                             },
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xffFD61876E),
+                                backgroundColor: primaryColor,
                                 minimumSize: const Size.fromHeight(60),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(15))),
@@ -267,32 +270,29 @@ class _MyRegisterState extends State<MyRegister> {
                             ),
                           ),
                         ),
-                        
-                          Container(
-                            margin: EdgeInsets.symmetric(horizontal: 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                     Text("Sudah Punya Akun ?",
-                                      style: GoogleFonts.inter(color: Color(0xffFD61876E), fontSize: 16)),
-                                  
-                                  TextButton(
+                        Container(
+                          margin: EdgeInsets.symmetric(horizontal: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("Sudah Punya Akun ?",
+                                  style: GoogleFonts.inter(
+                                      color: primaryColor,
+                                      fontSize: 16)),
+                              TextButton(
                                   onPressed: () {
                                     Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
                                             builder: (_) => const MyLogin()));
                                   },
-                                  child: Text(
-                                    "Masuk disini",
-                                    style: GoogleFonts.inter(color: Color(0xffFD61876E), fontSize: 16)
-                                    
-                                  )),
-                                ],
-                              ),
+                                  child: Text("Masuk disini",
+                                      style: GoogleFonts.inter(
+                                          color: Color(0xffFD61876E),
+                                          fontSize: 16))),
+                            ],
                           ),
-                          
-                        
+                        ),
                       ]),
                     ),
                   )

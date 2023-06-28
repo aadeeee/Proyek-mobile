@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:mobile/Provider/homeProvider.dart';
 import 'package:provider/provider.dart';
 
+import '../Variabel/global.dart';
+
 class MyHome extends StatefulWidget {
   const MyHome({super.key});
   @override
@@ -80,7 +82,7 @@ class _MyHomeState extends State<MyHome> {
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: prov.getIndex == index
-                            ? Color(0xffFD61876E)
+                            ? primaryColor
                             : Colors.grey,
                       ),
                     );
@@ -88,7 +90,7 @@ class _MyHomeState extends State<MyHome> {
                 ),
               ],
             ),
-            const Padding(
+             Padding(
               padding: EdgeInsets.only(left: 15, top: 10),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -133,7 +135,7 @@ class _MyHomeState extends State<MyHome> {
                 ),
               ),
             ),
-            const Padding(
+             Padding(
               padding: EdgeInsets.only(left: 15,top: 15),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -149,10 +151,10 @@ class _MyHomeState extends State<MyHome> {
                 ],
               ),
             ),
-            const ListTile(
+             ListTile(
               leading: CircleAvatar(
                 child: Icon(Icons.person),
-                backgroundColor: Color(0xffFD61876E),
+                backgroundColor: primaryColor,
               ),
               title: Text('Max'),
               subtitle: Column(
@@ -162,10 +164,10 @@ class _MyHomeState extends State<MyHome> {
                 ],
               ),
             ),
-            const ListTile(
+             ListTile(
               leading: CircleAvatar(
                 child: Icon(Icons.person),
-                backgroundColor: Color(0xffFD61876E),
+                backgroundColor: primaryColor,
               ),
               title: Text('John'),
               subtitle: Column(

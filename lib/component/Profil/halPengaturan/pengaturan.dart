@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/component/Profil/halPengaturan/bahasa.dart';
 
+import '../../../Variabel/global.dart';
+
 class MyPengaturan extends StatefulWidget {
   const MyPengaturan({super.key});
 
@@ -14,7 +16,7 @@ class _MyPengaturanState extends State<MyPengaturan> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xffFD61876E),
+        backgroundColor: primaryColor,
         leading: BackButton(
           onPressed: () => Navigator.pop(context, false),
           color: Colors.white,
