@@ -40,7 +40,7 @@ class _MyRegisterState extends State<MyRegister> {
                 height: 100,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
-                    color: const Color(0xffFD61876E)),
+                    color: primaryColor),
               )),
           Align(
             alignment: Alignment.center,
@@ -288,7 +288,7 @@ class _MyRegisterState extends State<MyRegister> {
                                   },
                                   child: Text("Masuk disini",
                                       style: GoogleFonts.inter(
-                                          color: Color(0xffFD61876E),
+                                          color: primaryColor,
                                           fontSize: 16))),
                             ],
                           ),
