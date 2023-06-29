@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile/component/Produk/produkBeli.dart';
 import 'package:mobile/component/Produk/produkfab.dart';
 
+import '../../Variabel/global.dart';
+
 class MyProduct extends StatefulWidget {
   const MyProduct({super.key});
 
@@ -26,7 +28,7 @@ class _MyProductState extends State<MyProduct>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xffFD61876E),
+        backgroundColor: primaryColor,
         title: Text('Produk',
             style: GoogleFonts.inter(fontWeight: FontWeight.w600, fontSize: 20)
             ),

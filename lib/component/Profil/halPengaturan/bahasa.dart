@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../Variabel/global.dart';
+
 class MyBahasa extends StatelessWidget {
   const MyBahasa({super.key});
 
@@ -7,7 +9,7 @@ class MyBahasa extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xffFD61876E),
+        backgroundColor: primaryColor,
         leading: BackButton(
           onPressed: () => Navigator.pop(context, false),
           // Icons.arrow_back,

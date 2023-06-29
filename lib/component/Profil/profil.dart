@@ -6,6 +6,7 @@ import 'package:mobile/component/Profil/pemeriksaKeamanan.dart';
 import 'package:provider/provider.dart';
 
 import '../../Provider/profilProvider.dart';
+import '../../Variabel/global.dart';
 
 class MyProfil extends StatefulWidget {
   const MyProfil({super.key});
@@ -20,7 +21,7 @@ class _MyProfilState extends State<MyProfil> {
     var prov = Provider.of<ProfilProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xffFD61876E),
+        backgroundColor: primaryColor,
         title: Center(
           child: Text(
             "Toko Sejahtera",
@@ -41,7 +42,7 @@ class _MyProfilState extends State<MyProfil> {
                   width: 150,
                   height: 150,
                   decoration: BoxDecoration(
-                      border: Border.all(width: 4, color: Color(0xffFD61876E)),
+                      border: Border.all(width: 4, color: primaryColor),
                       boxShadow: [
                         BoxShadow(
                             spreadRadius: 2,
@@ -144,7 +145,7 @@ class _MyProfilState extends State<MyProfil> {
                     height: 50,
                     child: ElevatedButton.icon(
                         style: ElevatedButton.styleFrom(
-                            primary: Color(0xffFD61876E)),
+                            primary: primaryColor),
                         onPressed: () {
                           showDialog(
                               context: context,
@@ -170,7 +171,7 @@ class _MyProfilState extends State<MyProfil> {
                                       child: Text(
                                         'Keluar',
                                         style: TextStyle(
-                                            color: Color(0xffFD61876E)),
+                                            color: primaryColor),
                                       ),
                                     ),
                                   ],

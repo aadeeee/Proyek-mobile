@@ -5,6 +5,8 @@ import 'package:mobile/component/Account/daftar.dart';
 import 'package:mobile/component/app.dart';
 import 'package:provider/provider.dart';
 
+import '../../Variabel/global.dart';
+
 class MyLogin extends StatefulWidget {
   const MyLogin({super.key});
 
@@ -28,7 +30,7 @@ class _MyLoginState extends State<MyLogin> {
                 height: 170,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(150),
-                    color: const Color(0xffFD61876E)),
+                    color: primaryColor ),
               )),
           Positioned(
               top: 100,
@@ -38,7 +40,7 @@ class _MyLoginState extends State<MyLogin> {
                 height: 100,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
-                    color: Color(0xffFD61876E)),
+                    color: primaryColor),
               )),
           Align(
             alignment: Alignment.center,
@@ -161,7 +163,7 @@ class _MyLoginState extends State<MyLogin> {
 
                             },
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: Color(0xffFD61876E),
+                                backgroundColor: primaryColor,
                                 minimumSize: const Size.fromHeight(60),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(15))),

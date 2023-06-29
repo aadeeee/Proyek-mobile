@@ -4,6 +4,8 @@ import 'package:mobile/Provider/produkprovider.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 
+import '../../Variabel/global.dart';
+
 
 class MyProductListBeli extends StatefulWidget {
   const MyProductListBeli({super.key});
@@ -49,7 +51,7 @@ class _MyProductLisBeliState extends State<MyProductListBeli> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Color(0xffFD61876E),
+        backgroundColor: primaryColor,
         onPressed: () {
           showDialog(
             context: context,

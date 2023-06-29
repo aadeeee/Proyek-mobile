@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile/component/Account/login.dart';
 
+import '../../Variabel/global.dart';
+
 class EmailSuccess extends StatefulWidget {
   const EmailSuccess({super.key});
 
@@ -49,7 +51,7 @@ class _EmailSuccessState extends State<EmailSuccess> {
                   context, MaterialPageRoute(builder: (_) =>  MyLogin()));
             },
             style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xffFD61876E),
+                backgroundColor: primaryColor,
                 minimumSize: const Size.fromHeight(60),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15))),

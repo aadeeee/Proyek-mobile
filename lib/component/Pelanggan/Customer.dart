@@ -3,6 +3,8 @@ import 'package:mobile/Provider/pelangganProvider.dart';
 
 import 'package:provider/provider.dart';
 
+import '../../Variabel/global.dart';
+
 class MyCustomerList extends StatefulWidget {
   const MyCustomerList({super.key});
 
@@ -31,7 +33,6 @@ class _MyCustomerListState extends State<MyCustomerList> {
                   hintText: 'Cari...',
                 ),
               ),
-              
               Padding(
                 padding: const EdgeInsets.only(
                   left: 17,
@@ -66,7 +67,7 @@ class _MyCustomerListState extends State<MyCustomerList> {
                   ListTile(
                     leading: CircleAvatar(
                       child: Icon(Icons.person),
-                      backgroundColor: Color(0xffFD61876E),
+                      backgroundColor: primaryColor,
                     ),
                     title: Text("${prov.customers[i]['name']}"),
                     subtitle: Column(
@@ -87,7 +88,7 @@ class _MyCustomerListState extends State<MyCustomerList> {
                   ListTile(
                     leading: CircleAvatar(
                       child: Icon(Icons.person),
-                      backgroundColor: Color(0xffFD61876E),
+                      backgroundColor: primaryColor,
                     ),
                     title: Text("${prov.customers[i]['name']}"),
                     subtitle: Column(
@@ -104,32 +105,35 @@ class _MyCustomerListState extends State<MyCustomerList> {
                     ),
                   ),
               if (!(prov.getCountOrder) && !(prov.getTopBuy))
-              for (var i = 0; i < prov.searchCustomers(searchText).length; i++)
-                ListTile(
-                  leading: CircleAvatar(
-                    child: Icon(Icons.person),
-                    backgroundColor: Color(0xffFD61876E),
+                for (var i = 0;
+                    i < prov.searchCustomers(searchText).length;
+                    i++)
+                  ListTile(
+                    leading: CircleAvatar(
+                      child: Icon(Icons.person),
+                      backgroundColor: Color(0xffFD61876E),
+                    ),
+                    title:
+                        Text("${prov.searchCustomers(searchText)[i]['name']}"),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Jumlah pembelian : ${prov.searchCustomers(searchText)[i]['order']}',
+                        ),
+                        Text(
+                            'Telepon : ${prov.searchCustomers(searchText)[i]['hp']}'),
+                        Divider(
+                          color: Colors.grey,
+                          thickness: 0.1,
+                        ),
+                      ],
+                    ),
                   ),
-                  title: Text("${prov.searchCustomers(searchText)[i]['name']}"),
-                  subtitle: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Jumlah pembelian : ${prov.searchCustomers(searchText)[i]['order']}',
-                      ),
-                      Text(
-                          'Telepon : ${prov.searchCustomers(searchText)[i]['hp']}'),
-                      Divider(
-                        color: Colors.grey,
-                        thickness: 0.1,
-                      ),
-                    ],
-                  ),
-                ),
             ],
           )),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Color(0xffFD61876E),
+        backgroundColor: primaryColor,
         onPressed: () {
           showDialog(
             context: context,
@@ -138,7 +142,7 @@ class _MyCustomerListState extends State<MyCustomerList> {
                 insetPadding: EdgeInsets.zero,
                 child: Scaffold(
                   appBar: AppBar(
-                    backgroundColor: Color(0xffFD61876E),
+                    backgroundColor: primaryColor,
                     title: Text('Tambah pelanggan',
                         style: TextStyle(fontSize: 20)),
                     centerTitle: true,
@@ -197,7 +201,6 @@ class _MyCustomerListState extends State<MyCustomerList> {
                               hintText: "Telepon",
                             )),
                       ),
-                      
                       Padding(
                         padding: const EdgeInsets.all(10),
                         child: ElevatedButton(
@@ -213,7 +216,7 @@ class _MyCustomerListState extends State<MyCustomerList> {
                             style: TextStyle(fontSize: 20),
                           ),
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: Color(0xffFD61876E),
+                              backgroundColor: primaryColor,
                               minimumSize: const Size.fromHeight(60),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15))),

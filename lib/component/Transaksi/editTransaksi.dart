@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../../Provider/transaksiProvider.dart';
+import '../../Variabel/global.dart';
 
 class MyEditTransaction extends StatefulWidget {
   const MyEditTransaction({super.key});
@@ -20,7 +21,7 @@ class _MyEditTransactionState extends State<MyEditTransaction> {
     return Scaffold(
         appBar: AppBar(
           title: Text("Ubah Transaksi"),
-          backgroundColor: Color(0xffFD61876E),
+          backgroundColor: primaryColor,
         ),
         body: Column(
           children: [

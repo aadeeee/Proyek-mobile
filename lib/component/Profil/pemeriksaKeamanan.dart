@@ -4,6 +4,8 @@ import 'package:mobile/component/Profil/halKeamanan/katasandi/kataSandi.dart';
 import 'package:mobile/component/Profil/halKeamanan/nohp/noHp.dart';
 import 'package:provider/provider.dart';
 
+import '../../Variabel/global.dart';
+
 class MyPemeriksaKeamanan extends StatelessWidget {
   const MyPemeriksaKeamanan({super.key});
 
@@ -11,7 +13,7 @@ class MyPemeriksaKeamanan extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xffFD61876E),
+          backgroundColor: primaryColor,
           leading: BackButton(
             onPressed: () => Navigator.pop(context, false),
             color: Colors.white,

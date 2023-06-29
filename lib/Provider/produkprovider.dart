@@ -4,8 +4,9 @@ class MyProductProvider extends ChangeNotifier {
   final List _Product = [
     {
       "name": 'Sapu',
-      'merk':"Nagata",
-      "description": '-Panjang Gagang Sapu Standard 110 cm\n-Bahan Non Recycle\n-Bahan Bulu Senar dan Mengkilap\n-Mengunakan bahan bulu Grade 1\n\nWarna:  pink, hijau, abu-abu, orange, biru',
+      'merk': "Nagata",
+      "description":
+          '-Panjang Gagang Sapu Standard 110 cm\n-Bahan Non Recycle\n-Bahan Bulu Senar dan Mengkilap\n-Mengunakan bahan bulu Grade 1\n\nWarna:  pink, hijau, abu-abu, orange, biru',
       "price": 35000,
       "imageUrl": 'assets/images/sapu.png',
       'code': 'P123ty',
@@ -15,8 +16,9 @@ class MyProductProvider extends ChangeNotifier {
     },
     {
       "name": 'Botol Minum',
-      'merk':"Lock & Lock",
-      "description": '1. Kapasitas 2000ml & 1000ml & 500ml\n2. Botol minum ringan dan mudah dibawa ,Desain modis, unik dan epik.\n3. Tidak ada bau, sehat dan aman Ini dengan kaca borosilikat tinggi dan bahan silikon food grade terbaik.\n4. Sudah BPA FREE, jadi aman untuk anak-anak dan dewasa.\n5. Tahan terhadap panas dan dingin: -20 ° C-80 ° C suhu"',
+      'merk': "Lock & Lock",
+      "description":
+          '1. Kapasitas 2000ml & 1000ml & 500ml\n2. Botol minum ringan dan mudah dibawa ,Desain modis, unik dan epik.\n3. Tidak ada bau, sehat dan aman Ini dengan kaca borosilikat tinggi dan bahan silikon food grade terbaik.\n4. Sudah BPA FREE, jadi aman untuk anak-anak dan dewasa.\n5. Tahan terhadap panas dan dingin: -20 ° C-80 ° C suhu"',
       "price": 750000,
       "imageUrl": 'assets/images/botol-minum.png',
       'code': 'P123ty',
@@ -26,8 +28,9 @@ class MyProductProvider extends ChangeNotifier {
     },
     {
       "name": 'Meja',
-      'merk':"Polytron",
-      "description": 'Ukuran Meja:70cm x 50cm x 70cm\n\n1. Papan Meja Terbuat Dari Multiplek 12mm\n2. Finishing Lapisan Meja Dengan Pvc/Tacosheet\n3. Kaki Besi Hollow Galvanis 25x25\n4. Wana Kaki Putih & Hitam Spray Gun Termasuk Alas Kaki Karet',
+      'merk': "Polytron",
+      "description":
+          'Ukuran Meja:70cm x 50cm x 70cm\n\n1. Papan Meja Terbuat Dari Multiplek 12mm\n2. Finishing Lapisan Meja Dengan Pvc/Tacosheet\n3. Kaki Besi Hollow Galvanis 25x25\n4. Wana Kaki Putih & Hitam Spray Gun Termasuk Alas Kaki Karet',
       "price": 1750000,
       "imageUrl": 'assets/images/meja.png',
       'code': 'P123ty',
@@ -37,8 +40,9 @@ class MyProductProvider extends ChangeNotifier {
     },
     {
       "name": 'Kipas Poly',
-      'merk':"Polytron",
-      "description": '- Bilah Kipas 16 Inch\n- Kaki Bulat\n- Bahan Body: Plastik\n- Pengaturan kecepatan: 3 Speed\n- Dilengkapi dengan tombol lampu \n- Daya; 45 Watt, 220V/50Hz',
+      'merk': "Polytron",
+      "description":
+          '- Bilah Kipas 16 Inch\n- Kaki Bulat\n- Bahan Body: Plastik\n- Pengaturan kecepatan: 3 Speed\n- Dilengkapi dengan tombol lampu \n- Daya; 45 Watt, 220V/50Hz',
       "price": 250000,
       "imageUrl": 'assets/images/kipas.png',
       'code': 'P123ty',
@@ -48,8 +52,9 @@ class MyProductProvider extends ChangeNotifier {
     },
     {
       "name": 'Kursi',
-      'merk':"IKEA",
-      "description": 'Tinggi Dudukan dari Lantai : +- 44 CM \nLebar Dudukan : +- 46 CM\nKedalaman Dudukan : +- 41 CM\nTinggi Sandaran - Lantai : +- 82 CM\nTinggi Sandaran - dudukan : +- 41 CM\n\nMaterial :Dudukan & sandaran : PP tebal (dove)\nRangka : Besi\nKaki : Kayu Solid',
+      'merk': "IKEA",
+      "description":
+          'Tinggi Dudukan dari Lantai : +- 44 CM \nLebar Dudukan : +- 46 CM\nKedalaman Dudukan : +- 41 CM\nTinggi Sandaran - Lantai : +- 82 CM\nTinggi Sandaran - dudukan : +- 41 CM\n\nMaterial :Dudukan & sandaran : PP tebal (dove)\nRangka : Besi\nKaki : Kayu Solid',
       "price": 350000,
       "imageUrl": 'assets/images/kursi.png',
       'code': 'P123ty',
@@ -93,11 +98,11 @@ class MyProductProvider extends ChangeNotifier {
   bool get getDescriptionIsEmpty => isDecriptionEmpty;
   bool get getPriceIsEmpty => isPriceEmpty;
   bool get getImageUrlIsEmpty => isImageUrlEmpty;
-  bool get getCodeIsEmpty => isImageUrlEmpty;
-  bool get getStockIsEmpty => isImageUrlEmpty;
-  bool get getDateIsEmpty => isImageUrlEmpty;
-  bool get getAmountIsEmpty => isImageUrlEmpty;
-  bool get getMerkIsEmpty => isImageUrlEmpty;
+  bool get getCodeIsEmpty => isCodeEmpty;
+  bool get getStockIsEmpty => isStockEmpty;
+  bool get getDateIsEmpty => isDateEmpty;
+  bool get getAmountIsEmpty => isAmountEmpty;
+  bool get getMerkIsEmpty => isMerkEmpty;
 
   get context => null;
 
