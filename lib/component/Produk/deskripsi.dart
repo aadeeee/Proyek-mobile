@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:provider/provider.dart';
-
-import '../../Provider/produkprovider.dart';
 import '../../Variabel/global.dart';
 
 class MyDescription extends StatefulWidget {
