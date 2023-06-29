@@ -35,14 +35,24 @@ class _TransactionPageState extends State<TransactionPage> {
           return ListTile(
             title: Text(transaction['nama']),
             isThreeLine: true,
-            subtitle: Text('Rp. ${rupiahFormat.format(transaction['jumlah'])}\n${DateFormat('yyyy/MM/dd').format(transaction['tanggal'])}'),
+            subtitle: Text(
+                'Rp. ${rupiahFormat.format(transaction['jumlah'])}\n${DateFormat('yyyy/MM/dd').format(transaction['tanggal'])}'),
             trailing: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 IconButton(
-                  icon: Icon(Icons.edit),
+                  icon: Icon(
+                    Icons.edit,
+                    color: Colors.green,
+                  ),
                   onPressed: () {
                     prov.getNamaController.text = transaction['nama'];
+                    prov.getJumlahController.text =
+                        transaction['jumlah'].toString();
+                    final transactionDate = transaction['tanggal'] as DateTime;
+                    final formattedDate =
+                        DateFormat('yyyy/MM/dd').format(transactionDate);
+                    prov.getTanggalController.text = formattedDate;
                     setState(() {
                       _selectedIndex = index;
                       Navigator.push(
@@ -53,7 +63,10 @@ class _TransactionPageState extends State<TransactionPage> {
                   },
                 ),
                 IconButton(
-                  icon: Icon(Icons.delete),
+                  icon: Icon(
+                    Icons.delete,
+                    color: Colors.red,
+                  ),
                   onPressed: () {
                     prov.deleteTransaction(index);
                   },
@@ -133,17 +146,16 @@ class _TransactionPageState extends State<TransactionPage> {
                         ),
                         ElevatedButton(
                           onPressed: () {
-                            final transaction = prov.getNamaController.text;
                             final data = {
                               'nama': prov.getNamaController.text,
-                              'jumlah': double.parse(prov.getJumlahController.text),
-                              'tanggal': _selectedDate ?? DateTime.now(), 
+                              'jumlah':
+                                  double.parse(prov.getJumlahController.text),
+                              'tanggal': _selectedDate ?? DateTime.now(),
                             };
                             if (_selectedIndex == 1) {
                               prov.addTransaction(data);
-                            } else {
-                              prov.editTransaction(_selectedIndex, data);
                             }
+
                             prov.getNamaController.clear();
                             prov.getJumlahController.clear();
                             prov.getTanggalController.clear();

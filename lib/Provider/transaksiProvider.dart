@@ -1,23 +1,15 @@
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-
-
 class TransactionProvider extends ChangeNotifier {
-final List<Map<String, dynamic>> _transactions = [
-    {
-      'nama': "Budi",
-      'jumlah': 600000,
-      'tanggal': DateTime(2024, 6, 28)
-    },
+  final List<Map<String, dynamic>> _transactions = [
+    {'nama': "Budi", 'jumlah': 600000, 'tanggal': DateTime(2024, 6, 28)},
     {
       'nama': "Chris",
       'jumlah': 600000,
-      'tanggal': DateTime(2024, 6, 28),
+      'tanggal': DateTime(2023, 6, 1),
     },
   ];
-
 
   TextEditingController _namaController = TextEditingController();
   TextEditingController _jumlahController = TextEditingController();
@@ -28,44 +20,26 @@ final List<Map<String, dynamic>> _transactions = [
 
   List<Map<String, dynamic>> get transactions => _transactions;
 
-  // void addTransaction(value) {
-  //   _transactions.add(value);
-  //   notifyListeners();
-  // }
- 
-//   void addTransaction(Map<String, dynamic> transaction) {
-//   _transactions.add(transaction);
-//   notifyListeners();
-// }
+  void addTransaction(Map<String, dynamic> transaction) {
+    _transactions.add(transaction);
+    notifyListeners();
+  }
 
-//   // void editTransaction(index, transaction) {
-//   //   _transactions[index] = transaction;
-//   //   notifyListeners();
-//   // }
-//   void editTransaction(int index, Map<String, dynamic> transaction) {
-//   _transactions[index] = transaction;
-//   notifyListeners();
-// }
+  void editTransaction(int index, Map<String, dynamic> transaction) {
+    _transactions[index] = transaction;
+    notifyListeners();
+  }
 
+  void deleteTransaction(int index) {
+    _transactions.removeAt(index);
+    notifyListeners();
+  }
 
-//   void deleteTransaction(int index) {
-//     _transactions.removeAt(index);
-//     notifyListeners();
-//   }
-void addTransaction(Map<String, dynamic> transaction) {
-  _transactions.add(transaction);
-  notifyListeners();
-}
-
-void editTransaction(int index, Map<String, dynamic> transaction) {
-  _transactions[index] = transaction;
-  notifyListeners();
-}
-
-void deleteTransaction(int index) {
-  _transactions.removeAt(index);
-  notifyListeners();
-}
-
-  
+  List<Map<String, dynamic>> searchTransactionByDate(DateTime date) {
+    return _transactions
+        .where((transaction) =>
+            DateFormat('yyyy/MM/dd').format(transaction['tanggal']) ==
+            DateFormat('yyyy/MM/dd').format(date))
+        .toList();
+  }
 }

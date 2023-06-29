@@ -110,7 +110,7 @@ class _MyProductListState extends State<MyProductList> {
                           decoration: InputDecoration(
                               labelText: 'Merek',
                               errorText:
-                                  prov.isNameEmpty ? "wajib diisi" : null),
+                                  prov.isMerkEmpty ? "wajib diisi" : null),
                         ),
                         TextField(
                           controller: prov.getDescriptionController,

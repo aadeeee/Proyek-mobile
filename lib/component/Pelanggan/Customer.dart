@@ -11,7 +11,7 @@ class MyCustomerList extends StatefulWidget {
 }
 
 class _MyCustomerListState extends State<MyCustomerList> {
- String searchText = '';
+  String searchText = '';
   @override
   Widget build(BuildContext context) {
     var prov = Provider.of<CustomerProvider>(context);
@@ -23,44 +23,15 @@ class _MyCustomerListState extends State<MyCustomerList> {
               TextField(
                 controller: prov.getNameController,
                 onChanged: (value) {
-                  prov.searchCustomers(searchText);
+                  setState(() {
+                    searchText = value;
+                  });
                 },
                 decoration: InputDecoration(
                   hintText: 'Cari...',
                 ),
               ),
-              for (var i = 0; i < prov.searchCustomers(searchText).length; i++)
-              ListTile(
-                    leading: CircleAvatar(
-                      child: Icon(Icons.person),
-                      backgroundColor: Color(0xffFD61876E),
-                    ),
-                    title: Text("${prov.customers[i]['name']}"),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                            'Jumlah pembelian : ${prov.customers[i]['order']}'),
-                        Text('Telepon : ${prov.customers[i]['hp']}'),
-                        Divider(
-                          color: Colors.grey,
-                          thickness: 0.1,
-                        ),
-                      ],
-                    ),
-                  ),
-          //     Expanded(
-          //   child: ListView.builder(
-          //     itemCount: prov.filteredCustomers.length,
-          //     itemBuilder: (context, index) {
-          //        var customers = prov.filteredCustomers[index];
-          //       return ListTile(
-          //         title: Text(customers['name']),
-          //         // add other customer details if necessary
-          //       );
-          //     },
-          //   ),
-          // ),
+              
               Padding(
                 padding: const EdgeInsets.only(
                   left: 17,
@@ -133,26 +104,28 @@ class _MyCustomerListState extends State<MyCustomerList> {
                     ),
                   ),
               if (!(prov.getCountOrder) && !(prov.getTopBuy))
-                for (var i = 0; i < prov.customers.length; i++)
-                  ListTile(
-                    leading: CircleAvatar(
-                      child: Icon(Icons.person),
-                      backgroundColor: Color(0xffFD61876E),
-                    ),
-                    title: Text("${prov.customers[i]['name']}"),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                            'Jumlah pembelian : ${prov.customers[i]['order']}'),
-                        Text('Telepon : ${prov.customers[i]['hp']}'),
-                        Divider(
-                          color: Colors.grey,
-                          thickness: 0.1,
-                        ),
-                      ],
-                    ),
+              for (var i = 0; i < prov.searchCustomers(searchText).length; i++)
+                ListTile(
+                  leading: CircleAvatar(
+                    child: Icon(Icons.person),
+                    backgroundColor: Color(0xffFD61876E),
                   ),
+                  title: Text("${prov.searchCustomers(searchText)[i]['name']}"),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Jumlah pembelian : ${prov.searchCustomers(searchText)[i]['order']}',
+                      ),
+                      Text(
+                          'Telepon : ${prov.searchCustomers(searchText)[i]['hp']}'),
+                      Divider(
+                        color: Colors.grey,
+                        thickness: 0.1,
+                      ),
+                    ],
+                  ),
+                ),
             ],
           )),
       floatingActionButton: FloatingActionButton(
@@ -224,6 +197,7 @@ class _MyCustomerListState extends State<MyCustomerList> {
                               hintText: "Telepon",
                             )),
                       ),
+                      
                       Padding(
                         padding: const EdgeInsets.all(10),
                         child: ElevatedButton(

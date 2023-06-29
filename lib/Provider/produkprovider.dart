@@ -87,7 +87,7 @@ class MyProductProvider extends ChangeNotifier {
   TextEditingController get getStockController => _stockController;
   TextEditingController get getDateController => _dateController;
   TextEditingController get getAmountController => _amountController;
-  TextEditingController get getMerkController => _amountController;
+  TextEditingController get getMerkController => _merkController;
 
   bool get getNameIsEmpty => isNameEmpty;
   bool get getDescriptionIsEmpty => isDecriptionEmpty;

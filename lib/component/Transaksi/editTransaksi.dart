@@ -12,7 +12,8 @@ class MyEditTransaction extends StatefulWidget {
 }
 
 class _MyEditTransactionState extends State<MyEditTransaction> {
-  int _selectedIndex = -1;
+  int _selectedIndex = 1;
+  DateTime? _selectedDate;
   @override
   Widget build(BuildContext context) {
     var prov = Provider.of<TransactionProvider>(context);
@@ -57,8 +58,8 @@ class _MyEditTransactionState extends State<MyEditTransaction> {
                   ).then((selectedDate) {
                     if (selectedDate != null) {
                       setState(() {
-                        prov.getTanggalController.text =
-                            DateFormat('yyyy/MM/dd').format(selectedDate);
+                        _selectedDate=selectedDate;
+                        prov.getTanggalController.text = DateFormat('yyyy/MM/dd').format(selectedDate);
                       });
                     }
                   });
@@ -70,18 +71,13 @@ class _MyEditTransactionState extends State<MyEditTransaction> {
             ),
             ElevatedButton(
               onPressed: () {
-                final transaction = prov.getNamaController.text;
                 final data = {
-                              'nama': prov.getNamaController.text,
-                              'jumlah': double.parse(prov.getJumlahController.text),
-                              'tanggal': prov.getTanggalController.text,
-                            };
+                  'nama': prov.getNamaController.text,
+                  'jumlah': double.parse(prov.getJumlahController.text),
+                  'tanggal': _selectedDate ?? DateTime.now(),
+                };
                 if (_selectedIndex != -1) {
-                  prov.addTransaction(data);
-                  
-                } else {
                   prov.editTransaction(_selectedIndex, data);
-                 
                 }
                 prov.getNamaController.clear();
                 prov.getJumlahController.clear();

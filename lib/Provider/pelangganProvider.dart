@@ -20,9 +20,8 @@ class CustomerProvider with ChangeNotifier {
   ];
 
   List<Map<String, dynamic>> get customers => _customers;
-    List<Map<String, dynamic>> filteredCustomers = [];
-    List<Map<String, dynamic>> get filteredCustomer => _customers;
-
+  List<Map<String, dynamic>> filteredCustomers = [];
+  List<Map<String, dynamic>> get filteredCustomer => _customers;
 
   TextEditingController nameController = TextEditingController();
   TextEditingController orderController = TextEditingController();
@@ -50,8 +49,6 @@ class CustomerProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  
-
   void addCustomer(name, int totalPurchase, hp) {
     final customer = {'name': name, 'order': totalPurchase, 'hp': hp};
     _customers.add(customer);
@@ -68,18 +65,14 @@ class CustomerProvider with ChangeNotifier {
     _customers2.sort((a, b) => b['order'].compareTo(a['order']));
     return _customers2.sublist(0, 5);
   }
-
-  List<Map<String, dynamic>> getSortCustomer() {
-    _customers.sort((a, b) => a['name'].compareTo(b['name']));
-    return _customers;
+  List<Map<String, dynamic>> searchCustomers(String searchText) {
+    if (searchText.isEmpty) {
+      return customers;
+    } else {
+      return customers
+          .where((customer) =>
+              customer['name'].toLowerCase().contains(searchText.toLowerCase()))
+          .toList();
+    }
   }
-
-  List<Map<String, dynamic>> searchCustomers(String query) {
-    return _customers
-        .where((customer) =>
-            customer['name'].toLowerCase().contains(query.toLowerCase()))
-        .toList();
-  }
-
-  
 }
