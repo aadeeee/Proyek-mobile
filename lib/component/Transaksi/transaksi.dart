@@ -169,7 +169,7 @@ class _TransactionPageState extends State<TransactionPage> {
                               backgroundColor: primaryColor,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15))),
-                          child: Text('Simpan Transaksi'),
+                          child: Text('Simpan Transaksi', style: TextStyle(fontSize: 15),),
                         ),
                       ],
                     )),

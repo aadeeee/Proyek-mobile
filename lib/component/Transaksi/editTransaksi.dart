@@ -92,7 +92,7 @@ class _MyEditTransactionState extends State<MyEditTransaction> {
                               backgroundColor: primaryColor,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15))),
-              child: Text('Simpan Perubahan'),
+              child: Text('Simpan Perubahan',style: TextStyle(fontSize: 15)),
             ),
           ],
         ));

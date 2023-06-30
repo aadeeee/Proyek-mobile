@@ -134,12 +134,14 @@ class _MyEditProfilState extends State<MyEditProfil> {
             },
             style: ElevatedButton.styleFrom(
                 backgroundColor: primaryColor,
-                minimumSize: const Size.fromHeight(60),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15))),
-            child: const Text(
-              "SIMPAN",
-              style: TextStyle(fontSize: 20),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: const Text(
+                "Simpan",
+                style: TextStyle(fontSize: 20),
+              ),
             ),
           ),
         ),
