@@ -6,7 +6,6 @@ import 'package:intl/intl.dart';
 
 import '../../Variabel/global.dart';
 
-
 class MyProductListBeli extends StatefulWidget {
   const MyProductListBeli({super.key});
 
@@ -15,7 +14,8 @@ class MyProductListBeli extends StatefulWidget {
 }
 
 class _MyProductLisBeliState extends State<MyProductListBeli> {
-  final rupiahFormat = NumberFormat.currency(locale: 'ID',symbol: "",decimalDigits: 0);
+  final rupiahFormat =
+      NumberFormat.currency(locale: 'ID', symbol: "", decimalDigits: 0);
 
   @override
   void dispose() {
@@ -32,18 +32,22 @@ class _MyProductLisBeliState extends State<MyProductListBeli> {
           final product = prov.Product[index];
           return Card(
             child: ListTile(
-              leading: Image.asset(product["imageUrl"]),
+              leading: Image.asset(
+                product["imageUrl"],
+                // width: 50,
+                // height: 20,
+              ),
               title: Text(product["name"]),
               subtitle: Text(product["description"]),
-              onTap: () {
-                
-              },
-              trailing: 
-              Container(
+              onTap: () {},
+              trailing: Container(
                 width: 112,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: [Text('Rp.'),Text(rupiahFormat.format((product['price'])))],
+                  children: [
+                    Text('Rp.'),
+                    Text(rupiahFormat.format((product['price'])))
+                  ],
                 ),
               ),
             ),
@@ -60,7 +64,7 @@ class _MyProductLisBeliState extends State<MyProductListBeli> {
                 insetPadding: EdgeInsets.zero,
                 child: Scaffold(
                   appBar: AppBar(
-                    title: Text('Tambah Produk',style: GoogleFonts.inter()),
+                    title: Text('Tambah Produk', style: GoogleFonts.inter()),
                     centerTitle: false,
                     automaticallyImplyLeading: false,
                     leading: IconButton(
@@ -78,10 +82,8 @@ class _MyProductLisBeliState extends State<MyProductListBeli> {
                           };
                           Navigator.of(context).pop();
                         },
-                        child: Text(
-                          'Tambah',
-                          style: GoogleFonts.inter(color: Colors.white)
-                        ),
+                        child: Text('Tambah',
+                            style: GoogleFonts.inter(color: Colors.white)),
                       ),
                     ],
                   ),

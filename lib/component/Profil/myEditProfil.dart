@@ -21,7 +21,8 @@ class _MyEditProfilState extends State<MyEditProfil> {
           title: Text('Ubah Profil'), 
           backgroundColor: primaryColor)
           ,
-      body: Column(
+      body: SingleChildScrollView(
+        child: Column(
         children: [
           Container(
             child: Padding(
@@ -144,6 +145,8 @@ class _MyEditProfilState extends State<MyEditProfil> {
         ),
         ],
       ),
+      )
+      
     );
   }
 }

@@ -88,6 +88,10 @@ class _MyEditTransactionState extends State<MyEditTransaction> {
                 });
                 Navigator.of(context).pop();
               },
+              style: ElevatedButton.styleFrom(
+                              backgroundColor: primaryColor,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15))),
               child: Text('Simpan Perubahan'),
             ),
           ],

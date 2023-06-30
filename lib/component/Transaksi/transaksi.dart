@@ -165,6 +165,10 @@ class _TransactionPageState extends State<TransactionPage> {
                             });
                             Navigator.of(context).pop();
                           },
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: primaryColor,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15))),
                           child: Text('Simpan Transaksi'),
                         ),
                       ],

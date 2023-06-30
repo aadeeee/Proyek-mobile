@@ -22,15 +22,26 @@ class _MyCustomerListState extends State<MyCustomerList> {
           padding: const EdgeInsets.all(8.0),
           child: ListView(
             children: [
-              TextField(
-                controller: prov.getNameController,
-                onChanged: (value) {
-                  setState(() {
-                    searchText = value;
-                  });
-                },
-                decoration: InputDecoration(
-                  hintText: 'Cari...',
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                child: TextField(
+                  controller: prov.getNameController,
+                  onChanged: (value) {
+                    setState(() {
+                      searchText = value;
+                    });
+                  },
+                  decoration: InputDecoration(
+                    focusColor: primaryColor,
+                    prefixIcon: Icon(Icons.search),
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide: BorderSide(color: primaryColor)),
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide: BorderSide(color: primaryColor)),
+                    hintText: 'Cari',
+                  ),
                 ),
               ),
               Padding(
@@ -68,6 +79,7 @@ class _MyCustomerListState extends State<MyCustomerList> {
                     leading: CircleAvatar(
                       child: Icon(Icons.person),
                       backgroundColor: primaryColor,
+                    
                     ),
                     title: Text("${prov.customers[i]['name']}"),
                     subtitle: Column(
@@ -211,13 +223,17 @@ class _MyCustomerListState extends State<MyCustomerList> {
                                 prov.getPhoneController.text);
                             Navigator.of(context).pop();
                           },
-                          child: Text(
-                            'Tambah',
-                            style: TextStyle(fontSize: 20),
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text(
+                              'Tambah',
+                              style: TextStyle(fontSize: 15),
+                            ),
                           ),
                           style: ElevatedButton.styleFrom(
+                            
                               backgroundColor: primaryColor,
-                              minimumSize: const Size.fromHeight(60),
+                              
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15))),
                         ),
