@@ -30,7 +30,7 @@ class _MyLoginState extends State<MyLogin> {
                 height: 170,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(150),
-                    color: primaryColor ),
+                    color: primaryColor),
               )),
           Positioned(
               top: 100,
@@ -139,20 +139,21 @@ class _MyLoginState extends State<MyLogin> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (_) => const MyMain()));
-                                }
-                                else {
+                                } else {
                                   showDialog(
                                     context: context,
                                     builder: (BuildContext context) {
                                       return AlertDialog(
-                                        
-                                        content: Text('Nama dan kata sandi Anda tidak sesuai atau belum terdaftar, cek kembali data Anda',style: GoogleFonts.inter()),
+                                        content: Text(
+                                            'Nama dan kata sandi Anda tidak sesuai atau belum terdaftar, cek kembali data Anda',
+                                            style: GoogleFonts.inter()),
                                         actions: [
                                           TextButton(
                                             onPressed: () {
                                               Navigator.of(context).pop();
                                             },
-                                            child: Text('OK',style: GoogleFonts.inter()),
+                                            child: Text('OK',
+                                                style: GoogleFonts.inter()),
                                           ),
                                         ],
                                       );
@@ -160,39 +161,39 @@ class _MyLoginState extends State<MyLogin> {
                                   );
                                 }
                               }
-
                             },
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: primaryColor,
                                 minimumSize: const Size.fromHeight(60),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(15))),
-                            child:  Text(
-                              "MASUK",
-                              style:GoogleFonts.inter(fontSize: 20)
-                            ),
+                            child: Text("MASUK",
+                                style: GoogleFonts.inter(fontSize: 20)),
                           ),
                         ),
-                        Align(
-                          alignment: Alignment.bottomCenter,
-                          child: TextButton(
-                              onPressed: () {
-                                prov.usernameController.clear();
-                                prov.passwordController.clear();
-                                Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (_) => const MyRegister()));
-                              },
-                              child: Column(
-                                children: [
-                                   Text(
-                                    "Belum punya akun? daftar disini",
-                                    style:GoogleFonts.inter(fontSize: 16)
-                                    
-                                  ),
-                                ],
-                              )),
+                        Container(
+                          margin: EdgeInsets.symmetric(horizontal: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("Belum Punya Akun ?",
+                                  style: GoogleFonts.inter(
+                                      color: primaryColor, fontSize: 16)),
+                              TextButton(
+                                  onPressed: () {
+                                    prov.usernameController.clear();
+                                    prov.passwordController.clear();
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (_) =>
+                                                const MyRegister()));
+                                  },
+                                  child: Text("Daftar disini",
+                                      style: GoogleFonts.inter(
+                                          color: primaryColor, fontSize: 16))),
+                            ],
+                          ),
                         )
                       ]),
                     ),

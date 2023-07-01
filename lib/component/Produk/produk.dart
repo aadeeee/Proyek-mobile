@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mobile/component/Produk/produkBeli.dart';
 import 'package:mobile/component/Produk/produkfab.dart';
 
 import '../../Variabel/global.dart';
@@ -48,7 +47,7 @@ class _MyProductState extends State<MyProduct>
             child: MyProductList(),
           ),
           Center(
-            child: MyProductListBeli(),
+            child: Text('dh'),
           ),
         ],
       ),

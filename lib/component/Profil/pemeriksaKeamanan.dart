@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/component/Email/email.dart';
 import 'package:mobile/component/Profil/halKeamanan/katasandi/kataSandi.dart';
-import 'package:mobile/component/Profil/halKeamanan/nohp/noHp.dart';
-import 'package:provider/provider.dart';
+
 
 import '../../Variabel/global.dart';
 
