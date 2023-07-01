@@ -28,9 +28,11 @@ class _MyProductState extends State<MyProduct>
     return Scaffold(
       appBar: AppBar(
         backgroundColor: primaryColor,
-        title: Text('Produk',
-            style: GoogleFonts.inter(fontWeight: FontWeight.w600, fontSize: 20)
-            ),
+        title: Center(
+          child: Text('Produk',
+              style: GoogleFonts.inter(fontWeight: FontWeight.w600, fontSize: 20)
+              ),
+        ),
         bottom: TabBar(
           indicatorColor: Colors.white,
           controller: _tabController,

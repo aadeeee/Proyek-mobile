@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/component/Profil/halKeamanan/katasandi/kataSandi.dart';
 
-
 import '../../Variabel/global.dart';
 
 class MyPemeriksaKeamanan extends StatelessWidget {
@@ -21,7 +20,6 @@ class MyPemeriksaKeamanan extends StatelessWidget {
             style: TextStyle(
               fontSize: 20,
               color: Colors.white,
-              
             ),
           ),
         ),
@@ -49,23 +47,19 @@ class MyPemeriksaKeamanan extends StatelessWidget {
                   style: TextStyle(fontSize: 15),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 20.0),
-                child: Container(
-                  child: ListTile(
-                    title: Text('Kata sandi'),
-                    subtitle: Text('Buat kata sandi yang lebih kuat'),
-                    trailing: Icon(Icons.keyboard_arrow_right),
-                    leading: const ImageIcon(
-                        size: 30, AssetImage('assets/images/keamanan.png')),
-                    iconColor: Colors.black,
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => MyKataSandi()));
-                    },
-                  ),
+              Divider(),
+              Container(
+                child: ListTile(
+                  title: Text('Kata sandi'),
+                  subtitle: Text('Buat kata sandi yang lebih kuat'),
+                  trailing: Icon(Icons.keyboard_arrow_right),
+                  leading: const ImageIcon(
+                      size: 30, AssetImage('assets/images/keamanan.png')),
+                  iconColor: Colors.black,
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => MyKataSandi()));
+                  },
                 ),
               ),
             ],

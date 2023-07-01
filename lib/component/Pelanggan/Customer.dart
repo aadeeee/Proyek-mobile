@@ -77,10 +77,10 @@ class _MyCustomerListState extends State<MyCustomerList> {
                 for (var i = 0; i < prov.getTopBuyers().length; i++)
                   ListTile(
                     leading: CircleAvatar(
-                      child: Icon(Icons.person),
-                      backgroundColor: primaryColor,
+                        child: Icon(Icons.person),
+                        backgroundColor: primaryColor,
+                      ),
                     
-                    ),
                     title: Text("${prov.customers[i]['name']}"),
                     subtitle: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -171,14 +171,7 @@ class _MyCustomerListState extends State<MyCustomerList> {
                         child: TextField(
                             controller: prov.nameController,
                             decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(15),
-                                  borderSide:
-                                      const BorderSide(color: Colors.black)),
-                              focusedBorder: const OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.black)),
-                              fillColor: Colors.black,
-                              hintText: "Nama Pelanggan",
+                              labelText: "Nama Pelanggan",
                             )),
                       ),
                       Padding(
@@ -187,31 +180,18 @@ class _MyCustomerListState extends State<MyCustomerList> {
                             controller: prov.orderController,
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(15),
-                                  borderSide:
-                                      const BorderSide(color: Colors.black)),
-                              focusedBorder: const OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.black)),
-                              fillColor: Colors.black,
-                              hintText: "Jumlah Pesanan",
+                              labelText: "Jumlah Pesanan",
                             )),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(10),
+                        padding: EdgeInsets.all(10.0),
                         child: TextField(
-                            controller: prov.phoneController,
-                            keyboardType: TextInputType.phone,
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(15),
-                                  borderSide:
-                                      const BorderSide(color: Colors.black)),
-                              focusedBorder: const OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.black)),
-                              fillColor: Colors.black,
-                              hintText: "Telepon",
-                            )),
+                          controller: prov.phoneController,
+                          keyboardType: TextInputType.phone,
+                          decoration: InputDecoration(
+                            labelText: 'Telepon',
+                          ),
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(10),
@@ -231,9 +211,7 @@ class _MyCustomerListState extends State<MyCustomerList> {
                             ),
                           ),
                           style: ElevatedButton.styleFrom(
-                            
                               backgroundColor: primaryColor,
-                              
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15))),
                         ),

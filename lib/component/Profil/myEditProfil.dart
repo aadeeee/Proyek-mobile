@@ -137,12 +137,12 @@ class _MyEditProfilState extends State<MyEditProfil> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15))),
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: const Text(
-                "Simpan",
-                style: TextStyle(fontSize: 20),
-              ),
-            ),
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text(
+                              'Simpan',
+                              style: TextStyle(fontSize: 15),
+                            ),
+                          ),
           ),
         ),
         ],

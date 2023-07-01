@@ -31,9 +31,15 @@ class _MyProductListState extends State<MyProductList> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (_) => MyDescription(data: prov.Product[index],)));
+                        builder: (_) => MyDescription(
+                              data: prov.Product[index],
+                            )));
               },
-              leading: Image.asset(product["imageUrl"]),
+              leading: Image.asset(
+                product["imageUrl"],
+                height: 50,
+                width: 50,
+              ),
               title: Text(product["name"]),
               subtitle: Text(product["merk"]),
               trailing: Container(
@@ -68,26 +74,6 @@ class _MyProductListState extends State<MyProductList> {
                       onPressed: () => Navigator.of(context).pop(),
                       icon: const Icon(Icons.close),
                     ),
-                    actions: [
-                      TextButton(
-                        onPressed: () {
-                          prov.AddProduct = {
-                            "name": prov.getNameController.text,
-                            "merk": prov.getMerkController.text,
-                            "description": prov.getDescriptionController.text,
-                            "price": double.parse(prov.getPriceController.text),
-                            "imageUrl": prov.getImageUrlController.text,
-                            "code": prov.getCodeController.text,
-                            "amount":
-                                double.parse(prov.getAmountController.text),
-                            "date": prov.getDateController.text,
-                          };
-                          Navigator.of(context).pop();
-                        },
-                        child: Text('Tambah',
-                            style: GoogleFonts.inter(color: Colors.white)),
-                      ),
-                    ],
                   ),
                   body: Padding(
                     padding: const EdgeInsets.all(16.0),
@@ -153,6 +139,37 @@ class _MyProductListState extends State<MyProductList> {
                               errorText:
                                   prov.isDateEmpty ? "wajib diisi" : null),
                         ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            prov.AddProduct = {
+                              "name": prov.getNameController.text,
+                              "merk": prov.getMerkController.text,
+                              "description": prov.getDescriptionController.text,
+                              "price":
+                                  double.parse(prov.getPriceController.text),
+                              "imageUrl": prov.getImageUrlController.text,
+                              "code": prov.getCodeController.text,
+                              "amount":
+                                  double.parse(prov.getAmountController.text),
+                              "date": prov.getDateController.text,
+                            };
+                            Navigator.of(context).pop();
+                          },
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: primaryColor,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15))),
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text(
+                              'Tambah',
+                              style: TextStyle(fontSize: 15),
+                            ),
+                          ),
+                        )
                       ],
                     ),
                   ),

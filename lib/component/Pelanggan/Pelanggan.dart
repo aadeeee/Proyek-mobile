@@ -16,7 +16,7 @@ class _MyCustomerState extends State<MyCustomer> {
     return Scaffold(
       appBar: AppBar(
         
-        title: Text('Data Pelanggan'), 
+        title: Center(child: Text('Data Pelanggan')), 
       backgroundColor: primaryColor,),
       body: MyCustomerList(),
     );

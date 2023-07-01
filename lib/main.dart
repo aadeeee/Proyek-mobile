@@ -5,6 +5,7 @@ import 'package:mobile/Provider/produkprovider.dart';
 import 'package:mobile/Provider/profilProvider.dart';
 import 'package:mobile/Provider/regisProvider.dart';
 import 'package:mobile/Provider/transaksiProvider.dart';
+import 'package:mobile/component/app.dart';
 import 'package:provider/provider.dart';
 import 'Provider/homeProvider.dart';
 import 'component/Account/daftar.dart';
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
       title: 'Inventory plus',
       debugShowCheckedModeBanner: false,
       theme: prov.getTheme(),
-      home: MyRegister(),
+      home: MyMain(),
     );
   }
 }

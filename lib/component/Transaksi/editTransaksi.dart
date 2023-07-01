@@ -59,8 +59,9 @@ class _MyEditTransactionState extends State<MyEditTransaction> {
                   ).then((selectedDate) {
                     if (selectedDate != null) {
                       setState(() {
-                        _selectedDate=selectedDate;
-                        prov.getTanggalController.text = DateFormat('yyyy/MM/dd').format(selectedDate);
+                        _selectedDate = selectedDate;
+                        prov.getTanggalController.text =
+                            DateFormat('yyyy/MM/dd').format(selectedDate);
                       });
                     }
                   });
@@ -89,10 +90,16 @@ class _MyEditTransactionState extends State<MyEditTransaction> {
                 Navigator.of(context).pop();
               },
               style: ElevatedButton.styleFrom(
-                              backgroundColor: primaryColor,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15))),
-              child: Text('Simpan Perubahan',style: TextStyle(fontSize: 15)),
+                  backgroundColor: primaryColor,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15))),
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Text(
+                  'Simpan Perubahan',
+                  style: TextStyle(fontSize: 15),
+                ),
+              ),
             ),
           ],
         ));

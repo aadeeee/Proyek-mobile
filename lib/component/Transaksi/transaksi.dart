@@ -25,7 +25,7 @@ class _TransactionPageState extends State<TransactionPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Transaksi'),
+        title: Center(child: Text('Transaksi')),
         backgroundColor: primaryColor,
       ),
       body: ListView.builder(
@@ -169,7 +169,13 @@ class _TransactionPageState extends State<TransactionPage> {
                               backgroundColor: primaryColor,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15))),
-                          child: Text('Simpan Transaksi', style: TextStyle(fontSize: 15),),
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text(
+                              'Simpan Transaksi',
+                              style: TextStyle(fontSize: 15),
+                            ),
+                          ),
                         ),
                       ],
                     )),
