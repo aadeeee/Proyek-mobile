@@ -103,23 +103,23 @@ class _MyProfilState extends State<MyProfil> {
                         },
                       ),
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                          border:
-                              Border(bottom: BorderSide(color: Colors.grey))),
-                      child: ListTile(
-                        title: Text('Kalender'),
-                        leading: Icon(Icons.calendar_month),
-                        iconColor: Colors.black,
-                        onTap: () {
-                          showDatePicker(
-                              context: context,
-                              initialDate: DateTime.now(),
-                              firstDate: DateTime(1950),
-                              lastDate: DateTime(2030));
-                        },
-                      ),
-                    ),
+                    // Container(
+                    //   decoration: BoxDecoration(
+                    //       border:
+                    //           Border(bottom: BorderSide(color: Colors.grey))),
+                    //   child: ListTile(
+                    //     title: Text('Kalender'),
+                    //     leading: Icon(Icons.calendar_month),
+                    //     iconColor: Colors.black,
+                    //     onTap: () {
+                    //       showDatePicker(
+                    //           context: context,
+                    //           initialDate: DateTime.now(),
+                    //           firstDate: DateTime(1950),
+                    //           lastDate: DateTime(2030));
+                    //     },
+                    //   ),
+                    // ),
                     Padding(
                       padding: const EdgeInsets.only(top: 10),
                       child: Row(
@@ -139,7 +139,7 @@ class _MyProfilState extends State<MyProfil> {
               ),
 
               Padding(
-                padding: const EdgeInsets.only(top: 50),
+                padding: const EdgeInsets.only(top: 60),
                 child: SizedBox(
                     width: 300,
                     height: 50,

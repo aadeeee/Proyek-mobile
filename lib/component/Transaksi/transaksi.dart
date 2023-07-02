@@ -126,6 +126,16 @@ class _TransactionPageState extends State<TransactionPage> {
                                 cancelText: "Batal",
                                 confirmText: 'Pilih',
                                 context: context,
+                                builder: (BuildContext context, Widget? child) {
+                                  return Theme(
+                                    data: ThemeData(
+                                      colorScheme: ColorScheme.light(
+                                        primary: primaryColor,
+                                      ),
+                                    ),
+                                    child: child ?? Text(""),
+                                  );
+                                },
                                 initialDate: DateTime.now(),
                                 firstDate: DateTime(2000),
                                 lastDate: DateTime(2024),
@@ -141,6 +151,7 @@ class _TransactionPageState extends State<TransactionPage> {
                             },
                             decoration: InputDecoration(
                               labelText: 'Pilih Tanggal',
+                              
                             ),
                           ),
                         ),

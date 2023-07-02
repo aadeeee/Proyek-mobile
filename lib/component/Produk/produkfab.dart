@@ -132,13 +132,50 @@ class _MyProductListState extends State<MyProductList> {
                               errorText:
                                   prov.isAmountEmpty ? "wajib diisi" : null),
                         ),
-                        TextField(
-                          controller: prov.getDateController,
-                          decoration: InputDecoration(
+                        // TextField(
+                        //   controller: prov.getDateController,
+                        //   decoration: InputDecoration(
+                        //       labelText: 'Tanggal Penjualan',
+                        //       errorText:
+                        //           prov.isDateEmpty ? "wajib diisi" : null),
+                        // ),
+                       TextField(
+                            controller: prov.getDateController,
+                            readOnly: true,
+                            onTap: () {
+                              showDatePicker(
+                                cancelText: "Batal",
+                                confirmText: 'Pilih',
+                                context: context,
+                                builder: (BuildContext context, Widget? child) {
+                                  return Theme(
+                                    data: ThemeData(
+                                      colorScheme: ColorScheme.light(
+                                        primary: primaryColor,
+                                      ),
+                                    ),
+                                    child: child ?? Text(""),
+                                  );
+                                },
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(2000),
+                                lastDate: DateTime(2024),
+                              ).then((selectedDate) {
+                                if (selectedDate != null) {
+                                  setState(() {
+                                    prov.getDateController.text =
+                                        DateFormat('yyyy/MM/dd')
+                                            .format(selectedDate);
+                                  });
+                                }
+                              });
+                            },
+                            decoration: InputDecoration(
                               labelText: 'Tanggal Penjualan',
-                              errorText:
-                                  prov.isDateEmpty ? "wajib diisi" : null),
-                        ),
+                              
+                            ),
+                          ),
+                        
                         SizedBox(
                           height: 10,
                         ),
