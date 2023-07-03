@@ -132,13 +132,6 @@ class _MyProductListState extends State<MyProductList> {
                               errorText:
                                   prov.isAmountEmpty ? "wajib diisi" : null),
                         ),
-                        // TextField(
-                        //   controller: prov.getDateController,
-                        //   decoration: InputDecoration(
-                        //       labelText: 'Tanggal Penjualan',
-                        //       errorText:
-                        //           prov.isDateEmpty ? "wajib diisi" : null),
-                        // ),
                        TextField(
                             controller: prov.getDateController,
                             readOnly: true,

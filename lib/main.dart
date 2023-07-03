@@ -4,15 +4,12 @@ import 'package:mobile/Provider/pelangganProvider.dart';
 import 'package:mobile/Provider/produkprovider.dart';
 import 'package:mobile/Provider/profilProvider.dart';
 import 'package:mobile/Provider/regisProvider.dart';
+import 'package:mobile/Provider/supplierProvider.dart';
 import 'package:mobile/Provider/transaksiProvider.dart';
 import 'package:mobile/component/app.dart';
 import 'package:provider/provider.dart';
 import 'Provider/homeProvider.dart';
-import 'component/Account/daftar.dart';
 
-// void main() {
-//   runApp(ChangeNotifierProvider(create: (_) => MyData(), child: const MyApp()));
-// }
 void main() {
   runApp(
     MultiProvider(providers: [
@@ -22,6 +19,7 @@ void main() {
       ChangeNotifierProvider(create: (_) => ProfilProvider()),
       ChangeNotifierProvider(create: (_) => CustomerProvider()),
       ChangeNotifierProvider(create: (_) => TransactionProvider()),
+      ChangeNotifierProvider(create: (_) => MySupplierProvider()),
       ChangeNotifierProvider(create: (_) => MyProductProvider()),
     ], child:  const MyApp()),
   );

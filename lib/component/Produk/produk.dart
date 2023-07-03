@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile/component/Produk/produkfab.dart';
+import 'package:mobile/component/Produk/produkSupply.dart';
 
 import '../../Variabel/global.dart';
 
@@ -49,7 +50,7 @@ class _MyProductState extends State<MyProduct>
             child: MyProductList(),
           ),
           Center(
-            child: Text('dh'),
+            child: MySupplier()
           ),
         ],
       ),
