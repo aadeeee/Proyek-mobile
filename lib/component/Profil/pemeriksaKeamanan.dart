@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/component/Profil/halKeamanan/katasandi/kataSandi.dart';
+import 'package:mobile/component/Profil/kataSandi.dart';
 
 import '../../Variabel/global.dart';
 

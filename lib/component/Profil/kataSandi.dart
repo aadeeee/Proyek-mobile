@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../Variabel/global.dart';
+import '../../Variabel/global.dart';
 
 class MyKataSandi extends StatefulWidget {
   const MyKataSandi({super.key});
@@ -19,7 +19,6 @@ class _MyKataSandiState extends State<MyKataSandi> {
         backgroundColor: primaryColor,
         leading: BackButton(
           onPressed: () => Navigator.pop(context, false),
-          // Icons.arrow_back,
           color: Colors.white,
         ),
         title: Text(
@@ -40,7 +39,6 @@ class _MyKataSandiState extends State<MyKataSandi> {
               padding: const EdgeInsets.only(top: 10.0),
               child: Text(
                 'Kata sandi Anda harus lebih dari enam karakter dan berisi angka.huruf, dan karakter khusus (!@%).',
-                // textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 15),
               ),
             ),
@@ -60,7 +58,6 @@ class _MyKataSandiState extends State<MyKataSandi> {
                     Padding(
                       padding: const EdgeInsets.only(top: 8.0),
                       child: SizedBox(
-                        // width: 300,
                         height: 40,
                         child: TextFormField(
                             decoration: InputDecoration(
@@ -85,7 +82,6 @@ class _MyKataSandiState extends State<MyKataSandi> {
                     Padding(
                       padding: const EdgeInsets.only(top: 8.0),
                       child: SizedBox(
-                        // width: 300,
                         key: _formState,
                         height: 40,
                         child: TextFormField(
@@ -117,7 +113,6 @@ class _MyKataSandiState extends State<MyKataSandi> {
                     Padding(
                       padding: const EdgeInsets.only(top: 8.0),
                       child: SizedBox(
-                        // width: 300,
                         height: 40,
                         child: TextFormField(
                             decoration: InputDecoration(
@@ -144,18 +139,7 @@ class _MyKataSandiState extends State<MyKataSandi> {
                               style: ElevatedButton.styleFrom(
                                   primary: primaryColor),
                               onPressed: () {
-                                if (_formState.currentState!.validate()) {
-                                  // Navigator.push(
-                                  //     context,
-                                  //     MaterialPageRoute(
-                                  //         builder: (context) =>
-                                  //             LupaKataSandi()));
-                                }
-                                // Navigator.push(
-                                //     context,
-                                //     MaterialPageRoute(
-                                //         builder: (context) =>
-                                //             LupaKataSandi()));
+                                Navigator.pop(context);
                               },
                               child: Text('Simpan Kata Sandi')),
                         ),
@@ -163,7 +147,7 @@ class _MyKataSandiState extends State<MyKataSandi> {
                           height: 10,
                         ),
                         TextButton(
-                            onPressed: () {},
+                            onPressed: () {Navigator.pop(context);},
                             child: Text(
                               'Lupa kata sandi',
                               style: TextStyle(color: primaryColor),

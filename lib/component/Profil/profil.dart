@@ -103,23 +103,6 @@ class _MyProfilState extends State<MyProfil> {
                         },
                       ),
                     ),
-                    // Container(
-                    //   decoration: BoxDecoration(
-                    //       border:
-                    //           Border(bottom: BorderSide(color: Colors.grey))),
-                    //   child: ListTile(
-                    //     title: Text('Kalender'),
-                    //     leading: Icon(Icons.calendar_month),
-                    //     iconColor: Colors.black,
-                    //     onTap: () {
-                    //       showDatePicker(
-                    //           context: context,
-                    //           initialDate: DateTime.now(),
-                    //           firstDate: DateTime(1950),
-                    //           lastDate: DateTime(2030));
-                    //     },
-                    //   ),
-                    // ),
                     Padding(
                       padding: const EdgeInsets.only(top: 10),
                       child: Row(
