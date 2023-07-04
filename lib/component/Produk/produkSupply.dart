@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile/Provider/supplierProvider.dart';
 import 'package:mobile/Variabel/global.dart';
 import 'package:provider/provider.dart';
@@ -14,6 +13,7 @@ class MySupplier extends StatefulWidget {
 
 class _MySupplierState extends State<MySupplier> {
   final List<String> selectedProduk = [];
+  final List<int> selectedProdukQuantity = [];
 
   @override
   Widget build(BuildContext context) {
@@ -31,14 +31,12 @@ class _MySupplierState extends State<MySupplier> {
               labelText: 'Cari Supplier',
             ),
             onChanged: (value) {
-              // Menyaring supplier berdasarkan input pencarian
               final filteredData = prov.supplierData.where((supplier) {
                 final namaSupplier = supplier['nama'].toString().toLowerCase();
                 final searchKeyword = value.toLowerCase();
                 return namaSupplier.contains(searchKeyword);
               }).toList();
 
-              // Mengupdate tampilan berdasarkan hasil pencarian
               prov.updateFilteredSupplierData(filteredData);
             },
           ),
@@ -71,8 +69,7 @@ class _MySupplierState extends State<MySupplier> {
           showDialog(
             context: context,
             builder: (context) {
-              final TextEditingController _namaController =
-                  prov.productNameController;
+              final TextEditingController _namaController = prov.namaController;
 
               return StatefulBuilder(
                 builder: (context, setState) {
@@ -81,8 +78,7 @@ class _MySupplierState extends State<MySupplier> {
                     child: Scaffold(
                       appBar: AppBar(
                         backgroundColor: primaryColor,
-                        title: Text('Tambah Produk Masuk',
-                            style: GoogleFonts.inter()),
+                        title: Text('Tambah Produk Masuk'),
                         centerTitle: false,
                         automaticallyImplyLeading: false,
                         leading: IconButton(
@@ -101,44 +97,83 @@ class _MySupplierState extends State<MySupplier> {
                               ),
                             ),
                             SizedBox(height: 16),
-                            Wrap(
-                              spacing: 8,
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: prov.availableProduk.map((produk) {
                                 final isSelected =
                                     selectedProduk.contains(produk);
+                                final index = selectedProduk.indexOf(produk);
 
-                                return ChoiceChip(
-                                  label: Text(produk),
-                                  selected: isSelected,
-                                  onSelected: (selected) {
-                                    setState(() {
-                                      if (selected) {
-                                        selectedProduk.add(produk);
-                                      } else {
-                                        selectedProduk.remove(produk);
-                                      }
-                                    });
-                                  },
+                                return Padding(
+                                  padding: const EdgeInsets.only(bottom: 8.0),
+                                  child: Row(
+                                    // Wrap the ChoiceChip and TextField in a Row
+                                    children: [
+                                      ChoiceChip(
+                                        label: Text(produk),
+                                        selected: isSelected,
+                                        onSelected: (selected) {
+                                          setState(() {
+                                            if (selected) {
+                                              selectedProduk.add(produk);
+                                              selectedProdukQuantity.add(0);
+                                            } else {
+                                              selectedProduk.remove(produk);
+                                              selectedProdukQuantity
+                                                  .removeAt(index);
+                                            }
+                                          });
+                                        },
+                                        selectedColor: primaryColor,
+                                        labelStyle: isSelected
+                                            ? TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold,
+                                              )
+                                            : TextStyle(
+                                                color: Colors.black,
+                                              ),
+                                      ),
+                                      if (isSelected)
+                                        SizedBox(
+                                          width: 60,
+                                          child: TextField(
+                                            keyboardType: TextInputType.number,
+                                            onChanged: (value) {
+                                              selectedProdukQuantity[index] =
+                                                  int.tryParse(value) ?? 0;
+                                            },
+                                          ),
+                                        ),
+                                    ],
+                                  ),
                                 );
                               }).toList(),
                             ),
                             SizedBox(height: 16),
-                            Text(
-                              'Produk Terpilih: ${selectedProduk.join(", ")}',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                'Produk Terpilih: ${selectedProduk.join(", ")}',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                             ElevatedButton(
                               onPressed: () {
                                 final namaSupplier = _namaController.text;
                                 final produkSupplier = selectedProduk.toList();
+                                final jumlahProduk =
+                                    selectedProdukQuantity.toList();
                                 prov.addSupplierData(
                                   namaSupplier,
                                   produkSupplier,
+                                  jumlahProduk,
                                 );
                                 _namaController.clear();
                                 selectedProduk.clear();
+                                selectedProdukQuantity.clear();
                                 Navigator.pop(context);
                               },
                               child: Text('Tambah'),
