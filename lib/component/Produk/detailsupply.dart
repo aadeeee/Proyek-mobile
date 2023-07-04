@@ -26,7 +26,7 @@ class _ProdukPageState extends State<ProdukPage> {
           final jumlahProduk = produkData['jumlah'];
 
           return ListTile(
-            title: Text('$namaProduk - Jumlah: $jumlahProduk'),
+            title: Text('$namaProduk \nJumlah : $jumlahProduk'),
           );
         },
       ),
