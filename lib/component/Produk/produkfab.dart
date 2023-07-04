@@ -132,6 +132,14 @@ class _MyProductListState extends State<MyProductList> {
                               errorText:
                                   prov.isAmountEmpty ? "wajib diisi" : null),
                         ),
+                        TextField(
+                          controller: prov.getStockController,
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                              labelText: 'Jumlah Stok',
+                              errorText:
+                                  prov.isAmountEmpty ? "wajib diisi" : null),
+                        ),
                        TextField(
                             controller: prov.getDateController,
                             readOnly: true,

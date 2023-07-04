@@ -110,6 +110,7 @@ class _TransactionPageState extends State<TransactionPage> {
                         Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: TextField(
+                            keyboardType: TextInputType.number,
                             controller: prov.getJumlahController,
                             decoration: const InputDecoration(
                               labelText: 'Jumlah Transaksi',

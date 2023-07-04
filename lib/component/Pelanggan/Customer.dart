@@ -183,6 +183,7 @@ class _MyCustomerListState extends State<MyCustomerList> {
                               labelText: "Jumlah Pesanan",
                             )),
                       ),
+                      
                       Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: TextField(

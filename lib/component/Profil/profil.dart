@@ -6,6 +6,7 @@ import 'package:mobile/component/Profil/pemeriksaKeamanan.dart';
 import 'package:provider/provider.dart';
 
 import '../../Provider/profilProvider.dart';
+import '../../Provider/regisProvider.dart';
 import '../../Variabel/global.dart';
 
 class MyProfil extends StatefulWidget {
@@ -18,6 +19,7 @@ class MyProfil extends StatefulWidget {
 class _MyProfilState extends State<MyProfil> {
   @override
   Widget build(BuildContext context) {
+    var prov1 = Provider.of<MyRegisProvider>(context);
     var prov = Provider.of<ProfilProvider>(context);
     return Scaffold(
       appBar: AppBar(
@@ -65,7 +67,8 @@ class _MyProfilState extends State<MyProfil> {
                 "admin22996@gmail.com",
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
                 child: Column(
                   children: [
                     Container(
@@ -99,7 +102,8 @@ class _MyProfilState extends State<MyProfil> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const MyPemeriksaKeamanan()));
+                                  builder: (context) =>
+                                      const MyPemeriksaKeamanan()));
                         },
                       ),
                     ),
@@ -146,15 +150,17 @@ class _MyProfilState extends State<MyProfil> {
                                         )),
                                     TextButton(
                                       onPressed: () {
+                                        prov1.usernameController.clear();
+                                        prov1.passwordController.clear();
                                         Navigator.pushReplacement(
                                             context,
                                             MaterialPageRoute(
-                                                builder: (_) => const MyLogin()));
+                                                builder: (_) =>
+                                                    const MyLogin()));
                                       },
                                       child: const Text(
                                         'Keluar',
-                                        style: TextStyle(
-                                            color: primaryColor),
+                                        style: TextStyle(color: primaryColor),
                                       ),
                                     ),
                                   ],

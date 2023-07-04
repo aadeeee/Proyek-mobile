@@ -17,7 +17,6 @@ class MyLogin extends StatefulWidget {
 class _MyLoginState extends State<MyLogin> {
   @override
   Widget build(BuildContext context) {
-    // var prov = Provider.of<MyLoginProvider>(context);
     var prov = Provider.of<MyRegisProvider>(context);
     return Scaffold(
       body: Stack(

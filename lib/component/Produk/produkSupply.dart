@@ -28,7 +28,7 @@ class _MySupplierState extends State<MySupplier> {
           TextField(
             controller: prov.searchController,
             decoration: const InputDecoration(
-              labelText: 'Cari Supplier',
+              labelText: 'Cari...',
             ),
             onChanged: (value) {
               final filteredData = prov.supplierData.where((supplier) {
@@ -94,7 +94,7 @@ class _MySupplierState extends State<MySupplier> {
                             TextField(
                               controller: _namaController,
                               decoration: const InputDecoration(
-                                labelText: 'Nama Supplier',
+                                labelText: 'Nama Penyedia',
                               ),
                             ),
                             const SizedBox(height: 16),
