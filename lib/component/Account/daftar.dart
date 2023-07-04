@@ -271,7 +271,7 @@ class _MyRegisterState extends State<MyRegister> {
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.symmetric(horizontal: 10),
+                          margin: const EdgeInsets.symmetric(horizontal: 10),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [

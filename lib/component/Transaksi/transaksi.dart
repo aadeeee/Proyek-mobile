@@ -25,7 +25,7 @@ class _TransactionPageState extends State<TransactionPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text('Transaksi')),
+        title: const Center(child: Text('Transaksi')),
         backgroundColor: primaryColor,
       ),
       body: ListView.builder(
@@ -41,7 +41,7 @@ class _TransactionPageState extends State<TransactionPage> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 IconButton(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.edit,
                     color: Colors.green,
                   ),
@@ -58,12 +58,12 @@ class _TransactionPageState extends State<TransactionPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (_) => MyEditTransaction()));
+                              builder: (_) => const MyEditTransaction()));
                     });
                   },
                 ),
                 IconButton(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.delete,
                     color: Colors.red,
                   ),
@@ -99,19 +99,19 @@ class _TransactionPageState extends State<TransactionPage> {
                     body: Column(
                       children: [
                         Padding(
-                          padding: EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: TextField(
                             controller: prov.getNamaController,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               labelText: 'Nama pelanggan',
                             ),
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: TextField(
                             controller: prov.getJumlahController,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               labelText: 'Jumlah Transaksi',
                             ),
                           ),
@@ -129,11 +129,11 @@ class _TransactionPageState extends State<TransactionPage> {
                                 builder: (BuildContext context, Widget? child) {
                                   return Theme(
                                     data: ThemeData(
-                                      colorScheme: ColorScheme.light(
+                                      colorScheme: const ColorScheme.light(
                                         primary: primaryColor,
                                       ),
                                     ),
-                                    child: child ?? Text(""),
+                                    child: child ?? const Text(""),
                                   );
                                 },
                                 initialDate: DateTime.now(),
@@ -149,7 +149,7 @@ class _TransactionPageState extends State<TransactionPage> {
                                 }
                               });
                             },
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               labelText: 'Pilih Tanggal',
                               
                             ),
@@ -180,8 +180,8 @@ class _TransactionPageState extends State<TransactionPage> {
                               backgroundColor: primaryColor,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15))),
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
+                          child: const Padding(
+                            padding: EdgeInsets.all(10.0),
                             child: Text(
                               'Simpan Transaksi',
                               style: TextStyle(fontSize: 15),
@@ -194,7 +194,7 @@ class _TransactionPageState extends State<TransactionPage> {
             },
           );
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }

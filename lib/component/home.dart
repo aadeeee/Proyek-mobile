@@ -31,7 +31,7 @@ class _MyHomeState extends State<MyHome> {
                           builder: (BuildContext context) {
                             return Container(
                               width: MediaQuery.of(context).size.width,
-                              margin: EdgeInsets.symmetric(horizontal: 3.0),
+                              margin: const EdgeInsets.symmetric(horizontal: 3.0),
                               child: Image.asset(
                                 item['image'],
                                 width: 200,
@@ -78,7 +78,7 @@ class _MyHomeState extends State<MyHome> {
                     return Container(
                       width: 10.0,
                       height: 10.0,
-                      margin: EdgeInsets.symmetric(horizontal: 2.0),
+                      margin: const EdgeInsets.symmetric(horizontal: 2.0),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: prov.getIndex == index
@@ -90,7 +90,7 @@ class _MyHomeState extends State<MyHome> {
                 ),
               ],
             ),
-             Padding(
+             const Padding(
               padding: EdgeInsets.only(left: 15, top: 10),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -115,27 +115,25 @@ class _MyHomeState extends State<MyHome> {
                   itemCount: tmp.length,
                   itemBuilder: (context, index) => Card(
                     color: Colors.white10,
-                    child: Container(
-                      child: Column(
-                        children: [
-                          Image.asset(
-                            tmp[index]['image'],
-                            width: 130,
-                            height: 150,
-                            fit: BoxFit.fitHeight,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 9),
-                            child: Text('${tmp[index]['name']}'),
-                          ),
-                        ],
-                      ),
+                    child: Column(
+                      children: [
+                        Image.asset(
+                          tmp[index]['image'],
+                          width: 130,
+                          height: 150,
+                          fit: BoxFit.fitHeight,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 9),
+                          child: Text('${tmp[index]['name']}'),
+                        ),
+                      ],
                     ),
                   ),
                 ),
               ),
             ),
-             Padding(
+             const Padding(
               padding: EdgeInsets.only(left: 15,top: 15),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -151,10 +149,10 @@ class _MyHomeState extends State<MyHome> {
                 ],
               ),
             ),
-             ListTile(
+             const ListTile(
               leading: CircleAvatar(
-                child: Icon(Icons.person),
                 backgroundColor: primaryColor,
+                child: Icon(Icons.person),
               ),
               title: Text('Max'),
               subtitle: Column(
@@ -164,10 +162,10 @@ class _MyHomeState extends State<MyHome> {
                 ],
               ),
             ),
-             ListTile(
+             const ListTile(
               leading: CircleAvatar(
-                child: Icon(Icons.person),
                 backgroundColor: primaryColor,
+                child: Icon(Icons.person),
               ),
               title: Text('John'),
               subtitle: Column(

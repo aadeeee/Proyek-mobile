@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'detailsupply.dart';
 
 class MySupplier extends StatefulWidget {
-  const MySupplier({Key? key});
+  const MySupplier({super.key});
 
   @override
   State<MySupplier> createState() => _MySupplierState();
@@ -27,7 +27,7 @@ class _MySupplierState extends State<MySupplier> {
         children: [
           TextField(
             controller: prov.searchController,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: 'Cari Supplier',
             ),
             onChanged: (value) {
@@ -43,7 +43,7 @@ class _MySupplierState extends State<MySupplier> {
           Expanded(
             child: ListView.separated(
               itemCount: data.length,
-              separatorBuilder: (context, index) => Divider(),
+              separatorBuilder: (context, index) => const Divider(),
               itemBuilder: (context, index) {
                 final supply = data[index];
                 return ListTile(
@@ -69,6 +69,7 @@ class _MySupplierState extends State<MySupplier> {
           showDialog(
             context: context,
             builder: (context) {
+              // ignore: no_leading_underscores_for_local_identifiers
               final TextEditingController _namaController = prov.namaController;
 
               return StatefulBuilder(
@@ -78,7 +79,7 @@ class _MySupplierState extends State<MySupplier> {
                     child: Scaffold(
                       appBar: AppBar(
                         backgroundColor: primaryColor,
-                        title: Text('Tambah Produk Masuk'),
+                        title: const Text('Tambah Produk Masuk'),
                         centerTitle: false,
                         automaticallyImplyLeading: false,
                         leading: IconButton(
@@ -92,11 +93,11 @@ class _MySupplierState extends State<MySupplier> {
                           children: [
                             TextField(
                               controller: _namaController,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 labelText: 'Nama Supplier',
                               ),
                             ),
-                            SizedBox(height: 16),
+                            const SizedBox(height: 16),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: prov.availableProduk.map((produk) {
@@ -126,11 +127,11 @@ class _MySupplierState extends State<MySupplier> {
                                         },
                                         selectedColor: primaryColor,
                                         labelStyle: isSelected
-                                            ? TextStyle(
+                                            ? const TextStyle(
                                                 color: Colors.white,
                                                 fontWeight: FontWeight.bold,
                                               )
-                                            : TextStyle(
+                                            : const TextStyle(
                                                 color: Colors.black,
                                               ),
                                       ),
@@ -150,12 +151,12 @@ class _MySupplierState extends State<MySupplier> {
                                 );
                               }).toList(),
                             ),
-                            SizedBox(height: 16),
+                            const SizedBox(height: 16),
                             Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
                                 'Produk Terpilih: ${selectedProduk.join(", ")}',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -176,7 +177,7 @@ class _MySupplierState extends State<MySupplier> {
                                 selectedProdukQuantity.clear();
                                 Navigator.pop(context);
                               },
-                              child: Text('Tambah'),
+                              child: const Text('Tambah'),
                             ),
                           ],
                         ),
@@ -188,7 +189,7 @@ class _MySupplierState extends State<MySupplier> {
             },
           );
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }

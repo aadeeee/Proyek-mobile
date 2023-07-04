@@ -36,7 +36,7 @@ class _EmailSuccessState extends State<EmailSuccess> {
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(left: 20, right: 20 ,top: 10, bottom: 25),
+          padding: const EdgeInsets.only(left: 20, right: 20 ,top: 10, bottom: 25),
           child: Text(
             'Akun Anda sudah diaktivasi dengan verifikasi kode melalui email',
             style: GoogleFonts.inter(fontSize: 16)
@@ -48,7 +48,7 @@ class _EmailSuccessState extends State<EmailSuccess> {
             onPressed: () {
               
               Navigator.pushReplacement(
-                  context, MaterialPageRoute(builder: (_) =>  MyLogin()));
+                  context, MaterialPageRoute(builder: (_) =>  const MyLogin()));
             },
             style: ElevatedButton.styleFrom(
                 backgroundColor: primaryColor,

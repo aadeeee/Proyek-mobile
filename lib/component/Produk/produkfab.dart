@@ -42,12 +42,12 @@ class _MyProductListState extends State<MyProductList> {
               ),
               title: Text(product["name"]),
               subtitle: Text(product["merk"]),
-              trailing: Container(
+              trailing: SizedBox(
                 width: 112,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text('Rp.'),
+                    const Text('Rp.'),
                     Text(rupiahFormat.format((product['price'])))
                   ],
                 ),
@@ -143,11 +143,11 @@ class _MyProductListState extends State<MyProductList> {
                                 builder: (BuildContext context, Widget? child) {
                                   return Theme(
                                     data: ThemeData(
-                                      colorScheme: ColorScheme.light(
+                                      colorScheme: const ColorScheme.light(
                                         primary: primaryColor,
                                       ),
                                     ),
-                                    child: child ?? Text(""),
+                                    child: child ?? const Text(""),
                                   );
                                 },
                                 initialDate: DateTime.now(),
@@ -163,13 +163,13 @@ class _MyProductListState extends State<MyProductList> {
                                 }
                               });
                             },
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               labelText: 'Tanggal Penjualan',
                               
                             ),
                           ),
                         
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         ElevatedButton(
@@ -192,8 +192,8 @@ class _MyProductListState extends State<MyProductList> {
                               backgroundColor: primaryColor,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15))),
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
+                          child: const Padding(
+                            padding: EdgeInsets.all(10.0),
                             child: Text(
                               'Tambah',
                               style: TextStyle(fontSize: 15),
@@ -208,7 +208,7 @@ class _MyProductListState extends State<MyProductList> {
             },
           );
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomerProvider with ChangeNotifier {
-  List<Map<String, dynamic>> _customers = [
+  final List<Map<String, dynamic>> _customers = [
     {'name': 'Budi', 'order': 10, 'hp': "08123354565"},
     {'name': 'Adi', 'order': 4, 'hp': "0814372435935"},
     {'name': 'aaa', 'order': 9, 'hp': "0814372435935"},

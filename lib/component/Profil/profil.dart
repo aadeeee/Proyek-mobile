@@ -22,7 +22,7 @@ class _MyProfilState extends State<MyProfil> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: primaryColor,
-        title: Center(
+        title: const Center(
           child: Text(
             "Toko Sejahtera",
             style: TextStyle(
@@ -50,7 +50,7 @@ class _MyProfilState extends State<MyProfil> {
                             color: Colors.black.withOpacity(0.1))
                       ],
                       shape: BoxShape.circle,
-                      image: DecorationImage(
+                      image: const DecorationImage(
                         image: AssetImage('assets/images/profile.jpg'),
                       )),
                 ),
@@ -61,19 +61,19 @@ class _MyProfilState extends State<MyProfil> {
                   '${prov.namaToko}',
                 ),
               ),
-              Text(
+              const Text(
                 "admin22996@gmail.com",
               ),
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
                 child: Column(
                   children: [
                     Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           border:
                               Border(bottom: BorderSide(color: Colors.grey))),
                       child: ListTile(
-                        title: Text('Edit Profil'),
+                        title: const Text('Edit Profil'),
                         leading: const ImageIcon(AssetImage(
                           'assets/images/editprofile.png',
                         )),
@@ -82,16 +82,16 @@ class _MyProfilState extends State<MyProfil> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => MyEditProfil()));
+                                  builder: (context) => const MyEditProfil()));
                         },
                       ),
                     ),
                     Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           border:
                               Border(bottom: BorderSide(color: Colors.grey))),
                       child: ListTile(
-                        title: Text('Kata Sandi'),
+                        title: const Text('Kata Sandi'),
                         leading: const ImageIcon(
                             AssetImage('assets/images/keamanan.png')),
                         iconColor: Colors.black,
@@ -99,7 +99,7 @@ class _MyProfilState extends State<MyProfil> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => MyPemeriksaKeamanan()));
+                                  builder: (context) => const MyPemeriksaKeamanan()));
                         },
                       ),
                     ),
@@ -108,7 +108,7 @@ class _MyProfilState extends State<MyProfil> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("Ubah Tema"),
+                          const Text("Ubah Tema"),
                           Switch(
                               value: prov.getterswitchvalue,
                               onChanged: (value) {
@@ -128,19 +128,19 @@ class _MyProfilState extends State<MyProfil> {
                     height: 50,
                     child: ElevatedButton.icon(
                         style: ElevatedButton.styleFrom(
-                            primary: primaryColor),
+                            backgroundColor: primaryColor),
                         onPressed: () {
                           showDialog(
                               context: context,
                               builder: (context) {
                                 return AlertDialog(
-                                  title: Text("Keluar dari akun Anda?"),
+                                  title: const Text("Keluar dari akun Anda?"),
                                   actions: [
                                     TextButton(
                                         onPressed: () {
                                           Navigator.pop(context, false);
                                         },
-                                        child: Text(
+                                        child: const Text(
                                           'Batalkan',
                                           style: TextStyle(color: Colors.black),
                                         )),
@@ -149,9 +149,9 @@ class _MyProfilState extends State<MyProfil> {
                                         Navigator.pushReplacement(
                                             context,
                                             MaterialPageRoute(
-                                                builder: (_) => MyLogin()));
+                                                builder: (_) => const MyLogin()));
                                       },
-                                      child: Text(
+                                      child: const Text(
                                         'Keluar',
                                         style: TextStyle(
                                             color: primaryColor),
@@ -161,8 +161,8 @@ class _MyProfilState extends State<MyProfil> {
                                 );
                               });
                         },
-                        icon: Icon(Icons.logout),
-                        label: Text(
+                        icon: const Icon(Icons.logout),
+                        label: const Text(
                           "Keluar",
                           style: TextStyle(fontSize: 18),
                         ))),

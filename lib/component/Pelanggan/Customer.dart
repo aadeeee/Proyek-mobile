@@ -33,13 +33,13 @@ class _MyCustomerListState extends State<MyCustomerList> {
                   },
                   decoration: InputDecoration(
                     focusColor: primaryColor,
-                    prefixIcon: Icon(Icons.search),
+                    prefixIcon: const Icon(Icons.search),
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
-                        borderSide: BorderSide(color: primaryColor)),
+                        borderSide: const BorderSide(color: primaryColor)),
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
-                        borderSide: BorderSide(color: primaryColor)),
+                        borderSide: const BorderSide(color: primaryColor)),
                     hintText: 'Cari',
                   ),
                 ),
@@ -54,7 +54,7 @@ class _MyCustomerListState extends State<MyCustomerList> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: FilterChip(
-                        label: Text("Pembelian"),
+                        label: const Text("Pembelian"),
                         selected: prov.getCountOrder,
                         onSelected: (value) {
                           prov.setCountOrder = value;
@@ -63,7 +63,7 @@ class _MyCustomerListState extends State<MyCustomerList> {
                       ),
                     ),
                     FilterChip(
-                      label: Text("5 Teratas"),
+                      label: const Text("5 Teratas"),
                       selected: prov.getTopBuy,
                       onSelected: (value) {
                         prov.setTopBuy = value;
@@ -76,9 +76,9 @@ class _MyCustomerListState extends State<MyCustomerList> {
               if (prov.getTopBuy)
                 for (var i = 0; i < prov.getTopBuyers().length; i++)
                   ListTile(
-                    leading: CircleAvatar(
-                        child: Icon(Icons.person),
+                    leading: const CircleAvatar(
                         backgroundColor: primaryColor,
+                        child: Icon(Icons.person),
                       ),
                     
                     title: Text("${prov.customers[i]['name']}"),
@@ -88,7 +88,7 @@ class _MyCustomerListState extends State<MyCustomerList> {
                         Text(
                             'Jumlah pembelian : ${prov.customers[i]['order']}'),
                         Text('Telepon : ${prov.customers[i]['hp']}'),
-                        Divider(
+                        const Divider(
                           color: Colors.grey,
                           thickness: 0.1,
                         ),
@@ -98,9 +98,9 @@ class _MyCustomerListState extends State<MyCustomerList> {
               if (prov.getCountOrder)
                 for (var i = 0; i < prov.getFrequentShoppers().length; i++)
                   ListTile(
-                    leading: CircleAvatar(
-                      child: Icon(Icons.person),
+                    leading: const CircleAvatar(
                       backgroundColor: primaryColor,
+                      child: Icon(Icons.person),
                     ),
                     title: Text("${prov.customers[i]['name']}"),
                     subtitle: Column(
@@ -109,7 +109,7 @@ class _MyCustomerListState extends State<MyCustomerList> {
                         Text(
                             'Jumlah pembelian : ${prov.customers[i]['order']}'),
                         Text('Telepon : ${prov.customers[i]['hp']}'),
-                        Divider(
+                        const Divider(
                           color: Colors.grey,
                           thickness: 0.1,
                         ),
@@ -121,9 +121,9 @@ class _MyCustomerListState extends State<MyCustomerList> {
                     i < prov.searchCustomers(searchText).length;
                     i++)
                   ListTile(
-                    leading: CircleAvatar(
+                    leading: const CircleAvatar(
+                      backgroundColor: primaryColor,
                       child: Icon(Icons.person),
-                      backgroundColor: Color(0xffFD61876E),
                     ),
                     title:
                         Text("${prov.searchCustomers(searchText)[i]['name']}"),
@@ -135,7 +135,7 @@ class _MyCustomerListState extends State<MyCustomerList> {
                         ),
                         Text(
                             'Telepon : ${prov.searchCustomers(searchText)[i]['hp']}'),
-                        Divider(
+                        const Divider(
                           color: Colors.grey,
                           thickness: 0.1,
                         ),
@@ -155,7 +155,7 @@ class _MyCustomerListState extends State<MyCustomerList> {
                 child: Scaffold(
                   appBar: AppBar(
                     backgroundColor: primaryColor,
-                    title: Text('Tambah pelanggan',
+                    title: const Text('Tambah pelanggan',
                         style: TextStyle(fontSize: 20)),
                     centerTitle: true,
                     automaticallyImplyLeading: false,
@@ -170,7 +170,7 @@ class _MyCustomerListState extends State<MyCustomerList> {
                         padding: const EdgeInsets.all(10),
                         child: TextField(
                             controller: prov.nameController,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               labelText: "Nama Pelanggan",
                             )),
                       ),
@@ -179,16 +179,16 @@ class _MyCustomerListState extends State<MyCustomerList> {
                         child: TextField(
                             controller: prov.orderController,
                             keyboardType: TextInputType.number,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               labelText: "Jumlah Pesanan",
                             )),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(10.0),
+                        padding: const EdgeInsets.all(10.0),
                         child: TextField(
                           controller: prov.phoneController,
                           keyboardType: TextInputType.phone,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             labelText: 'Telepon',
                           ),
                         ),
@@ -203,17 +203,17 @@ class _MyCustomerListState extends State<MyCustomerList> {
                                 prov.getPhoneController.text);
                             Navigator.of(context).pop();
                           },
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: primaryColor,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15))),
+                          child: const Padding(
+                            padding: EdgeInsets.all(10.0),
                             child: Text(
                               'Tambah',
                               style: TextStyle(fontSize: 15),
                             ),
                           ),
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: primaryColor,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15))),
                         ),
                       )
                     ],
@@ -223,7 +223,7 @@ class _MyCustomerListState extends State<MyCustomerList> {
             },
           );
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }

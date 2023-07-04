@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import '../../Variabel/global.dart';
 
 class MyDescription extends StatefulWidget {
+  // ignore: prefer_typing_uninitialized_variables
   final data;
   const MyDescription({super.key, required this.data});
 
@@ -22,7 +23,7 @@ class _MyDescriptionState extends State<MyDescription> {
           onPressed: () => Navigator.pop(context, false),
           color: Colors.white,
         ),
-        title: Text(
+        title: const Text(
           "Detail Produk",
           style: TextStyle(
             fontSize: 20,
@@ -35,7 +36,7 @@ class _MyDescriptionState extends State<MyDescription> {
           Expanded(
             flex: 3,
             child: Container(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               child: Image.asset(
                 widget.data['imageUrl'],
                 fit: BoxFit.cover,
@@ -45,8 +46,8 @@ class _MyDescriptionState extends State<MyDescription> {
           Expanded(
               flex: 5,
               child: Container(
-                constraints: BoxConstraints(minHeight: 305),
-                decoration: BoxDecoration(
+                constraints: const BoxConstraints(minHeight: 305),
+                decoration: const BoxDecoration(
                     color: Color.fromARGB(255, 199, 230, 211),
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(30),
@@ -63,19 +64,19 @@ class _MyDescriptionState extends State<MyDescription> {
                           children: [
                             Text(
                               widget.data['name'],
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.bold),
                             ),
                             Text(
-                              "${rupiahFormat.format(widget.data['price'])}",
+                              "Rp. ${rupiahFormat.format(widget.data['price'])}",
                             ),
                           ],
                         ),
                       ),
-                      Divider(
+                      const Divider(
                         indent: 5,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Row(
@@ -83,7 +84,7 @@ class _MyDescriptionState extends State<MyDescription> {
                         children: [
                           Row(
                             children: [
-                              Text(
+                              const Text(
                                 'Kode item : ',
                                 style: TextStyle(fontWeight: FontWeight.w600),
                               ),
@@ -94,22 +95,22 @@ class _MyDescriptionState extends State<MyDescription> {
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Row(
                         children: [
-                          Text(
+                          const Text(
                             'Jumlah stok : ',
                             style: TextStyle(fontWeight: FontWeight.w600),
                           ),
                           Text("${widget.data['stock']}")
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Text(
+                      const Text(
                         'Deskripsi : ',
                         style: TextStyle(fontWeight: FontWeight.w600),
                       ),

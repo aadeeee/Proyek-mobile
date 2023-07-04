@@ -20,25 +20,25 @@ class _MyEditTransactionState extends State<MyEditTransaction> {
     var prov = Provider.of<TransactionProvider>(context);
     return Scaffold(
         appBar: AppBar(
-          title: Text("Ubah Transaksi"),
+          title: const Text("Ubah Transaksi"),
           backgroundColor: primaryColor,
         ),
         body: Column(
           children: [
             Padding(
-              padding: EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(10.0),
               child: TextField(
                 controller: prov.getNamaController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Nama pelanggan',
                 ),
               ),
             ),
             Padding(
-              padding: EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(10.0),
               child: TextField(
                 controller: prov.getJumlahController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Jumlah Transaksi',
                 ),
               ),
@@ -56,11 +56,11 @@ class _MyEditTransactionState extends State<MyEditTransaction> {
                     builder: (BuildContext context, Widget? child) {
                       return Theme(
                         data: ThemeData(
-                          colorScheme: ColorScheme.light(
+                          colorScheme: const ColorScheme.light(
                             primary: primaryColor,
                           ),
                         ),
-                        child: child ?? Text(""),
+                        child: child ?? const Text(""),
                       );
                     },
                     initialDate: DateTime.now(),
@@ -76,7 +76,7 @@ class _MyEditTransactionState extends State<MyEditTransaction> {
                     }
                   });
                 },
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Pilih Tanggal',
                 ),
               ),
@@ -103,8 +103,8 @@ class _MyEditTransactionState extends State<MyEditTransaction> {
                   backgroundColor: primaryColor,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15))),
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
+              child: const Padding(
+                padding: EdgeInsets.all(10.0),
                 child: Text(
                   'Simpan Perubahan',
                   style: TextStyle(fontSize: 15),

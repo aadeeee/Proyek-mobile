@@ -37,7 +37,7 @@ class _MyProductState extends State<MyProduct>
         bottom: TabBar(
           indicatorColor: Colors.white,
           controller: _tabController,
-          tabs: [
+          tabs: const [
             Tab(text: 'Penjualan',),
             Tab(text: 'Pembelian'),
           ],
@@ -45,7 +45,7 @@ class _MyProductState extends State<MyProduct>
       ),
       body: TabBarView(
         controller: _tabController,
-        children: [
+        children: const [
           Center(
             child: MyProductList(),
           ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/component/Pelanggan/Customer.dart';
+import 'package:mobile/component/Pelanggan/customer.dart';
 
 import '../../Variabel/global.dart';
 
@@ -16,9 +16,9 @@ class _MyCustomerState extends State<MyCustomer> {
     return Scaffold(
       appBar: AppBar(
         
-        title: Center(child: Text('Data Pelanggan')), 
+        title: const Center(child: Text('Data Pelanggan')), 
       backgroundColor: primaryColor,),
-      body: MyCustomerList(),
+      body: const MyCustomerList(),
     );
   }
 }

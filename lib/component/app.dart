@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/Variabel/global.dart';
-import 'package:mobile/component/Pelanggan/Pelanggan.dart';
+import 'package:mobile/component/Pelanggan/pelanggan.dart';
 import 'package:mobile/component/home.dart';
 import 'package:mobile/component/Profil/profil.dart';
 import 'package:mobile/component/Transaksi/transaksi.dart';
@@ -16,11 +16,11 @@ class MyMain extends StatefulWidget {
 class _MyMainState extends State<MyMain> {
   int _currentIndex = 0;
   final List<Widget> pages = [
-    MyHome(),
-    TransactionPage(),
-    MyProduct(),
-    MyCustomer(),
-    MyProfil()
+    const MyHome(),
+    const TransactionPage(),
+    const MyProduct(),
+    const MyCustomer(),
+    const MyProfil()
   ];
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class _MyMainState extends State<MyMain> {
               _currentIndex = index;
             });
           },
-          items: [
+          items: const [
             BottomNavigationBarItem(
                 icon: ImageIcon(AssetImage('assets/images/beranda.png')),
                 label: 'Beranda',

@@ -15,7 +15,7 @@ class MyPemeriksaKeamanan extends StatelessWidget {
             onPressed: () => Navigator.pop(context, false),
             color: Colors.white,
           ),
-          title: Text(
+          title: const Text(
             "Pemeriksa Keamanan",
             style: TextStyle(
               fontSize: 20,
@@ -32,35 +32,33 @@ class MyPemeriksaKeamanan extends StatelessWidget {
                 'assets/images/pemeriksakeamanan.png',
                 height: 200,
               )),
-              Padding(
-                padding: const EdgeInsets.only(top: 15.0),
+              const Padding(
+                padding: EdgeInsets.only(top: 15.0),
                 child: Text(
                   'Bantu amankan akun Anda',
                   style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0),
+              const Padding(
+                padding: EdgeInsets.only(top: 10.0),
                 child: Text(
                   'Kami sarankan untuk meminjau info Anda dan menambahkan perlindungan login ekstra ke akun Anda. Info yang akurat akan mempermudah kami untuk membantu anda jika terjadi masalah keamanan',
                   textAlign: TextAlign.left,
                   style: TextStyle(fontSize: 15),
                 ),
               ),
-              Divider(),
-              Container(
-                child: ListTile(
-                  title: Text('Kata sandi'),
-                  subtitle: Text('Buat kata sandi yang lebih kuat'),
-                  trailing: Icon(Icons.keyboard_arrow_right),
-                  leading: const ImageIcon(
-                      size: 30, AssetImage('assets/images/keamanan.png')),
-                  iconColor: Colors.black,
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => MyKataSandi()));
-                  },
-                ),
+              const Divider(),
+              ListTile(
+                title: const Text('Kata sandi'),
+                subtitle: const Text('Buat kata sandi yang lebih kuat'),
+                trailing: const Icon(Icons.keyboard_arrow_right),
+                leading: const ImageIcon(
+                    size: 30, AssetImage('assets/images/keamanan.png')),
+                iconColor: Colors.black,
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const MyKataSandi()));
+                },
               ),
             ],
           ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MyProductProvider extends ChangeNotifier {
+  // ignore: non_constant_identifier_names
   final List _Product = [
     {
       "name": 'Sapu',

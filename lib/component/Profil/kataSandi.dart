@@ -21,7 +21,7 @@ class _MyKataSandiState extends State<MyKataSandi> {
           onPressed: () => Navigator.pop(context, false),
           color: Colors.white,
         ),
-        title: Text(
+        title: const Text(
           "Kata Sandi",
           style: TextStyle(
             fontSize: 20,
@@ -35,8 +35,8 @@ class _MyKataSandiState extends State<MyKataSandi> {
         padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 25),
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 10.0),
+            const Padding(
+              padding: EdgeInsets.only(top: 10.0),
               child: Text(
                 'Kata sandi Anda harus lebih dari enam karakter dan berisi angka.huruf, dan karakter khusus (!@%).',
                 style: TextStyle(fontSize: 15),
@@ -47,8 +47,8 @@ class _MyKataSandiState extends State<MyKataSandi> {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 8.0),
                       child: Text(
                         'Kata sandi saat ini',
                         style: TextStyle(
@@ -60,7 +60,7 @@ class _MyKataSandiState extends State<MyKataSandi> {
                       child: SizedBox(
                         height: 40,
                         child: TextFormField(
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                                 hintText: ' Kata sandi saat ini',
                                 hintStyle: TextStyle(fontSize: 12.0),
                                 focusedBorder: OutlineInputBorder(
@@ -71,8 +71,8 @@ class _MyKataSandiState extends State<MyKataSandi> {
                                         color: primaryColor)))),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 8.0),
                       child: Text(
                         'Kata sandi baru',
                         style: TextStyle(
@@ -86,12 +86,7 @@ class _MyKataSandiState extends State<MyKataSandi> {
                         height: 40,
                         child: TextFormField(
                             controller: textController,
-                            validator: (value) {
-                              if (value == '') {
-                                return "Text tidak boleh kosong";
-                              }
-                            },
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                                 hintText: 'Kata sandi baru',
                                 hintStyle: TextStyle(fontSize: 12.0),
                                 focusedBorder: OutlineInputBorder(
@@ -102,8 +97,8 @@ class _MyKataSandiState extends State<MyKataSandi> {
                                         color: primaryColor)))),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 8.0),
                       child: Text(
                         'Ulang kata sandi baru',
                         style: TextStyle(
@@ -115,7 +110,7 @@ class _MyKataSandiState extends State<MyKataSandi> {
                       child: SizedBox(
                         height: 40,
                         child: TextFormField(
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                                 hintText: 'Ketik ulang kata sandi',
                                 hintStyle: TextStyle(fontSize: 12.0),
                                 focusedBorder: OutlineInputBorder(
@@ -126,7 +121,7 @@ class _MyKataSandiState extends State<MyKataSandi> {
                                         color: primaryColor)))),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Center(
@@ -137,18 +132,18 @@ class _MyKataSandiState extends State<MyKataSandi> {
                           height: 50,
                           child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                  primary: primaryColor),
+                                  backgroundColor: primaryColor),
                               onPressed: () {
                                 Navigator.pop(context);
                               },
-                              child: Text('Simpan Kata Sandi')),
+                              child: const Text('Simpan Kata Sandi')),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         TextButton(
                             onPressed: () {Navigator.pop(context);},
-                            child: Text(
+                            child: const Text(
                               'Lupa kata sandi',
                               style: TextStyle(color: primaryColor),
                             ))

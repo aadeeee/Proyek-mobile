@@ -172,7 +172,7 @@ class _MyLoginState extends State<MyLogin> {
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.symmetric(horizontal: 10),
+                          margin: const EdgeInsets.symmetric(horizontal: 10),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
