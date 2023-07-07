@@ -2,22 +2,17 @@ import 'package:flutter/material.dart';
 
 class CustomerProvider with ChangeNotifier {
   final List<Map<String, dynamic>> _customers = [
-    {'name': 'Budi', 'order': 10, 'hp': "08123354565"},
-    {'name': 'Adi', 'order': 4, 'hp': "0814372435935"},
-    {'name': 'aaa', 'order': 9, 'hp': "0814372435935"},
-    {'name': 'Budi', 'order': 1, 'hp': "08123354565"},
-    {'name': 'Adi', 'order': 15, 'hp': "0814372435935"},
-    {'name': 'aaa', 'order': 4, 'hp': "0814372435935"}
+    {'name': 'Budi', 'order': 10, 'hp': "08123354565", 'produk': ['Sapu', 'Buku', "Kipas", 'Botol Minum', "Pensil", "Kursi", "Meja", "Stiker Dinding", 'kompor', "Lemari"]},
+    {'name': 'Adi', 'order': 4, 'hp': "0814372435935", 'produk': ['Sapu', 'Buku',"Kipas", 'Botol Minum']},
+    {'name': 'aaa', 'order': 9, 'hp': "0814372435935", 'produk': ['Sapu', 'Buku', "Kipas", 'Botol Minum', "Pensil", "Kursi", "Meja", "Stiker Dinding", 'kompor']},
+    {'name': 'Budi', 'order': 1, 'hp': "08123354565", 'produk': ['Sapu']},
+    {'name': 'Adi', 'order': 6, 'hp': "0814372435935", 'produk': ['Sapu', 'Buku', "Kipas", 'Botol Minum', "Pensil", "Kursi"]},
+    {'name': 'aaa', 'order': 5, 'hp': "0814372435935", 'produk': ['Sapu', 'Buku', "Kipas", 'Botol Minum', "Pensil"]}
   ];
-
-  List<Map<String, dynamic>> _customers2 = [
-    {'name': 'Budi', 'order': 10, 'hp': "08123354565"},
-    {'name': 'Adi', 'order': 4, 'hp': "0814372435935"},
-    {'name': 'aaa', 'order': 9, 'hp': "0814372435935"},
-    {'name': 'Budi', 'order': 1, 'hp': "08123354565"},
-    {'name': 'Adi', 'order': 15, 'hp': "0814372435935"},
-    {'name': 'aaa', 'order': 4, 'hp': "0814372435935"}
+   final List<String> _products = [
+    'Sapu', 'Buku', "Kipas", 'Botol Minum', "Pensil", "Kursi", "Meja", "Stiker Dinding", 'kompor', "Lemari"
   ];
+   List<String> get products => _products;
 
   List<Map<String, dynamic>> get customers => _customers;
   List<Map<String, dynamic>> filteredCustomers = [];
@@ -49,10 +44,13 @@ class CustomerProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void addCustomer(name, int totalPurchase, hp) {
-    final customer = {'name': name, 'order': totalPurchase, 'hp': hp};
+  void addCustomer(name, int totalPurchase, hp, selectedProduk) {
+    final customer = {
+      'name': name, 
+      'order': totalPurchase, 
+      'hp': hp,
+      'produk': selectedProduk};
     _customers.add(customer);
-    _customers2.add(customer);
     notifyListeners();
   }
 
@@ -62,9 +60,9 @@ class CustomerProvider with ChangeNotifier {
   }
 
   List<Map<String, dynamic>> getTopBuyers() {
-    _customers2.sort((a, b) => a['order'].compareTo(b['order']));
-    return _customers2;
-  }
+  _customers.sort((a, b) => a['order'].compareTo(b['order'])); 
+  return _customers;
+}
   List<Map<String, dynamic>> searchCustomers(String searchText) {
     if (searchText.isEmpty) {
       return customers;
