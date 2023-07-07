@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import '../../Variabel/global.dart';
 
 class MyDescription extends StatefulWidget {
@@ -12,8 +11,6 @@ class MyDescription extends StatefulWidget {
 }
 
 class _MyDescriptionState extends State<MyDescription> {
-  final rupiahFormat =
-      NumberFormat.currency(locale: 'ID', symbol: "", decimalDigits: 0);
   @override
   Widget build(BuildContext context) {
     return Scaffold(

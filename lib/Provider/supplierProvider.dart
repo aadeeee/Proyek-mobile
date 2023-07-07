@@ -5,15 +5,15 @@ class MySupplierProvider extends ChangeNotifier {
     {
       'nama': 'PT.ABC',
       'produk': [
-        {'namaProduk': 'sapu', "jumlah": 10},
-        {'namaProduk': 'Buku', "jumlah": 20}
+        {'namaProduk': 'sapu', "jumlah": 10, "harga": 15000},
+        {'namaProduk': 'Buku', "jumlah": 20, "harga": 5000}
       ],
     },
     {
       'nama': 'PT.DEF',
       'produk': [
-        {'namaProduk': 'Pensil', "jumlah": 30},
-        {'namaProduk': 'Tas', "jumlah": 15}
+        {'namaProduk': 'Pensil', "jumlah": 30, 'harga': 2000},
+        {'namaProduk': 'Tas', "jumlah": 15, 'harga': 100000}
       ],
     },
   ];
@@ -34,7 +34,7 @@ class MySupplierProvider extends ChangeNotifier {
 
   List<Map<String, dynamic>> get filteredSupplierData => _filteredSupplierData;
 
-  void addSupplierData(String namaSupplier, List<String> produkSupplier, List<int> jumlahProduk) {
+  void addSupplierData(String namaSupplier, List<String> produkSupplier, List<int> jumlahProduk, ) {
     final newSupplier = {
       'nama': namaSupplier,
       'produk': List.generate(
@@ -42,6 +42,7 @@ class MySupplierProvider extends ChangeNotifier {
         (index) => {
           'namaProduk': produkSupplier[index],
           'jumlah': jumlahProduk[index],
+          'harga': jumlahProduk[index]
         },
       ),
     };
@@ -54,4 +55,5 @@ class MySupplierProvider extends ChangeNotifier {
     _filteredSupplierData = filteredData;
     notifyListeners();
   }
+  
 }

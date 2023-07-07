@@ -108,7 +108,6 @@ class _MySupplierState extends State<MySupplier> {
                                 return Padding(
                                   padding: const EdgeInsets.only(bottom: 8.0),
                                   child: Row(
-                                    // Wrap the ChoiceChip and TextField in a Row
                                     children: [
                                       ChoiceChip(
                                         label: Text(produk),
