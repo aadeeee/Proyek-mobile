@@ -68,7 +68,7 @@ class _ProdukPageState extends State<ProdukPage> {
                   ),
                   child: Card(
                     elevation:
-                        2, // Ubah tingkat ketinggian bayangan (elevation) sesuai kebutuhan
+                        2, 
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),

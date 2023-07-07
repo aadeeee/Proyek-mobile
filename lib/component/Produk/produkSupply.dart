@@ -23,45 +23,57 @@ class _MySupplierState extends State<MySupplier> {
         : prov.supplierData;
 
     return Scaffold(
-      body: Column(
-        children: [
-          TextField(
-            controller: prov.searchController,
-            decoration: const InputDecoration(
-              labelText: 'Cari...',
-            ),
-            onChanged: (value) {
-              final filteredData = prov.supplierData.where((supplier) {
-                final namaSupplier = supplier['nama'].toString().toLowerCase();
-                final searchKeyword = value.toLowerCase();
-                return namaSupplier.contains(searchKeyword);
-              }).toList();
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          children: [
+            TextField(
+              controller: prov.searchController,
+              onChanged: (value) {
+                final filteredData = prov.supplierData.where((supplier) {
+                  final namaSupplier =
+                      supplier['nama'].toString().toLowerCase();
+                  final searchKeyword = value.toLowerCase();
+                  return namaSupplier.contains(searchKeyword);
+                }).toList();
 
-              prov.updateFilteredSupplierData(filteredData);
-            },
-          ),
-          Expanded(
-            child: ListView.separated(
-              itemCount: data.length,
-              separatorBuilder: (context, index) => const Divider(),
-              itemBuilder: (context, index) {
-                final supply = data[index];
-                return ListTile(
-                  title: Text(supply['nama']),
-                  subtitle: Text('Jumlah Produk: ${supply['produk'].length}'),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ProdukPage(produk: supply),
-                      ),
-                    );
-                  },
-                );
+                prov.updateFilteredSupplierData(filteredData);
               },
+              decoration: InputDecoration(
+                focusColor: primaryColor,
+                prefixIcon: const Icon(Icons.search),
+                focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: const BorderSide(color: primaryColor)),
+                enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: const BorderSide(color: primaryColor)),
+                hintText: 'Cari',
+              ),
             ),
-          ),
-        ],
+            Expanded(
+              child: ListView.separated(
+                itemCount: data.length,
+                separatorBuilder: (context, index) => const Divider(),
+                itemBuilder: (context, index) {
+                  final supply = data[index];
+                  return ListTile(
+                    title: Text(supply['nama']),
+                    subtitle: Text('Jumlah Produk: ${supply['produk'].length}'),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProdukPage(produk: supply),
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: primaryColor,
@@ -176,8 +188,36 @@ class _MySupplierState extends State<MySupplier> {
                                 selectedProdukQuantity.clear();
                                 Navigator.pop(context);
                               },
-                              child: const Text('Tambah'),
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: primaryColor,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15))),
+                              child: const Padding(
+                                padding: EdgeInsets.all(10.0),
+                                child: Text(
+                                  'Tambah',
+                                  style: TextStyle(fontSize: 15),
+                                ),
+                              ),
                             ),
+                            // ElevatedButton(
+                            //   onPressed: () {
+                            //     final namaSupplier = _namaController.text;
+                            //     final produkSupplier = selectedProduk.toList();
+                            //     final jumlahProduk =
+                            //         selectedProdukQuantity.toList();
+                            //     prov.addSupplierData(
+                            //       namaSupplier,
+                            //       produkSupplier,
+                            //       jumlahProduk,
+                            //     );
+                            //     _namaController.clear();
+                            //     selectedProduk.clear();
+                            //     selectedProdukQuantity.clear();
+                            //     Navigator.pop(context);
+                            //   },
+                            //   child: const Text('Tambah'),
+                            // ),
                           ],
                         ),
                       ),

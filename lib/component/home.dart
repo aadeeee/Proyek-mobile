@@ -90,7 +90,7 @@ class _MyHomeState extends State<MyHome> {
                 ),
               ],
             ),
-             const Padding(
+              Padding(
               padding: EdgeInsets.only(left: 15, top: 10),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -133,7 +133,7 @@ class _MyHomeState extends State<MyHome> {
                 ),
               ),
             ),
-             const Padding(
+              Padding(
               padding: EdgeInsets.only(left: 15,top: 15),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -149,26 +149,26 @@ class _MyHomeState extends State<MyHome> {
                 ],
               ),
             ),
-             const ListTile(
+              ListTile(
               leading: CircleAvatar(
                 backgroundColor: primaryColor,
                 child: Icon(Icons.person),
               ),
               title: Text('Max'),
-              subtitle: Column(
+              subtitle:  Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text('09242464234217'),
                 ],
               ),
             ),
-             const ListTile(
+              ListTile(
               leading: CircleAvatar(
                 backgroundColor: primaryColor,
                 child: Icon(Icons.person),
               ),
               title: Text('John'),
-              subtitle: Column(
+              subtitle:   Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text('09242464234217'),
