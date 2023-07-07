@@ -39,7 +39,7 @@ class _ProdukPageState extends State<ProdukPage> {
       ),
       body: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             const SizedBox(height: 10.0),
             Padding(
@@ -47,7 +47,7 @@ class _ProdukPageState extends State<ProdukPage> {
               child: Text(
                 data,
                 style:
-                    const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                    const TextStyle(fontSize: 25, fontWeight: FontWeight.bold, decoration: TextDecoration.underline),
               ),
             ),
             const SizedBox(height: 10.0),
@@ -67,8 +67,7 @@ class _ProdukPageState extends State<ProdukPage> {
                     vertical: 8.0,
                   ),
                   child: Card(
-                    elevation:
-                        2, 
+                    elevation: 2,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),
@@ -78,17 +77,17 @@ class _ProdukPageState extends State<ProdukPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Nama Produk: $namaProduk',
+                            'Nama Produk    : $namaProduk',
                             style: const TextStyle(fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 4.0),
-                          Text('Jumlah: $jumlahProduk'),
+                          Text('Jumlah               : $jumlahProduk'),
                           const SizedBox(height: 4.0),
                           Text(
-                              'Harga Satuan: Rp. ${rupiahFormat.format(hargaProduk)}'),
+                              'Harga Satuan    : Rp. ${rupiahFormat.format(hargaProduk)}'),
                           const SizedBox(height: 4.0),
                           Text(
-                              'Subtotal: Rp. ${rupiahFormat.format(subtotal)}'),
+                              'Subtotal              : Rp. ${rupiahFormat.format(subtotal)}'),
                         ],
                       ),
                     ),

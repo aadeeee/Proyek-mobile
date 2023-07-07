@@ -9,6 +9,7 @@ import 'package:mobile/Provider/transaksiProvider.dart';
 import 'package:mobile/component/Pelanggan/pelanggan.dart';
 import 'package:mobile/component/Produk/produkSupply.dart';
 import 'package:mobile/component/app.dart';
+import 'package:mobile/component/home.dart';
 import 'package:provider/provider.dart';
 import 'Provider/homeProvider.dart';
 import 'package:mobile/component/Account/login.dart';
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
       title: 'Inventory plus',
       debugShowCheckedModeBanner: false,
       theme: prov.getTheme(),
-      home: MyLogin(),
+      home: MyMain(),
     );
   }
 }

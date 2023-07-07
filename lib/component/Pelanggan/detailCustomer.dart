@@ -25,34 +25,39 @@ class _MyDetailCustomerState extends State<MyDetailCustomer> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Nama Pelanggan: ${widget.customer['name']}',
-                style: const TextStyle(fontSize: 20),
-              ),
-              const SizedBox(height: 16),
-              Text(
-                'Jumlah Pesanan: ${widget.customer['order']}',
+                'Nama Pelanggan       : ${widget.customer['name']}',
                 style: const TextStyle(fontSize: 16),
               ),
               const SizedBox(height: 16),
               Text(
-                'Nomor Telepon: ${widget.customer['hp']}',
+                'Jumlah Pesanan        : ${widget.customer['order']}',
                 style: const TextStyle(fontSize: 16),
               ),
               const SizedBox(height: 16),
-              const Text(
-                'Produk yang Dibeli:',
-                style: TextStyle(fontSize: 16),
+              Text(
+                'Nomor Telepon           : ${widget.customer['hp']}',
+                style: const TextStyle(fontSize: 16),
               ),
-              const SizedBox(height: 8),
-              Column(
+              const SizedBox(height: 16),
+              Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: List.generate(
-                  widget.customer['produk'].length,
-                  (index) => Text(
-                    '- ${widget.customer['produk'][index]}',
-                    style: const TextStyle(fontSize: 16),
+                children: [
+                  const Text(
+                    'Produk yang Dibeli     : ',
+                    style: TextStyle(fontSize: 16,height: 1.5),
                   ),
-                ),
+                  // const SizedBox(height: 8),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: List.generate(
+                      widget.customer['produk'].length,
+                      (index) => Text(
+                        ' - ${widget.customer['produk'][index]}',
+                        style: const TextStyle(fontSize: 16, height: 1.5),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

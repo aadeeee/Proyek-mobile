@@ -54,10 +54,13 @@ class _MyCustomerListState extends State<MyCustomerList> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: FilterChip(
-                        label: const Row(
+                        label: Row(
                           children: [
                             Text("Pembelian "),
-                            Icon(Icons.arrow_upward),
+                            Icon(
+                              Icons.arrow_upward,
+                              size: 20,
+                            ),
                           ],
                         ),
                         selected: prov.getCountOrder,
@@ -68,10 +71,13 @@ class _MyCustomerListState extends State<MyCustomerList> {
                       ),
                     ),
                     FilterChip(
-                      label: const Row(
+                      label: Row(
                         children: [
                           Text("Pembelian"),
-                          Icon(Icons.arrow_downward)
+                          Icon(
+                            Icons.arrow_downward,
+                            size: 20,
+                          )
                         ],
                       ),
                       selected: prov.getTopBuy,
@@ -90,7 +96,9 @@ class _MyCustomerListState extends State<MyCustomerList> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => MyDetailCustomer(customer: prov.getTopBuyers()[i],),
+                          builder: (context) => MyDetailCustomer(
+                            customer: prov.getTopBuyers()[i],
+                          ),
                         ),
                       );
                     },
@@ -119,7 +127,9 @@ class _MyCustomerListState extends State<MyCustomerList> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => MyDetailCustomer(customer: prov.getFrequentShoppers()[i],),
+                          builder: (context) => MyDetailCustomer(
+                            customer: prov.getFrequentShoppers()[i],
+                          ),
                         ),
                       );
                     },
@@ -156,9 +166,14 @@ class _MyCustomerListState extends State<MyCustomerList> {
                         ),
                       );
                     },
-                    leading: const CircleAvatar(
-                      backgroundColor: primaryColor,
-                      child: Icon(Icons.person),
+                    leading: Padding(
+                      padding: const EdgeInsets.only(bottom: 10.0),
+                      child: const CircleAvatar(
+                        backgroundColor: primaryColor,
+                        child: Icon(
+                          Icons.person,
+                        ),
+                      ),
                     ),
                     title:
                         Text("${prov.searchCustomers(searchText)[i]['name']}"),
