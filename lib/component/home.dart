@@ -18,97 +18,97 @@ class _MyHomeState extends State<MyHome> {
 
     var tmp = prov.jsonData['data'];
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Column(
-              children: [
-                Stack(
-                  children: [
-                    CarouselSlider(
-                      items: prov.carouselItem.map((item) {
-                        return Builder(
-                          builder: (BuildContext context) {
-                            return Container(
-                              width: MediaQuery.of(context).size.width,
-                              margin: const EdgeInsets.symmetric(horizontal: 3.0),
-                              child: Image.asset(
-                                item['image'],
-                                width: 200,
-                                height: 150,
-                                fit: BoxFit.fitWidth,
-                              ),
-                            );
-                          },
-                        );
-                      }).toList(),
-                      options: CarouselOptions(
-                        height: 200.0,
-                        autoPlay: true,
-                        onPageChanged: (index, reason) {
-                          setState(() {
-                            prov.setIndex = index;
-                          });
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Carousel Slider
+              Stack(
+                children: [
+                  CarouselSlider(
+                    items: prov.carouselItem.map((item) {
+                      return Builder(
+                        builder: (BuildContext context) {
+                          return Container(
+                            width: MediaQuery.of(context).size.width,
+                            margin: const EdgeInsets.symmetric(horizontal: 3.0),
+                            child: Image.asset(
+                              item['image'],
+                              width: 200,
+                              height: 150,
+                              fit: BoxFit.fitWidth,
+                            ),
+                          );
                         },
+                      );
+                    }).toList(),
+                    options: CarouselOptions(
+                      height: 200.0,
+                      autoPlay: true,
+                      onPageChanged: (index, reason) {
+                        setState(() {
+                          prov.setIndex = index;
+                        });
+                      },
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 9.0,
+                    left: 0,
+                    right: 0,
+                    child: Column(
+                      children: [
+                        Text(
+                          prov.carouselItem[prov.getIndex]['caption'],
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                            decoration: TextDecoration.none,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              // Carousel Indicator
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: prov.carouselItem.map((item) {
+                  int index = prov.carouselItem.indexOf(item);
+                  return Container(
+                    width: 10.0,
+                    height: 10.0,
+                    margin: const EdgeInsets.symmetric(horizontal: 2.0),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: prov.getIndex == index ? primaryColor : Colors.grey,
+                    ),
+                  );
+                }).toList(),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15, top: 20),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Produk Terlaris',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
                       ),
                     ),
-                    Positioned(
-                      bottom: 9.0,
-                      left: 0,
-                      right: 0,
-                      child: Column(
-                        children: [
-                          Text(
-                            prov.carouselItem[prov.getIndex]['caption'],
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 20.0,
-                                fontWeight: FontWeight.bold,
-                                decoration: TextDecoration.none),
-                          ),
-                        ],
-                      ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: Icon(Icons.shopping_bag_outlined),
                     ),
                   ],
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: prov.carouselItem.map((item) {
-                    int index = prov.carouselItem.indexOf(item);
-                    return Container(
-                      width: 10.0,
-                      height: 10.0,
-                      margin: const EdgeInsets.symmetric(horizontal: 2.0),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: prov.getIndex == index
-                            ? primaryColor
-                            : Colors.grey,
-                      ),
-                    );
-                  }).toList(),
-                ),
-              ],
-            ),
-              Padding(
-              padding: EdgeInsets.only(left: 15, top: 10),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Produk Terlaris',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 10),
-                    child: Icon(Icons.shopping_bag_outlined),
-                  )
-                ],
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 10),
-              child: SizedBox(
+              SizedBox(
                 height: 190,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
@@ -132,51 +132,53 @@ class _MyHomeState extends State<MyHome> {
                   ),
                 ),
               ),
-            ),
               Padding(
-              padding: EdgeInsets.only(left: 15,top: 15),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(
-                    'Pelanggan Favorit',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 10),
-                    child: Icon(Icons.people_outline),
-                  )
-                ],
+                padding: const EdgeInsets.only(left: 15, top: 20),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(
+                      'Pelanggan Favorit',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: Icon(Icons.people_outline),
+                    ),
+                  ],
+                ),
               ),
-            ),
               ListTile(
-              leading: CircleAvatar(
-                backgroundColor: primaryColor,
-                child: Icon(Icons.person),
+                leading: CircleAvatar(
+                  backgroundColor: primaryColor,
+                  child: Icon(Icons.person),
+                ),
+                title: Text('Max'),
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('09242464234217'),
+                  ],
+                ),
               ),
-              title: Text('Max'),
-              subtitle:  Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('09242464234217'),
-                ],
-              ),
-            ),
               ListTile(
-              leading: CircleAvatar(
-                backgroundColor: primaryColor,
-                child: Icon(Icons.person),
+                leading: CircleAvatar(
+                  backgroundColor: primaryColor,
+                  child: Icon(Icons.person),
+                ),
+                title: Text('John'),
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('09242464234217'),
+                  ],
+                ),
               ),
-              title: Text('John'),
-              subtitle:   Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('09242464234217'),
-                ],
-              ),
-            ),
-            
-          ],
+            ],
+          ),
         ),
       ),
     );
