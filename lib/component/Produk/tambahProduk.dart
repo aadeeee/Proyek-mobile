@@ -160,7 +160,7 @@ class _MyAddSupplierState extends State<MyAddSupplier> {
                                   hargaProduk.contains(0)) {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
-                                  content: Text('Harap lengkapi data dengn benar!!!'),
+                                  content: Text('Harap lengkapi data dengan benar!!!'),
                                 ),
                                 );
                                 return;

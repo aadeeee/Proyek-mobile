@@ -151,7 +151,7 @@ class _MyAddOutComeState extends State<MyAddOutCome> {
                                 prov.getDateController.text.isEmpty) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
-                                  content: Text('Harap lengkapi data dengn benar!!!'),
+                                  content: Text('Harap lengkapi data dengan benar!!!'),
                                 ),
                               );
                               return; 

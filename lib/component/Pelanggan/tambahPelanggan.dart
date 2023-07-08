@@ -87,8 +87,6 @@ class _AddCustomerDialogState extends State<AddCustomerDialog> {
                 ],
               ),
               SingleChildScrollView(
-                
-                // controller: controller,
                 child: Column(
                   children: [
                     ListView.builder(
