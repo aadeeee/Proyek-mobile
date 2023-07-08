@@ -1,19 +1,23 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:path_provider/path_provider.dart';
 
 class MyProductProvider extends ChangeNotifier {
-  // ignore: non_constant_identifier_names
-  final List _Product = [
+  final List<Map<String, dynamic>> _products = [
     {
       "name": 'Sapu',
       'merk': "Nagata",
       "description":
-          '-Panjang Gagang Sapu Standard 110 cm\n-Bahan Non Recycle\n-Bahan Bulu Senar dan Mengkilap\n-Mengunakan bahan bulu Grade 1\n\nWarna:  pink, hijau, abu-abu, orange, biru',
+          '-Panjang Gagang Sapu Standard 110 cm\n-Bahan Non Recycle\n-Bahan Bulu Senar dan Mengkilap\n-Menggunakan bahan bulu Grade 1\n\nWarna:  pink, hijau, abu-abu, orange, biru',
       "price": 35000,
       "imageUrl": 'assets/images/sapu.png',
       'code': 'P123ty',
       'stock': 20,
       'date': '10/06/2023',
-      'amount': 40
+      'amount': 40,
+      "isAsset": true
     },
     {
       "name": 'Botol Minum',
@@ -25,7 +29,7 @@ class MyProductProvider extends ChangeNotifier {
       'code': 'P123ty',
       'stock': '20',
       'date': '10/06/2023',
-      'amount': 40
+      'amount': 40, "isAsset": true
     },
     {
       "name": 'Meja',
@@ -37,7 +41,7 @@ class MyProductProvider extends ChangeNotifier {
       'code': 'P123ty',
       'stock': '20',
       'date': '10/06/2023',
-      'amount': 40
+      'amount': 40, "isAsset": true
     },
     {
       "name": 'Kipas Poly',
@@ -49,7 +53,7 @@ class MyProductProvider extends ChangeNotifier {
       'code': 'P123ty',
       'stock': '20',
       'date': '10/06/2023',
-      'amount': 40
+      'amount': 40, "isAsset": true
     },
     {
       "name": 'Kursi',
@@ -61,103 +65,73 @@ class MyProductProvider extends ChangeNotifier {
       'code': 'P123ty',
       'stock': '20',
       'date': '10/06/2023',
-      'amount': 40
+      'amount': 40, "isAsset": true
     },
   ];
+
   TextEditingController _nameController = TextEditingController();
   TextEditingController _descriptionController = TextEditingController();
   TextEditingController _priceController = TextEditingController();
-  TextEditingController _imageUrlController = TextEditingController();
   TextEditingController _codeController = TextEditingController();
   TextEditingController _stockController = TextEditingController();
   TextEditingController _dateController = TextEditingController();
   TextEditingController _amountController = TextEditingController();
   TextEditingController _merkController = TextEditingController();
-  bool isNameEmpty = false;
-  bool isDecriptionEmpty = false;
-  bool isPriceEmpty = false;
-  bool isImageUrlEmpty = false;
-  bool isCodeEmpty = false;
-  bool isStockEmpty = false;
-  bool isDateEmpty = false;
-  bool isAmountEmpty = false;
-  bool isMerkEmpty = false;
 
-  List get Product => _Product;
+  List<Map<String, dynamic>> get products => _products;
 
   TextEditingController get getNameController => _nameController;
   TextEditingController get getDescriptionController => _descriptionController;
   TextEditingController get getPriceController => _priceController;
-  TextEditingController get getImageUrlController => _imageUrlController;
   TextEditingController get getCodeController => _codeController;
   TextEditingController get getStockController => _stockController;
   TextEditingController get getDateController => _dateController;
   TextEditingController get getAmountController => _amountController;
   TextEditingController get getMerkController => _merkController;
 
-  bool get getNameIsEmpty => isNameEmpty;
-  bool get getDescriptionIsEmpty => isDecriptionEmpty;
-  bool get getPriceIsEmpty => isPriceEmpty;
-  bool get getImageUrlIsEmpty => isImageUrlEmpty;
-  bool get getCodeIsEmpty => isCodeEmpty;
-  bool get getStockIsEmpty => isStockEmpty;
-  bool get getDateIsEmpty => isDateEmpty;
-  bool get getAmountIsEmpty => isAmountEmpty;
-  bool get getMerkIsEmpty => isMerkEmpty;
+  Future<void> openImagePickerAndAddToProduct() async {
+    final picker = ImagePicker();
+    final XFile? pickedImage =
+        await picker.pickImage(source: ImageSource.gallery);
+    if (pickedImage != null) {
+      final directory = await getApplicationDocumentsDirectory();
+      final imagePath =
+          '${directory.path}/image_${DateTime.now().millisecondsSinceEpoch}.png';
+      final File newImage = await File(pickedImage.path).copy(imagePath);
+      final Map<String, dynamic> newProduct = {
+        "name": _nameController.text,
+        "merk": _merkController.text,
+        "description": _descriptionController.text,
+        "price": double.parse(_priceController.text),
+        "imageUrl": imagePath,
+        "code": _codeController.text,
+        "amount": double.parse(_amountController.text),
+        "date": _dateController.text,
+        "isAsset": false, 
+      };
 
-  get context => null;
-
-  get index => null;
-
-  set AddProduct(value) {
-    if (_descriptionController.text.length != 0 &&
-        _nameController.text.length != 0 &&
-        _imageUrlController.text.length != 0 &&
-        _priceController.text.length != 0 &&
-        _amountController.text.length != 0 &&
-        _codeController.text.length != 0 &&
-        _dateController.text.length != 0) {
-      _Product.add(value);
+      _products.add(newProduct);
       _nameController.clear();
       _descriptionController.clear();
       _priceController.clear();
-      _imageUrlController.clear();
       _codeController.clear();
       _amountController.clear();
       _dateController.clear();
       _merkController.clear();
+
+      notifyListeners();
     }
-    if (_descriptionController.text.length == 0) {
-      isDecriptionEmpty = true;
-    }
-    if (_nameController.text.length == 0) {
-      isNameEmpty = true;
-    }
-    if (_imageUrlController.text.length == 0) {
-      isImageUrlEmpty = true;
-    }
-    if (_priceController.text.length == 0) {
-      isPriceEmpty = true;
-    }
-    if (_amountController.text.length == 0) {
-      isAmountEmpty = true;
-    }
-    if (_codeController.text.length == 0) {
-      isCodeEmpty = true;
-    }
-    if (_dateController.text.length == 0) {
-      isDateEmpty = true;
-    }
-    if (_merkController.text.length == 0) {
-      isMerkEmpty = true;
-    }
-    notifyListeners();
   }
 
-  void updateProduct(List<Map<String, dynamic>> productList, int index,
-      Map<String, dynamic> updatedProduct) {
+  void updateProduct(
+      List<Map<String, dynamic>> productList, int index, Map<String, dynamic> updatedProduct) {
     productList[index] = updatedProduct;
   }
-}
 
+  void addProduct(Map<String, dynamic> newProduct) {
+    _products.add(newProduct);
+    notifyListeners();
+    print(_products);
+  }
+}
 

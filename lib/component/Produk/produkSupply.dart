@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/Provider/supplierProvider.dart';
 import 'package:mobile/Variabel/global.dart';
-import 'package:mobile/component/Produk/tambahProduk.dart';
+import 'package:mobile/component/Produk/tambahProdukMasuk.dart';
 import 'package:provider/provider.dart';
 import 'detailsupply.dart';
 

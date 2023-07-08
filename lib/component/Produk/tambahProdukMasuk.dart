@@ -1,195 +1,205 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import '../../Provider/produkprovider.dart';
+
+import '../../Provider/supplierProvider.dart';
 import '../../Variabel/global.dart';
 
-class MyAddOutCome extends StatefulWidget {
-  const MyAddOutCome({super.key});
+class MyAddSupplier extends StatefulWidget {
+  const MyAddSupplier({super.key});
 
   @override
-  State<MyAddOutCome> createState() => _MyAddOutComeState();
+  State<MyAddSupplier> createState() => _MyAddSupplierState();
 }
 
-class _MyAddOutComeState extends State<MyAddOutCome> {
+class _MyAddSupplierState extends State<MyAddSupplier> {
+  late List<bool> selectedProduk;
   @override
   Widget build(BuildContext context) {
-    var prov = Provider.of<MyProductProvider>(context);
+    var prov = Provider.of<MySupplierProvider>(context);
+    selectedProduk = List.generate(
+      prov.availableProduk.length,
+      (index) => false,
+    );
     return FloatingActionButton(
       backgroundColor: primaryColor,
       onPressed: () {
         showDialog(
           context: context,
           builder: (context) {
-            return Dialog(
-              insetPadding: EdgeInsets.zero,
-              child: Scaffold(
-                appBar: AppBar(
-                  backgroundColor: primaryColor,
-                  title: Text('Tambah Produk', style: GoogleFonts.inter()),
-                  centerTitle: false,
-                  automaticallyImplyLeading: false,
-                  leading: IconButton(
-                    onPressed: () => Navigator.of(context).pop(),
-                    icon: const Icon(Icons.close),
-                  ),
-                ),
-                body: SingleChildScrollView(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      children: [
-                        TextField(
-                          controller: prov.getCodeController,
-                          decoration: InputDecoration(
-                              labelText: 'Kode Produk',
-                              errorText:
-                                  prov.isCodeEmpty ? "wajib diisi" : null),
-                        ),
-                        TextField(
-                          controller: prov.getNameController,
-                          decoration: InputDecoration(
-                              labelText: 'Nama Produk',
-                              errorText:
-                                  prov.isNameEmpty ? "wajib diisi" : null),
-                        ),
-                        TextField(
-                          controller: prov.getMerkController,
-                          decoration: InputDecoration(
-                              labelText: 'Merek',
-                              errorText:
-                                  prov.isMerkEmpty ? "wajib diisi" : null),
-                        ),
-                        TextField(
-                          controller: prov.getDescriptionController,
-                          decoration: InputDecoration(
-                              labelText: 'Deskripsi',
-                              errorText: prov.isDecriptionEmpty
-                                  ? "wajib diisi"
-                                  : null),
-                        ),
-                        TextField(
-                          controller: prov.getPriceController,
-                          decoration: InputDecoration(
-                              labelText: 'Harga',
-                              errorText: prov.isPriceEmpty
-                                  ? "Gunakan format yang tepat"
-                                  : null),
-                          keyboardType: TextInputType.number,
-                        ),
-                        TextField(
-                          controller: prov.getImageUrlController,
-                          decoration: InputDecoration(
-                              labelText: 'Link gambar',
-                              errorText:
-                                  prov.isImageUrlEmpty ? "wajib diisi" : null),
-                        ),
-                        TextField(
-                          controller: prov.getAmountController,
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                              labelText: 'Jumlah Penjualan',
-                              errorText:
-                                  prov.isAmountEmpty ? "wajib diisi" : null),
-                        ),
-                        TextField(
-                          controller: prov.getStockController,
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                              labelText: 'Jumlah Stok',
-                              errorText:
-                                  prov.isAmountEmpty ? "wajib diisi" : null),
-                        ),
-                        TextField(
-                          controller: prov.getDateController,
-                          readOnly: true,
-                          onTap: () {
-                            showDatePicker(
-                              cancelText: "Batal",
-                              confirmText: 'Pilih',
-                              context: context,
-                              builder: (BuildContext context, Widget? child) {
-                                return Theme(
-                                  data: ThemeData(
-                                    colorScheme: const ColorScheme.light(
-                                      primary: primaryColor,
-                                    ),
+            final TextEditingController _namaController = prov.namaController;
+            final List<TextEditingController> _jumlahControllers =
+                List.generate(prov.availableProduk.length,
+                    (index) => TextEditingController());
+            final List<TextEditingController> _hargaControllers = List.generate(
+                prov.availableProduk.length,
+                (index) => TextEditingController());
+
+            return StatefulBuilder(
+              builder: (context, setState) {
+                return Dialog(
+                  insetPadding: EdgeInsets.zero,
+                  child: Scaffold(
+                    appBar: AppBar(
+                      backgroundColor: primaryColor,
+                      title: const Text('Tambah Produk Masuk'),
+                      centerTitle: false,
+                      automaticallyImplyLeading: false,
+                      leading: IconButton(
+                        onPressed: () => Navigator.of(context).pop(),
+                        icon: const Icon(Icons.close),
+                      ),
+                    ),
+                    body: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        children: [
+                          TextField(
+                            controller: _namaController,
+                            decoration: const InputDecoration(
+                                labelText: 'Nama Penyedia',
+                                labelStyle: TextStyle(color: primaryColor)),
+                          ),
+                          const SizedBox(height: 16),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: List.generate(
+                              prov.availableProduk.length,
+                              (index) {
+                                final produk = prov.availableProduk[index];
+                                final isSelected = selectedProduk[index];
+
+                                return Padding(
+                                  padding: const EdgeInsets.only(bottom: 8.0),
+                                  child: Row(
+                                    children: [
+                                      Checkbox(
+                                        value: isSelected,
+                                        activeColor: primaryColor,
+                                        onChanged: (selected) {
+                                          setState(() {
+                                            selectedProduk[index] =
+                                                selected ?? false;
+                                          });
+                                        },
+                                      ),
+                                      SizedBox(width: 8),
+                                      Expanded(
+                                        child: Text(produk),
+                                      ),
+                                      if (isSelected)
+                                        SizedBox(
+                                          width: 100,
+                                          child: TextField(
+                                            controller:
+                                                _jumlahControllers[index],
+                                            keyboardType: TextInputType.number,
+                                            decoration: InputDecoration(
+                                                labelText: 'Jumlah',
+                                                labelStyle: TextStyle(
+                                                    color: primaryColor)),
+                                          ),
+                                        ),
+                                      SizedBox(width: 8),
+                                      if (isSelected)
+                                        SizedBox(
+                                          width: 100,
+                                          child: TextField(
+                                            controller:
+                                                _hargaControllers[index],
+                                            keyboardType: TextInputType.number,
+                                            decoration: InputDecoration(
+                                                labelText: 'Harga',
+                                                labelStyle: TextStyle(
+                                                    color: primaryColor)),
+                                          ),
+                                        ),
+                                    ],
                                   ),
-                                  child: child ?? const Text(""),
                                 );
                               },
-                              initialDate: DateTime.now(),
-                              firstDate: DateTime(2000),
-                              lastDate: DateTime(2024),
-                            ).then((selectedDate) {
-                              if (selectedDate != null) {
-                                setState(() {
-                                  prov.getDateController.text =
-                                      DateFormat('yyyy/MM/dd')
-                                          .format(selectedDate);
-                                });
-                              }
-                            });
-                          },
-                          decoration: const InputDecoration(
-                            labelText: 'Tanggal Penjualan',
+                            ),
                           ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        ElevatedButton(
-                          onPressed: () {
-                            if (prov.getCodeController.text.isEmpty ||
-                                prov.getNameController.text.isEmpty ||
-                                prov.getMerkController.text.isEmpty ||
-                                prov.getDescriptionController.text.isEmpty ||
-                                prov.getPriceController.text.isEmpty ||
-                                prov.getImageUrlController.text.isEmpty ||
-                                prov.getAmountController.text.isEmpty ||
-                                prov.getDateController.text.isEmpty) {
-                              ScaffoldMessenger.of(context).showSnackBar(
+                          const SizedBox(height: 16),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              'Produk Terpilih: ${selectedProduk.asMap().entries.where((entry) => entry.value).map((entry) => prov.availableProduk[entry.key]).join(", ")}',
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          ElevatedButton(
+                            onPressed: () {
+                              final namaSupplier = _namaController.text;
+                              final produkSupplier = selectedProduk
+                                  .asMap()
+                                  .entries
+                                  .where((entry) => entry.value)
+                                  .map((entry) =>
+                                      prov.availableProduk[entry.key])
+                                  .toList();
+                              final jumlahProduk =
+                                  produkSupplier.asMap().entries.map((entry) {
+                                final index = entry.key;
+                                final jumlah = int.tryParse(
+                                        _jumlahControllers[index].text) ??
+                                    0;
+                                return jumlah;
+                              }).toList();
+                              final hargaProduk =
+                                  produkSupplier.asMap().entries.map((entry) {
+                                final index = entry.key;
+                                final harga = int.tryParse(
+                                        _hargaControllers[index].text) ??
+                                    0;
+                                return harga;
+                              }).toList();
+                              if (namaSupplier.isEmpty ||
+                                  jumlahProduk.contains(0) ||
+                                  hargaProduk.contains(0)) {
+                                ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text('Harap lengkapi data dengan benar!!!'),
                                 ),
-                              );
-                              return; 
-                            }
+                                );
+                                return;
+                              }
 
-                            prov.AddProduct = {
-                              "name": prov.getNameController.text,
-                              "merk": prov.getMerkController.text,
-                              "description": prov.getDescriptionController.text,
-                              "price":
-                                  double.parse(prov.getPriceController.text),
-                              "imageUrl": prov.getImageUrlController.text,
-                              "code": prov.getCodeController.text,
-                              "amount":
-                                  double.parse(prov.getAmountController.text),
-                              "date": prov.getDateController.text,
-                            };
-                            Navigator.of(context).pop();
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: primaryColor,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
+                              prov.addSupplierData(
+                                namaSupplier,
+                                produkSupplier,
+                                jumlahProduk,
+                                hargaProduk,
+                              );
+                              _namaController.clear();
+                              selectedProduk.clear();
+                              _jumlahControllers
+                                  .forEach((controller) => controller.clear());
+                              _hargaControllers
+                                  .forEach((controller) => controller.clear());
+                              Navigator.pop(context);
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: primaryColor,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                            ),
+                            child: const Padding(
+                              padding: EdgeInsets.all(10.0),
+                              child: Text(
+                                'Tambah',
+                                style: TextStyle(fontSize: 15),
+                              ),
                             ),
                           ),
-                          child: const Padding(
-                            padding: EdgeInsets.all(10.0),
-                            child: Text(
-                              'Tambah',
-                              style: TextStyle(fontSize: 15),
-                            ),
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ),
+                );
+              },
             );
           },
         );
