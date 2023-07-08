@@ -34,7 +34,8 @@ class MySupplierProvider extends ChangeNotifier {
 
   List<Map<String, dynamic>> get filteredSupplierData => _filteredSupplierData;
 
-  void addSupplierData(String namaSupplier, List<String> produkSupplier, List<int> jumlahProduk, ) {
+  void addSupplierData(String namaSupplier, List<String> produkSupplier,
+      List<int> jumlahProduk, List<int> hargaProduk) {
     final newSupplier = {
       'nama': namaSupplier,
       'produk': List.generate(
@@ -42,7 +43,7 @@ class MySupplierProvider extends ChangeNotifier {
         (index) => {
           'namaProduk': produkSupplier[index],
           'jumlah': jumlahProduk[index],
-          'harga': jumlahProduk[index]
+          'harga': hargaProduk[index],
         },
       ),
     };
@@ -55,5 +56,4 @@ class MySupplierProvider extends ChangeNotifier {
     _filteredSupplierData = filteredData;
     notifyListeners();
   }
-  
 }

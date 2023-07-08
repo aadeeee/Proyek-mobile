@@ -72,7 +72,7 @@ class MyHomeProvider extends ChangeNotifier {
   }
 
 
-  List _pelanggan = [
+  final List _pelanggan = [
     {
       'nama': 'Yudi',
       'hp':'0852-5141-9882'
