@@ -31,7 +31,7 @@ class _MyAddTransactionsState extends State<MyAddTransactions> {
                   appBar: AppBar(
                     backgroundColor: primaryColor,
                     title: Text('Tambah Transaksi', style: GoogleFonts.inter()),
-                    centerTitle: false,
+                    centerTitle: true,
                     automaticallyImplyLeading: false,
                     leading: IconButton(
                       onPressed: () => Navigator.of(context).pop(),

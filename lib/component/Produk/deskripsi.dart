@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../Variabel/global.dart';
 
 class MyDescription extends StatefulWidget {
@@ -27,13 +28,8 @@ class _MyDescriptionState extends State<MyDescription> {
           onPressed: () => Navigator.pop(context, false),
           color: Colors.white,
         ),
-        title: const Text(
-          "Detail Produk",
-          style: TextStyle(
-            fontSize: 20,
-            color: Colors.white,
-          ),
-        ),
+        title: Text("Detail Produk", style: GoogleFonts.inter()),
+        centerTitle: true,
       ),
       body: Column(
         children: [

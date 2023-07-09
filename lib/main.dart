@@ -21,7 +21,7 @@ void main() {
       ChangeNotifierProvider(create: (_) => TransactionProvider()),
       ChangeNotifierProvider(create: (_) => MySupplierProvider()),
       ChangeNotifierProvider(create: (_) => MyProductProvider()),
-    ], child:  const MyApp()),
+    ], child: const MyApp()),
   );
 }
 

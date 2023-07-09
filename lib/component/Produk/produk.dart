@@ -22,23 +22,21 @@ class _MyProductState extends State<MyProduct>
     _tabController = TabController(length: 2, vsync: this);
   }
 
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: primaryColor,
         title: Center(
-          child: Text('Produk',
-              style: GoogleFonts.inter(fontWeight: FontWeight.w600, fontSize: 20)
-              ),
+          child: Text('Produk', style: GoogleFonts.inter()),
         ),
         bottom: TabBar(
           indicatorColor: Colors.white,
           controller: _tabController,
           tabs: const [
-            Tab(text: 'Penjualan',),
+            Tab(
+              text: 'Penjualan',
+            ),
             Tab(text: 'Pembelian'),
           ],
         ),
@@ -49,9 +47,7 @@ class _MyProductState extends State<MyProduct>
           Center(
             child: MyProductList(),
           ),
-          Center(
-            child: MySupplier()
-          ),
+          Center(child: MySupplier()),
         ],
       ),
     );

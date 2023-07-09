@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
@@ -20,8 +21,9 @@ class _MyEditTransactionState extends State<MyEditTransaction> {
     var prov = Provider.of<TransactionProvider>(context);
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Ubah Transaksi"),
+          title: Text("Ubah Transaksi", style: GoogleFonts.inter()),
           backgroundColor: primaryColor,
+          centerTitle: true,
         ),
         body: Column(
           children: [

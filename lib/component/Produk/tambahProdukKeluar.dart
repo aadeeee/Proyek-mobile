@@ -31,8 +31,9 @@ class _MyAddOutComeState extends State<MyAddOutCome> {
               child: Scaffold(
                 appBar: AppBar(
                   backgroundColor: primaryColor,
-                  title: Text('Tambah Produk', style: GoogleFonts.inter()),
-                  centerTitle: false,
+                  title:
+                      Text('Tambah Produk Keluar', style: GoogleFonts.inter()),
+                  centerTitle: true,
                   automaticallyImplyLeading: false,
                   leading: IconButton(
                     onPressed: () => Navigator.of(context).pop(),
@@ -45,6 +46,13 @@ class _MyAddOutComeState extends State<MyAddOutCome> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        Center(
+                          child: SizedBox(
+                              child: Image.asset(
+                            'assets/images/produkkeluar.png',
+                            height: 200,
+                          )),
+                        ),
                         TextField(
                           controller: prov.getCodeController,
                           decoration: InputDecoration(
@@ -76,35 +84,48 @@ class _MyAddOutComeState extends State<MyAddOutCome> {
                           ),
                           keyboardType: TextInputType.number,
                         ),
-                        Row(
-                          children: [
-                            ElevatedButton(
-                              onPressed: () async {
-                                final picker = ImagePicker();
-                                final XFile? pickedImage =
-                                    await picker.pickImage(
-                                  source: ImageSource.gallery,
-                                );
-                                if (pickedImage != null) {
-                                  final File newImage = File(pickedImage.path);
-                                  setState(() {
-                                    _imagePath = pickedImage.path;
-                                  });
-                                }
-                              },
-                              child: const Text('Pilih Gambar'),
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: primaryColor),
-                            ),
-                            if (_imagePath != null)
-                              Expanded(
-                                child: Text(
-                                  'Link: ${_imagePath!.split('/').last}',
-                                  style: TextStyle(fontSize: 16),
-                                  overflow: TextOverflow.ellipsis,
-                                ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                          child: Row(
+                            children: [
+                              Text(
+                                'Gambar Produk : ',
+                                style: TextStyle(fontSize: 15),
                               ),
-                          ],
+                              ElevatedButton(
+                                onPressed: () async {
+                                  final picker = ImagePicker();
+                                  final XFile? pickedImage =
+                                      await picker.pickImage(
+                                    source: ImageSource.gallery,
+                                  );
+                                  if (pickedImage != null) {
+                                    final File newImage =
+                                        File(pickedImage.path);
+                                    setState(() {
+                                      _imagePath = pickedImage.path;
+                                    });
+                                  }
+                                },
+                                child: Row(
+                                  children: [
+                                    Icon(Icons.add),
+                                    Icon(Icons.photo_size_select_actual_rounded)
+                                  ],
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: primaryColor),
+                              ),
+                              if (_imagePath != null)
+                                Expanded(
+                                  child: Text(
+                                    'Link: ${_imagePath!.split('/').last}',
+                                    style: TextStyle(fontSize: 16),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                            ],
+                          ),
                         ),
                         TextField(
                           controller: prov.getAmountController,
@@ -158,67 +179,71 @@ class _MyAddOutComeState extends State<MyAddOutCome> {
                         const SizedBox(
                           height: 10,
                         ),
-                        Center(
-                          child: ElevatedButton(
-                            onPressed: () {
-                              if (prov.getCodeController.text.isEmpty ||
-                                  prov.getNameController.text.isEmpty ||
-                                  prov.getMerkController.text.isEmpty ||
-                                  prov.getDescriptionController.text.isEmpty ||
-                                  prov.getPriceController.text.isEmpty ||
-                                  prov.getAmountController.text.isEmpty ||
-                                  prov.getDateController.text.isEmpty) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      'Harap lengkapi data dengan benar!!!',
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20.0),
+                          child: Center(
+                            child: ElevatedButton(
+                              onPressed: () {
+                                if (prov.getCodeController.text.isEmpty ||
+                                    prov.getNameController.text.isEmpty ||
+                                    prov.getMerkController.text.isEmpty ||
+                                    prov.getDescriptionController.text
+                                        .isEmpty ||
+                                    prov.getPriceController.text.isEmpty ||
+                                    prov.getAmountController.text.isEmpty ||
+                                    prov.getDateController.text.isEmpty) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'Harap lengkapi data dengan benar!!!',
+                                      ),
                                     ),
-                                  ),
-                                );
-                                return;
-                              }
+                                  );
+                                  return;
+                                }
 
-                              if (_imagePath != null) {
-                                final newProduct = {
-                                  "name": prov.getNameController.text,
-                                  "merk": prov.getMerkController.text,
-                                  "description":
-                                      prov.getDescriptionController.text,
-                                  "price": double.parse(
-                                      prov.getPriceController.text),
-                                  "imageUrl": _imagePath!,
-                                  "code": prov.getCodeController.text,
-                                  "amount": double.parse(
-                                      prov.getAmountController.text),
-                                  "date": prov.getDateController.text,
-                                  'stock': prov.getStockController.text
-                                };
-                                _imagePath = null;
-                                prov.addProduct(newProduct);
-                              }
+                                if (_imagePath != null) {
+                                  final newProduct = {
+                                    "name": prov.getNameController.text,
+                                    "merk": prov.getMerkController.text,
+                                    "description":
+                                        prov.getDescriptionController.text,
+                                    "price": double.parse(
+                                        prov.getPriceController.text),
+                                    "imageUrl": _imagePath!,
+                                    "code": prov.getCodeController.text,
+                                    "amount": double.parse(
+                                        prov.getAmountController.text),
+                                    "date": prov.getDateController.text,
+                                    'stock': prov.getStockController.text
+                                  };
+                                  _imagePath = null;
+                                  prov.addProduct(newProduct);
+                                }
 
-                              prov.getCodeController.clear();
-                              prov.getNameController.clear();
-                              prov.getMerkController.clear();
-                              prov.getDescriptionController.clear();
-                              prov.getPriceController.clear();
-                              prov.getAmountController.clear();
-                              prov.getStockController.clear();
-                              prov.getDateController.clear();
+                                prov.getCodeController.clear();
+                                prov.getNameController.clear();
+                                prov.getMerkController.clear();
+                                prov.getDescriptionController.clear();
+                                prov.getPriceController.clear();
+                                prov.getAmountController.clear();
+                                prov.getStockController.clear();
+                                prov.getDateController.clear();
 
-                              Navigator.of(context).pop();
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: primaryColor,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15),
+                                Navigator.of(context).pop();
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: primaryColor,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
                               ),
-                            ),
-                            child: const Padding(
-                              padding: EdgeInsets.all(10.0),
-                              child: Text(
-                                'Tambah',
-                                style: TextStyle(fontSize: 15),
+                              child: const Padding(
+                                padding: EdgeInsets.all(10.0),
+                                child: Text(
+                                  'Tambah',
+                                  style: TextStyle(fontSize: 15),
+                                ),
                               ),
                             ),
                           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile/Variabel/global.dart';
 
 class ProdukPage extends StatefulWidget {
@@ -34,8 +35,9 @@ class _ProdukPageState extends State<ProdukPage> {
     final data = widget.produk['nama'];
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Daftar Produk'),
+        title: Text('Daftar Produk', style: GoogleFonts.inter()),
         backgroundColor: primaryColor,
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -46,8 +48,10 @@ class _ProdukPageState extends State<ProdukPage> {
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Text(
                 data,
-                style:
-                    const TextStyle(fontSize: 25, fontWeight: FontWeight.bold, decoration: TextDecoration.underline),
+                style: const TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                    decoration: TextDecoration.underline),
               ),
             ),
             const SizedBox(height: 10.0),

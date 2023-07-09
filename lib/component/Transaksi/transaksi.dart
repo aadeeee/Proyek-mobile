@@ -24,7 +24,7 @@ class _TransactionPageState extends State<TransactionPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Center(child: Text('Transaksi')),
+        title:  Center(child: Text('Transaksi', style: GoogleFonts.inter())),
         backgroundColor: primaryColor,
       ),
       body: ListView.builder(
