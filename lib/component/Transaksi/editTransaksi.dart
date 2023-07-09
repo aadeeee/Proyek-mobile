@@ -25,11 +25,17 @@ class _MyEditTransactionState extends State<MyEditTransaction> {
         ),
         body: Column(
           children: [
+            SizedBox(
+                child: Image.asset(
+              'assets/images/addtransaksi.png',
+              height: 250,
+            )),
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: TextField(
                 controller: prov.getNamaController,
                 decoration: const InputDecoration(
+                  icon: Icon(Icons.person, color: primaryColor, size: 30),
                   labelText: 'Nama pelanggan',
                 ),
               ),
@@ -39,6 +45,7 @@ class _MyEditTransactionState extends State<MyEditTransaction> {
               child: TextField(
                 controller: prov.getJumlahController,
                 decoration: const InputDecoration(
+                  icon: Icon(Icons.credit_card, color: primaryColor, size: 30),
                   labelText: 'Jumlah Transaksi',
                 ),
               ),
@@ -77,37 +84,42 @@ class _MyEditTransactionState extends State<MyEditTransaction> {
                   });
                 },
                 decoration: const InputDecoration(
+                  icon: Icon(Icons.calendar_month_outlined,
+                      color: primaryColor, size: 30),
                   labelText: 'Pilih Tanggal',
                 ),
               ),
             ),
-            ElevatedButton(
-              onPressed: () {
-                final data = {
-                  'nama': prov.getNamaController.text,
-                  'jumlah': double.parse(prov.getJumlahController.text),
-                  'tanggal': _selectedDate ?? DateTime.now(),
-                };
-                if (_selectedIndex != -1) {
-                  prov.editTransaction(_selectedIndex, data);
-                }
-                prov.getNamaController.clear();
-                prov.getJumlahController.clear();
-                prov.getTanggalController.clear();
-                setState(() {
-                  _selectedIndex = -1;
-                });
-                Navigator.of(context).pop();
-              },
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: primaryColor,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15))),
-              child: const Padding(
-                padding: EdgeInsets.all(10.0),
-                child: Text(
-                  'Simpan Perubahan',
-                  style: TextStyle(fontSize: 15),
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: ElevatedButton(
+                onPressed: () {
+                  final data = {
+                    'nama': prov.getNamaController.text,
+                    'jumlah': double.parse(prov.getJumlahController.text),
+                    'tanggal': _selectedDate ?? DateTime.now(),
+                  };
+                  if (_selectedIndex != -1) {
+                    prov.editTransaction(_selectedIndex, data);
+                  }
+                  prov.getNamaController.clear();
+                  prov.getJumlahController.clear();
+                  prov.getTanggalController.clear();
+                  setState(() {
+                    _selectedIndex = -1;
+                  });
+                  Navigator.of(context).pop();
+                },
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: primaryColor,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15))),
+                child: const Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Text(
+                    'Simpan Perubahan',
+                    style: TextStyle(fontSize: 15),
+                  ),
                 ),
               ),
             ),

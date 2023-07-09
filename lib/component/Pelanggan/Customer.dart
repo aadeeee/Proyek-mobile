@@ -18,7 +18,14 @@ class _MyCustomerListState extends State<MyCustomerList> {
   Widget build(BuildContext context) {
     var prov = Provider.of<CustomerProvider>(context);
     return Scaffold(
-      body: Padding(
+      body: 
+      // NestedScrollView(headerSliverBuilder: (context,innerBoxIsScroll) =>[
+      //   SliverAppBar(
+      //     title: Text('Data Pelanggan'),
+      //     centerTitle: true,
+      //   )
+      // ], body: )
+      Padding(
           padding: const EdgeInsets.all(8.0),
           child: ListView(
             children: [

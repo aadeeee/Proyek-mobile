@@ -31,47 +31,52 @@ class _TransactionPageState extends State<TransactionPage> {
         itemCount: prov.transactions.length,
         itemBuilder: (ctx, index) {
           final transaction = prov.transactions[index];
-          return ListTile(
-            title: Text(transaction['nama']),
-            isThreeLine: true,
-            subtitle: Text(
-                'Rp. ${rupiahFormat.format(transaction['jumlah'])}\n${DateFormat('yyyy/MM/dd').format(transaction['tanggal'])}'),
-            trailing: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                IconButton(
-                  icon: const Icon(
-                    Icons.edit,
-                    color: Colors.green,
-                  ),
-                  onPressed: () {
-                    prov.getNamaController.text = transaction['nama'];
-                    prov.getJumlahController.text =
-                        transaction['jumlah'].toString();
-                    final transactionDate = transaction['tanggal'] as DateTime;
-                    final formattedDate =
-                        DateFormat('yyyy/MM/dd').format(transactionDate);
-                    prov.getTanggalController.text = formattedDate;
-                    setState(() {
-                      _selectedIndex = index;
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => const MyEditTransaction()));
-                    });
-                  },
+          return Column(
+            children: [
+              ListTile(
+                title: Text(transaction['nama']),
+                isThreeLine: true,
+                subtitle: Text(
+                    'Rp. ${rupiahFormat.format(transaction['jumlah'])}\n${DateFormat('yyyy/MM/dd').format(transaction['tanggal'])}'),
+                trailing: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    IconButton(
+                      icon: const Icon(
+                        Icons.edit,
+                        color: Colors.green,
+                      ),
+                      onPressed: () {
+                        prov.getNamaController.text = transaction['nama'];
+                        prov.getJumlahController.text =
+                            transaction['jumlah'].toString();
+                        final transactionDate = transaction['tanggal'] as DateTime;
+                        final formattedDate =
+                            DateFormat('yyyy/MM/dd').format(transactionDate);
+                        prov.getTanggalController.text = formattedDate;
+                        setState(() {
+                          _selectedIndex = index;
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => const MyEditTransaction()));
+                        });
+                      },
+                    ),
+                    IconButton(
+                      icon: const Icon(
+                        Icons.delete,
+                        color: Colors.red,
+                      ),
+                      onPressed: () {
+                        prov.deleteTransaction(index);
+                      },
+                    ),
+                  ],
                 ),
-                IconButton(
-                  icon: const Icon(
-                    Icons.delete,
-                    color: Colors.red,
-                  ),
-                  onPressed: () {
-                    prov.deleteTransaction(index);
-                  },
-                ),
-              ],
-            ),
+              ),
+              Divider(color: primaryColor,)
+            ],
           );
         },
       ),
