@@ -152,15 +152,15 @@ class _MyProfilState extends State<MyProfil> {
                                       onPressed: () {
                                         prov1.usernameController.clear();
                                         prov1.passwordController.clear();
-                                        Navigator.pushAndRemoveUntil(
+                                        Navigator.pushReplacement(
                                           context,
                                           MaterialPageRoute(
                                               builder: (_) => const MyLogin()),
-                                          (route) => false,
+                                          // (route) => false,
                                         );
                                       },
                                       child: const Text(
-                                        'Keluar',
+                                        'Keluar'
                                         style: TextStyle(color: primaryColor),
                                       ),
                                     ),
