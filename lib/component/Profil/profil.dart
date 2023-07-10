@@ -94,7 +94,7 @@ class _MyProfilState extends State<MyProfil> {
                           border:
                               Border(bottom: BorderSide(color: Colors.grey))),
                       child: ListTile(
-                        title: const Text('Kata Sandi'),
+                        title: const Text('Pemeriksa Keamanan'),
                         leading: const ImageIcon(
                             AssetImage('assets/images/keamanan.png')),
                         iconColor: Colors.black,
@@ -152,11 +152,12 @@ class _MyProfilState extends State<MyProfil> {
                                       onPressed: () {
                                         prov1.usernameController.clear();
                                         prov1.passwordController.clear();
-                                        Navigator.pushReplacement(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (_) =>
-                                                    const MyLogin()));
+                                        Navigator.pushAndRemoveUntil(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (_) => const MyLogin()),
+                                          (route) => false,
+                                        );
                                       },
                                       child: const Text(
                                         'Keluar',

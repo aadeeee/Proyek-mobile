@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile/Variabel/global.dart';
 
 class MyDetailCustomer extends StatefulWidget {
@@ -15,7 +16,8 @@ class _MyDetailCustomerState extends State<MyDetailCustomer> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Detail Pelanggan"),
+        title: Text("Detail Pelanggan", style: GoogleFonts.inter()),
+        centerTitle: true,
         backgroundColor: primaryColor,
       ),
       body: SingleChildScrollView(
@@ -44,7 +46,7 @@ class _MyDetailCustomerState extends State<MyDetailCustomer> {
                 children: [
                   const Text(
                     'Produk yang Dibeli     : ',
-                    style: TextStyle(fontSize: 16,height: 1.5),
+                    style: TextStyle(fontSize: 16, height: 1.5),
                   ),
                   // const SizedBox(height: 8),
                   Column(
