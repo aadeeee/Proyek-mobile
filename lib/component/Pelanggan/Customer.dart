@@ -18,13 +18,7 @@ class _MyCustomerListState extends State<MyCustomerList> {
   Widget build(BuildContext context) {
     var prov = Provider.of<CustomerProvider>(context);
     return Scaffold(
-      body: 
-      // NestedScrollView(headerSliverBuilder: (context,innerBoxIsScroll) =>[
-      //   SliverAppBar(
-      //     title: Text('Data Pelanggan'),
-      //     centerTitle: true,
-      //   )
-      // ], body: )
+      body:
       Padding(
           padding: const EdgeInsets.all(8.0),
           child: ListView(
@@ -33,6 +27,7 @@ class _MyCustomerListState extends State<MyCustomerList> {
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: TextField(
                   controller: prov.getNameController,
+                  cursorColor: Colors.black,
                   onChanged: (value) {
                     setState(() {
                       searchText = value;

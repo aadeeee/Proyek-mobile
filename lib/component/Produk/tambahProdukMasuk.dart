@@ -65,6 +65,7 @@ class _MyAddSupplierState extends State<MyAddSupplier> {
                               height: 16,
                             ),
                             TextField(
+                              cursorColor: Colors.black,
                               controller: _namaController,
                               decoration: const InputDecoration(
                                   icon: Icon(Icons.factory,
@@ -75,7 +76,7 @@ class _MyAddSupplierState extends State<MyAddSupplier> {
                             const SizedBox(
                               height: 16,
                             ),
-                            Text(
+                            const Text(
                               'Daftar Produk',
                               style: TextStyle(
                                   fontSize: 15, fontWeight: FontWeight.bold),
@@ -102,7 +103,7 @@ class _MyAddSupplierState extends State<MyAddSupplier> {
                                             });
                                           },
                                         ),
-                                        SizedBox(width: 8),
+                                        const SizedBox(width: 8),
                                         Expanded(
                                           child: Text(produk),
                                         ),
@@ -114,13 +115,13 @@ class _MyAddSupplierState extends State<MyAddSupplier> {
                                                   _jumlahControllers[index],
                                               keyboardType:
                                                   TextInputType.number,
-                                              decoration: InputDecoration(
+                                              decoration: const InputDecoration(
                                                   labelText: 'Jumlah',
                                                   labelStyle: TextStyle(
                                                       color: primaryColor)),
                                             ),
                                           ),
-                                        SizedBox(width: 8),
+                                        const SizedBox(width: 8),
                                         if (isSelected)
                                           SizedBox(
                                             width: 100,
@@ -129,7 +130,7 @@ class _MyAddSupplierState extends State<MyAddSupplier> {
                                                   _hargaControllers[index],
                                               keyboardType:
                                                   TextInputType.number,
-                                              decoration: InputDecoration(
+                                              decoration: const InputDecoration(
                                                   labelText: 'Harga',
                                                   labelStyle: TextStyle(
                                                       color: primaryColor)),
@@ -141,7 +142,7 @@ class _MyAddSupplierState extends State<MyAddSupplier> {
                                 },
                               ),
                             ),
-                            Divider(),
+                            const Divider(),
                             const SizedBox(height: 16),
                             Align(
                               alignment: Alignment.centerLeft,
@@ -196,7 +197,7 @@ class _MyAddSupplierState extends State<MyAddSupplier> {
                                       jumlahProduk.contains(0) ||
                                       hargaProduk.contains(0)) {
                                     ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
+                                      const SnackBar(
                                         content: Text(
                                             'Harap lengkapi data dengan benar!!!'),
                                       ),

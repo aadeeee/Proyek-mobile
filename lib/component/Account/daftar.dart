@@ -93,7 +93,9 @@ class _MyRegisterState extends State<MyRegister> {
                             padding: const EdgeInsets.all(10),
                             child: TextField(
                               controller: prov.nohandphoneController,
+                              cursorColor: Colors.black,
                               decoration: InputDecoration(
+                              
                                   prefixIcon: const Icon(
                                     Icons.phone,
                                     color: Colors.black,
@@ -116,6 +118,7 @@ class _MyRegisterState extends State<MyRegister> {
                             padding: const EdgeInsets.all(10),
                             child: TextField(
                               controller: prov.emailController,
+                              cursorColor: Colors.black,
                               decoration: InputDecoration(
                                   prefixIcon: const Icon(
                                     Icons.mail,
@@ -140,6 +143,7 @@ class _MyRegisterState extends State<MyRegister> {
                             child: TextField(
                               obscureText: prov.getObsecureTextPasswword,
                               controller: prov.passwordController,
+                              cursorColor: Colors.black,
                               decoration: InputDecoration(
                                   prefixIcon: const Icon(
                                     Icons.lock,
@@ -148,7 +152,7 @@ class _MyRegisterState extends State<MyRegister> {
                                   suffixIcon: IconButton(
                                       icon: Icon(prov.getObsecureTextPasswword
                                           ? Icons.visibility_off
-                                          : Icons.visibility),
+                                          : Icons.visibility,color: Colors.black,),
                                       onPressed: () {
                                         setState(() {
                                           prov.setObsecureTextPassword =
@@ -174,6 +178,7 @@ class _MyRegisterState extends State<MyRegister> {
                             child: TextField(
                               obscureText: prov.getObsecureTextRePasswword,
                               controller: prov.repasswordController,
+                              cursorColor: Colors.black,
                               decoration: InputDecoration(
                                   prefixIcon: const Icon(
                                     Icons.lock,
@@ -182,7 +187,7 @@ class _MyRegisterState extends State<MyRegister> {
                                   suffixIcon: IconButton(
                                       icon: Icon(prov.getObsecureTextRePasswword
                                           ? Icons.visibility_off
-                                          : Icons.visibility),
+                                          : Icons.visibility,color: Colors.black,),
                                       onPressed: () {
                                         setState(() {
                                           prov.setObsecureTextRePassword =
