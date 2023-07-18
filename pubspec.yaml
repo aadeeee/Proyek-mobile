@@ -33,14 +33,11 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_datetime_picker: ^1.5.1
-  flutter_launcher_icons: ^0.13.1
-  flutter_otp_text_field: ^1.1.1
   google_fonts: ^4.0.4
   image_picker: ^0.8.9
   intl: ^0.18.1
   path_provider: ^2.0.15
   provider: ^6.0.5
-  quickalert: ^1.0.1
   scrollable_positioned_list: ^0.3.8
 
 dev_dependencies:

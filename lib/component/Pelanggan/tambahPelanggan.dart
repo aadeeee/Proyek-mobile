@@ -48,10 +48,11 @@ class _AddCustomerDialogState extends State<AddCustomerDialog> {
             ),
           ),
           body: SingleChildScrollView(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Column(
               children: [
                 TextField(
+                  cursorColor: Colors.black,
                   controller: prov.nameController,
                   decoration: const InputDecoration(
                     icon: Icon(Icons.person, color: primaryColor, size: 30),
@@ -59,6 +60,7 @@ class _AddCustomerDialogState extends State<AddCustomerDialog> {
                   ),
                 ),
                 TextField(
+                  cursorColor: Colors.black,
                   controller: prov.phoneController,
                   keyboardType: TextInputType.phone,
                   decoration: const InputDecoration(
@@ -67,6 +69,7 @@ class _AddCustomerDialogState extends State<AddCustomerDialog> {
                   ),
                 ),
                 TextField(
+                  cursorColor: Colors.black,
                   onChanged: _updateOrderQuantity,
                   keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
@@ -78,8 +81,8 @@ class _AddCustomerDialogState extends State<AddCustomerDialog> {
                     labelText: 'Jumlah Pesanan',
                   ),
                 ),
-                Divider(),
-                Row(
+                const Divider(),
+                 Row(
                   children: [
                     Text(
                       'Daftar Produk',

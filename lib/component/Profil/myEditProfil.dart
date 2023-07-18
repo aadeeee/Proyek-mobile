@@ -47,6 +47,7 @@ class _MyEditProfilState extends State<MyEditProfil> {
                 padding: const EdgeInsets.only(
                     left: 15, right: 15, top: 10, bottom: 10),
                 child: TextField(
+                  cursorColor: Colors.black,
                     controller: prov.namaPemilikTokoController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
@@ -66,6 +67,7 @@ class _MyEditProfilState extends State<MyEditProfil> {
                     left: 15, right: 15, top: 10, bottom: 10),
                 child: TextField(
                     controller: prov.namaTokoController,
+                    cursorColor: Colors.black,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
@@ -83,6 +85,7 @@ class _MyEditProfilState extends State<MyEditProfil> {
                 padding: const EdgeInsets.only(
                     left: 15, right: 15, top: 10, bottom: 10),
                 child: TextField(
+                  cursorColor: Colors.black,
                     controller: prov.alamatTokoController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
@@ -101,6 +104,7 @@ class _MyEditProfilState extends State<MyEditProfil> {
                 padding: const EdgeInsets.only(
                     left: 15, right: 15, top: 10, bottom: 10),
                 child: TextField(
+                  cursorColor: Colors.black,
                     controller: prov.kategoriController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(

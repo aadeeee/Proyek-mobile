@@ -26,6 +26,7 @@ class _MySupplierState extends State<MySupplier> {
           child: Column(
             children: [
               TextField(
+                cursorColor: Colors.black,
                 controller: prov.searchController,
                 onChanged: (value) {
                   final filteredData = prov.supplierData.where((supplier) {

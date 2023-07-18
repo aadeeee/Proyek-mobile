@@ -22,7 +22,7 @@ class _MyKataSandiState extends State<MyKataSandi> {
           color: Colors.white,
         ),
         centerTitle: true,
-        title: const Text(
+        title:  Text(
           "Kata Sandi",
           style: TextStyle(
             fontSize: 20,
@@ -36,7 +36,7 @@ class _MyKataSandiState extends State<MyKataSandi> {
         padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 25),
         child: Column(
           children: [
-            const Padding(
+             Padding(
               padding: EdgeInsets.only(top: 10.0),
               child: Text(
                 'Kata sandi Anda harus lebih dari enam karakter dan berisi angka.huruf, dan karakter khusus (!@%).',
@@ -48,7 +48,7 @@ class _MyKataSandiState extends State<MyKataSandi> {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Padding(
+                     Padding(
                       padding: EdgeInsets.only(top: 8.0),
                       child: Text(
                         'Kata sandi saat ini',
@@ -57,7 +57,7 @@ class _MyKataSandiState extends State<MyKataSandi> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 8.0),
+                      padding:  EdgeInsets.only(top: 8.0),
                       child: SizedBox(
                         height: 40,
                         child: TextFormField(
@@ -86,6 +86,7 @@ class _MyKataSandiState extends State<MyKataSandi> {
                         key: _formState,
                         height: 40,
                         child: TextFormField(
+                            cursorColor: Colors.black,
                             controller: textController,
                             decoration: const InputDecoration(
                                 hintText: 'Kata sandi baru',
@@ -111,6 +112,7 @@ class _MyKataSandiState extends State<MyKataSandi> {
                       child: SizedBox(
                         height: 40,
                         child: TextFormField(
+                            cursorColor: Colors.black,
                             decoration: const InputDecoration(
                                 hintText: 'Ketik ulang kata sandi',
                                 hintStyle: TextStyle(fontSize: 12.0),

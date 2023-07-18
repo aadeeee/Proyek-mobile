@@ -1,9 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:mobile/Provider/homeProvider.dart';
 import 'package:mobile/Provider/profilProvider.dart';
 import 'package:provider/provider.dart';
-import '../../Provider/profilProvider.dart';
+
 import '../Variabel/global.dart';
 
 class MyHome extends StatefulWidget {
@@ -12,9 +13,68 @@ class MyHome extends StatefulWidget {
   State<MyHome> createState() => _MyHomeState();
 }
 
-class _MyHomeState extends State<MyHome> {
+class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
+  late AnimationController _hourAnimationController;
+  late AnimationController _minuteAnimationController;
+  late AnimationController _secondAnimationController;
+  late Animation<double> _hourAnimation;
+  late Animation<double> _minuteAnimation;
+  late Animation<double> _secondAnimation;
+  late DateTime _currentDateTime;
+  bool _disposed = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _hourAnimationController = AnimationController(
+      vsync: this,
+      duration: const Duration(hours: 12),
+    )..repeat();
+    _minuteAnimationController = AnimationController(
+      vsync: this,
+      duration: const Duration(minutes: 60),
+    )..repeat();
+    _secondAnimationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 60),
+    )..repeat();
+
+    _hourAnimation =
+        Tween<double>(begin: 0, end: 1).animate(_hourAnimationController);
+    _minuteAnimation =
+        Tween<double>(begin: 0, end: 1).animate(_minuteAnimationController);
+    _secondAnimation =
+        Tween<double>(begin: 0, end: 1).animate(_secondAnimationController);
+
+    _currentDateTime = DateTime.now();
+    _startDateTimeUpdate();
+  }
+
+  @override
+  void dispose() {
+    _disposed = true;
+    _hourAnimationController.dispose();
+    _minuteAnimationController.dispose();
+    _secondAnimationController.dispose();
+    super.dispose();
+  }
+
+  void _startDateTimeUpdate() async {
+    while (!_disposed) {
+      await Future.delayed(const Duration(seconds: 1));
+      if (!_disposed) {
+        setState(() {
+          _currentDateTime = DateTime.now();
+        });
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final hourString = DateFormat('HH').format(_currentDateTime);
+    final minuteString = DateFormat('mm').format(_currentDateTime);
+    final secondString = DateFormat('ss').format(_currentDateTime);
     var prov = Provider.of<MyHomeProvider>(context);
     var prov1 = Provider.of<ProfilProvider>(context);
     var tmp = prov.jsonData['data'];
@@ -34,9 +94,6 @@ class _MyHomeState extends State<MyHome> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // SizedBox(
-              //   height: 10,
-              // ),
               // Carousel Slider
               Stack(
                 children: [
@@ -87,7 +144,6 @@ class _MyHomeState extends State<MyHome> {
                   ),
                 ],
               ),
-              // Carousel Indicator
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: prov.carouselItem.map((item) {
@@ -105,7 +161,68 @@ class _MyHomeState extends State<MyHome> {
                 }).toList(),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 15, top: 20),
+                padding: const EdgeInsets.only(top: 15, bottom: 15),
+                child: AnimatedBuilder(
+                  animation: _hourAnimationController,
+                  builder: (context, child) {
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Transform.scale(
+                          scale: 1.0 + _hourAnimation.value * 0.1,
+                          child: Text(
+                            hourString,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 4),
+                        const Text(
+                          ":",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
+                        ),
+                        const SizedBox(width: 4),
+                        Transform.scale(
+                          scale: 1.0 + _minuteAnimation.value * 0.1,
+                          child: Text(
+                            minuteString,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 4),
+                        const Text(
+                          ":",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
+                        ),
+                        const SizedBox(width: 4),
+                        Transform.scale(
+                          scale: 1.0 + _secondAnimation.value * 0.1,
+                          child: Text(
+                            secondString,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 15, top: 20),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -117,7 +234,7 @@ class _MyHomeState extends State<MyHome> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      padding: const EdgeInsets.only(left: 10),
                       child: Icon(Icons.shopping_bag_outlined),
                     ),
                   ],
@@ -126,7 +243,6 @@ class _MyHomeState extends State<MyHome> {
               SizedBox(
                 height: 190,
                 child: ListView.builder(
-                  
                   scrollDirection: Axis.horizontal,
                   itemCount: tmp.length,
                   itemBuilder: (context, index) => Card(
@@ -149,7 +265,7 @@ class _MyHomeState extends State<MyHome> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 15, top: 20),
+                padding: EdgeInsets.only(left: 15, top: 20),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
@@ -161,7 +277,7 @@ class _MyHomeState extends State<MyHome> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 10),
+                      padding: EdgeInsets.only(left: 10),
                       child: Icon(Icons.people_outline),
                     ),
                   ],

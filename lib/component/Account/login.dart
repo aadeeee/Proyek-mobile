@@ -93,6 +93,7 @@ class _MyLoginState extends State<MyLogin> {
                               child: TextField(
                                 obscureText: prov.getObsecureTextPasswword,
                                 controller: prov.passwordController,
+                                cursorColor: Colors.black,
                                 decoration: InputDecoration(
                                     prefixIcon: const Icon(
                                       Icons.lock,
@@ -101,7 +102,7 @@ class _MyLoginState extends State<MyLogin> {
                                     suffixIcon: IconButton(
                                         icon: Icon(prov.getObsecureTextPasswword
                                             ? Icons.visibility_off
-                                            : Icons.visibility),
+                                            : Icons.visibility, color: Colors.black,),
                                         onPressed: () {
                                           setState(() {
                                             prov.setObsecureTextPassword =

@@ -54,32 +54,37 @@ class _MyAddOutComeState extends State<MyAddOutCome> {
                           )),
                         ),
                         TextField(
+                          cursorColor: Colors.black,
                           controller: prov.getCodeController,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             labelText: 'Kode Produk',
                           ),
                         ),
                         TextField(
+                          cursorColor: Colors.black,
                           controller: prov.getNameController,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             labelText: 'Nama Produk',
                           ),
                         ),
                         TextField(
+                          cursorColor: Colors.black,
                           controller: prov.getMerkController,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             labelText: 'Merek',
                           ),
                         ),
                         TextField(
+                          cursorColor: Colors.black,
                           controller: prov.getDescriptionController,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             labelText: 'Deskripsi',
                           ),
                         ),
                         TextField(
+                          cursorColor: Colors.black,
                           controller: prov.getPriceController,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             labelText: 'Harga',
                           ),
                           keyboardType: TextInputType.number,
@@ -88,7 +93,7 @@ class _MyAddOutComeState extends State<MyAddOutCome> {
                           padding: const EdgeInsets.symmetric(vertical: 10.0),
                           child: Row(
                             children: [
-                              Text(
+                              const Text(
                                 'Gambar Produk : ',
                                 style: TextStyle(fontSize: 15),
                               ),
@@ -107,14 +112,14 @@ class _MyAddOutComeState extends State<MyAddOutCome> {
                                     });
                                   }
                                 },
-                                child: Row(
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: primaryColor),
+                                child:  Row(
                                   children: [
                                     Icon(Icons.add),
                                     Icon(Icons.photo_size_select_actual_rounded)
                                   ],
                                 ),
-                                style: ElevatedButton.styleFrom(
-                                    backgroundColor: primaryColor),
                               ),
                               if (_imagePath != null)
                                 Expanded(
@@ -128,20 +133,23 @@ class _MyAddOutComeState extends State<MyAddOutCome> {
                           ),
                         ),
                         TextField(
+                          cursorColor: Colors.black,
                           controller: prov.getAmountController,
                           keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             labelText: 'Jumlah Penjualan',
                           ),
                         ),
                         TextField(
+                          cursorColor: Colors.black,
                           controller: prov.getStockController,
                           keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             labelText: 'Jumlah Stok',
                           ),
                         ),
                         TextField(
+                          cursorColor: Colors.black,
                           controller: prov.getDateController,
                           readOnly: true,
                           onTap: () {
@@ -193,7 +201,7 @@ class _MyAddOutComeState extends State<MyAddOutCome> {
                                     prov.getAmountController.text.isEmpty ||
                                     prov.getDateController.text.isEmpty) {
                                   ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
+                                    const SnackBar(
                                       content: Text(
                                         'Harap lengkapi data dengan benar!!!',
                                       ),
