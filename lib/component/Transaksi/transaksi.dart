@@ -15,8 +15,6 @@ class TransactionPage extends StatefulWidget {
 }
 
 class _TransactionPageState extends State<TransactionPage> {
-  int _selectedIndex = 1;
-  DateTime? _selectedDate;
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +53,6 @@ class _TransactionPageState extends State<TransactionPage> {
                             DateFormat('yyyy/MM/dd').format(transactionDate);
                         prov.getTanggalController.text = formattedDate;
                         setState(() {
-                          _selectedIndex = index;
                           Navigator.push(
                               context,
                               MaterialPageRoute(
