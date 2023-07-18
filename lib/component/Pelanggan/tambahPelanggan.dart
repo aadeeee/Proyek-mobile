@@ -82,7 +82,7 @@ class _AddCustomerDialogState extends State<AddCustomerDialog> {
                   ),
                 ),
                 const Divider(),
-                const Row(
+                 Row(
                   children: [
                     Text(
                       'Daftar Produk',

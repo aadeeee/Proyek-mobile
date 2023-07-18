@@ -113,7 +113,7 @@ class _MyAddOutComeState extends State<MyAddOutCome> {
                                 },
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: primaryColor),
-                                child: const Row(
+                                child:  Row(
                                   children: [
                                     Icon(Icons.add),
                                     Icon(Icons.photo_size_select_actual_rounded)

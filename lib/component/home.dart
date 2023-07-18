@@ -2,7 +2,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mobile/Provider/homeProvider.dart';
+import 'package:mobile/Provider/profilProvider.dart';
 import 'package:provider/provider.dart';
+
 import '../Variabel/global.dart';
 
 class MyHome extends StatefulWidget {
@@ -74,14 +76,25 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
     final minuteString = DateFormat('mm').format(_currentDateTime);
     final secondString = DateFormat('ss').format(_currentDateTime);
     var prov = Provider.of<MyHomeProvider>(context);
-
+    var prov1 = Provider.of<ProfilProvider>(context);
     var tmp = prov.jsonData['data'];
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: primaryColor,
+        title: Center(
+          child: Text(
+            'Selamat datang, di ${prov1.namaToko}',
+            style: TextStyle(
+                fontSize: 20, color: Colors.white, fontFamily: 'inter'),
+          ),
+        ),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // Carousel Slider
               Stack(
                 children: [
                   CarouselSlider(
@@ -208,7 +221,7 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
                   },
                 ),
               ),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.only(left: 15, top: 20),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -221,7 +234,7 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(left: 10),
+                      padding: const EdgeInsets.only(left: 10),
                       child: Icon(Icons.shopping_bag_outlined),
                     ),
                   ],
@@ -251,7 +264,7 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
                   ),
                 ),
               ),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.only(left: 15, top: 20),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
@@ -270,7 +283,7 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
                   ],
                 ),
               ),
-              const ListTile(
+              ListTile(
                 leading: CircleAvatar(
                   backgroundColor: primaryColor,
                   child: Icon(Icons.person),
@@ -283,7 +296,7 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
                   ],
                 ),
               ),
-              const ListTile(
+              ListTile(
                 leading: CircleAvatar(
                   backgroundColor: primaryColor,
                   child: Icon(Icons.person),

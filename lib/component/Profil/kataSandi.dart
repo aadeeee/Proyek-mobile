@@ -21,7 +21,8 @@ class _MyKataSandiState extends State<MyKataSandi> {
           onPressed: () => Navigator.pop(context, false),
           color: Colors.white,
         ),
-        title: const Text(
+        centerTitle: true,
+        title:  Text(
           "Kata Sandi",
           style: TextStyle(
             fontSize: 20,
@@ -35,7 +36,7 @@ class _MyKataSandiState extends State<MyKataSandi> {
         padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 25),
         child: Column(
           children: [
-            const Padding(
+             Padding(
               padding: EdgeInsets.only(top: 10.0),
               child: Text(
                 'Kata sandi Anda harus lebih dari enam karakter dan berisi angka.huruf, dan karakter khusus (!@%).',
@@ -47,7 +48,7 @@ class _MyKataSandiState extends State<MyKataSandi> {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Padding(
+                     Padding(
                       padding: EdgeInsets.only(top: 8.0),
                       child: Text(
                         'Kata sandi saat ini',
@@ -56,7 +57,7 @@ class _MyKataSandiState extends State<MyKataSandi> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 8.0),
+                      padding:  EdgeInsets.only(top: 8.0),
                       child: SizedBox(
                         height: 40,
                         child: TextFormField(
@@ -143,6 +144,14 @@ class _MyKataSandiState extends State<MyKataSandi> {
                         const SizedBox(
                           height: 10,
                         ),
+                        TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text(
+                              'Lupa kata sandi',
+                              style: TextStyle(color: primaryColor),
+                            ))
                       ],
                     )),
                   ]),

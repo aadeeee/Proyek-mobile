@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 
 class CustomerProvider with ChangeNotifier {
   final List<Map<String, dynamic>> _customers = [
-    {'name': 'Budi', 'order': 10, 'hp': "08123354565", 'produk': ['Sapu', 'Buku', "Kipas", 'Botol Minum', "Pensil", "Kursi", "Meja", "Stiker Dinding", 'kompor', "Lemari"]},
-    {'name': 'Adi', 'order': 4, 'hp': "0814372435935", 'produk': ['Sapu', 'Buku',"Kipas", 'Botol Minum']},
-    {'name': 'aaa', 'order': 9, 'hp': "0814372435935", 'produk': ['Sapu', 'Buku', "Kipas", 'Botol Minum', "Pensil", "Kursi", "Meja", "Stiker Dinding", 'kompor']},
-    {'name': 'Budi', 'order': 1, 'hp': "08123354565", 'produk': ['Sapu']},
-    {'name': 'Adi', 'order': 6, 'hp': "0814372435935", 'produk': ['Sapu', 'Buku', "Kipas", 'Botol Minum', "Pensil", "Kursi"]},
-    {'name': 'aaa', 'order': 5, 'hp': "0814372435935", 'produk': ['Sapu', 'Buku', "Kipas", 'Botol Minum', "Pensil"]}
+    {'name': 'Budi', 'order': 10, 'hp': "081233545654", 'produk': ['Sapu', 'Buku', "Kipas", 'Botol Minum', "Pensil", "Kursi", "Meja", "Stiker Dinding", 'kompor', "Lemari"]},
+    {'name': 'Adi', 'order': 4, 'hp': "0814372435930", 'produk': ['Sapu', 'Buku',"Kipas", 'Botol Minum']},
+    {'name': 'Ani', 'order': 9, 'hp': "081437243593", 'produk': ['Sapu', 'Buku', "Kipas", 'Botol Minum', "Pensil", "Kursi", "Meja", "Stiker Dinding", 'kompor']},
+    {'name': 'Budi', 'order': 1, 'hp': "081233545659", 'produk': ['Sapu']},
+    {'name': 'Kina', 'order': 6, 'hp': "081437243935", 'produk': ['Sapu', 'Buku', "Kipas", 'Botol Minum', "Pensil", "Kursi"]},
+    {'name': 'Poly', 'order': 5, 'hp': "081437242239", 'produk': ['Sapu', 'Buku', "Kipas", 'Botol Minum', "Pensil"]}
   ];
    final List<String> _products = [
-    'Sapu', 'Buku', "Kipas", 'Botol Minum', "Pensil", "Kursi", "Meja", "Stiker Dinding", 'kompor', "Lemari"
+    'Sapu', 'Buku', "Kipas", 'Botol Minum', "Pensil", "Kursi", "Meja", "Stiker Dinding", 'Kompor', "Lemari"
   ];
    List<String> get products => _products;
 

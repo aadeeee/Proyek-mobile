@@ -15,6 +15,7 @@ class MyPemeriksaKeamanan extends StatelessWidget {
             onPressed: () => Navigator.pop(context, false),
             color: Colors.white,
           ),
+          centerTitle: true,
           title: const Text(
             "Pemeriksa Keamanan",
             style: TextStyle(
