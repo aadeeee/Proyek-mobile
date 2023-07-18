@@ -66,7 +66,6 @@ class CustomerProvider with ChangeNotifier {
     "Kursi",
     'Botol Minum',
     "Pensil",
-    "Meja"
   ];
   List<String> get products => _products;
 
@@ -110,7 +109,7 @@ class CustomerProvider with ChangeNotifier {
     _customers.add(customer);
     notifyListeners();
   }
-
+  
   List<Map<String, dynamic>> getFrequentShoppers() {
     _customers.sort((a, b) => b['order'].compareTo(a['order']));
     return _customers;

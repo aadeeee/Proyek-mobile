@@ -141,7 +141,7 @@ class _MyAddSupplierState extends State<MyAddSupplier> {
                                         });
                                       },
                                       style: ElevatedButton.styleFrom(
-                                        primary: primaryColor,
+                                        backgroundColor: primaryColor,
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(15),
@@ -169,7 +169,7 @@ class _MyAddSupplierState extends State<MyAddSupplier> {
                                                     otherProductIndex);
                                               });
                                             },
-                                            icon: Icon(Icons.delete, color: Colors.red,),
+                                            icon: const Icon(Icons.delete, color: Colors.red,),
                                           ),
                                           const SizedBox(width: 8),
                                           Expanded(

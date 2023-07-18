@@ -14,7 +14,8 @@ class AddCustomerDialog extends StatefulWidget {
 }
 
 class _AddCustomerDialogState extends State<AddCustomerDialog> {
-  final List<String> _selectedProducts = [];
+  final Set<String> _selectedProducts = {};
+  final List<String> _additionalProducts = [];
   final TextEditingController _newProductController = TextEditingController();
   int _orderQuantity = 0;
 
@@ -52,13 +53,12 @@ class _AddCustomerDialogState extends State<AddCustomerDialog> {
             child: Column(
               children: [
                 SizedBox(
-                    child: Image.asset(
-                  'assets/images/addpelanggan.png',
-                  height: 200,
-                )),
-                const SizedBox(
-                  height: 16,
+                  child: Image.asset(
+                    'assets/images/addpelanggan.png',
+                    height: 200,
+                  ),
                 ),
+                const SizedBox(height: 16),
                 TextField(
                   cursorColor: Colors.black,
                   controller: prov.nameController,
@@ -90,7 +90,7 @@ class _AddCustomerDialogState extends State<AddCustomerDialog> {
                   ),
                 ),
                 const Divider(),
-                Row(
+                const Row(
                   children: [
                     Text(
                       'Daftar Produk',
@@ -139,23 +139,68 @@ class _AddCustomerDialogState extends State<AddCustomerDialog> {
                         value: _selectedProducts.contains('Produk Lainnya'),
                         onChanged: (bool? value) {
                           setState(() {
-                            if (value != null && value) {
-                              _selectedProducts.add('Produk Lainnya');
-                            } else {
-                              _selectedProducts.remove('Produk Lainnya');
+                            if (value != null) {
+                              if (value) {
+                                _selectedProducts.add('Produk Lainnya');
+                              } else {
+                                _selectedProducts.remove('Produk Lainnya');
+                                _additionalProducts.clear();
+                              }
                             }
                           });
                         },
                       ),
                       if (_selectedProducts.contains('Produk Lainnya'))
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: TextField(
-                            controller: _newProductController,
-                            decoration: const InputDecoration(
-                              labelText: 'Nama Produk Baru',
+                        Column(
+                          children: [
+                            for (int i = 0; i < _additionalProducts.length; i++)
+                              Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                        child: Text(_additionalProducts[i])),
+                                    IconButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          _additionalProducts.removeAt(i);
+                                        });
+                                      },
+                                      icon: Icon(Icons.delete),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: TextField(
+                                controller: _newProductController,
+                                decoration: const InputDecoration(
+                                  labelText: 'Produk Baru',
+                                ),
+                              ),
                             ),
-                          ),
+                            Row(
+                              children: [
+                                TextButton(
+                                  onPressed: () {
+                                    String newProduct =
+                                        _newProductController.text.trim();
+                                    if (newProduct.isNotEmpty) {
+                                      setState(() {
+                                        _additionalProducts.add(newProduct);
+                                        _newProductController.clear();
+                                      });
+                                    }
+                                  },
+                                  child: const Text(
+                                    'Tambah',
+                                    style: TextStyle(color: primaryColor),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                     ],
                   ),
@@ -165,27 +210,39 @@ class _AddCustomerDialogState extends State<AddCustomerDialog> {
                   child: ElevatedButton(
                     onPressed: (_orderQuantity > 0 &&
                             prov.nameController.text.isNotEmpty &&
-                            prov.phoneController.text.isNotEmpty &&
-                            _selectedProducts.isNotEmpty &&
-                            _selectedProducts.length <= _orderQuantity)
+                            prov.phoneController.text.isNotEmpty)
                         ? () {
                             if (_selectedProducts.contains('Produk Lainnya')) {
                               String newProduct =
                                   _newProductController.text.trim();
                               if (newProduct.isNotEmpty) {
-                                prov.products.add(newProduct);
-                                _selectedProducts.remove('Produk Lainnya');
-                                _selectedProducts.add(newProduct);
+                                _additionalProducts.add(newProduct);
+                                _newProductController.clear();
                               }
                             }
+                            List<String> allSelectedProducts = [
+                              ..._selectedProducts,
+                              ..._additionalProducts
+                            ];
+                            if (allSelectedProducts.length != _orderQuantity) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text(
+                                      'Harap lengkapi data dengan benar!!!'),
+                                  duration: Duration(seconds: 3),
+                                ),
+                              );
+                              return;
+                            }
+
                             prov.addCustomer(
-                              prov.getNameController.text,
+                              prov.nameController.text,
                               _orderQuantity,
-                              prov.getPhoneController.text,
-                              _selectedProducts,
+                              prov.phoneController.text,
+                              allSelectedProducts,
                             );
-                            prov.getNameController.clear();
-                            prov.getPhoneController.clear();
+                            prov.nameController.clear();
+                            prov.phoneController.clear();
                             Navigator.of(context).pop();
                           }
                         : null,
