@@ -21,6 +21,7 @@ class _MyKataSandiState extends State<MyKataSandi> {
           onPressed: () => Navigator.pop(context, false),
           color: Colors.white,
         ),
+        centerTitle: true,
         title: const Text(
           "Kata Sandi",
           style: TextStyle(
@@ -67,8 +68,8 @@ class _MyKataSandiState extends State<MyKataSandi> {
                                     borderSide:
                                         BorderSide(color: primaryColor)),
                                 enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: primaryColor)))),
+                                    borderSide:
+                                        BorderSide(color: primaryColor)))),
                       ),
                     ),
                     const Padding(
@@ -93,8 +94,8 @@ class _MyKataSandiState extends State<MyKataSandi> {
                                     borderSide:
                                         BorderSide(color: primaryColor)),
                                 enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: primaryColor)))),
+                                    borderSide:
+                                        BorderSide(color: primaryColor)))),
                       ),
                     ),
                     const Padding(
@@ -117,8 +118,8 @@ class _MyKataSandiState extends State<MyKataSandi> {
                                     borderSide:
                                         BorderSide(color: primaryColor)),
                                 enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: primaryColor)))),
+                                    borderSide:
+                                        BorderSide(color: primaryColor)))),
                       ),
                     ),
                     const SizedBox(
@@ -142,7 +143,9 @@ class _MyKataSandiState extends State<MyKataSandi> {
                           height: 10,
                         ),
                         TextButton(
-                            onPressed: () {Navigator.pop(context);},
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
                             child: const Text(
                               'Lupa kata sandi',
                               style: TextStyle(color: primaryColor),

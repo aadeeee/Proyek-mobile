@@ -18,6 +18,7 @@ class _MyEditProfilState extends State<MyEditProfil> {
     var prov = Provider.of<ProfilProvider>(context);
     return Scaffold(
         appBar: AppBar(
+          centerTitle: true,
             title: const Text('Ubah Profil'), backgroundColor: primaryColor),
         body: SingleChildScrollView(
           child: Column(

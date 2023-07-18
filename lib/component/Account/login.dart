@@ -196,6 +196,7 @@ class _MyLoginState extends State<MyLogin> {
                                       },
                                       child: Text("Daftar disini",
                                           style: GoogleFonts.inter(
+                                              textStyle: TextStyle(decoration: TextDecoration.underline),
                                               color: primaryColor,
                                               fontSize: 16))),
                                 ],

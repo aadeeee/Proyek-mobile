@@ -1,8 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile/Provider/homeProvider.dart';
+import 'package:mobile/Provider/profilProvider.dart';
 import 'package:provider/provider.dart';
-
+import '../../Provider/profilProvider.dart';
 import '../Variabel/global.dart';
 
 class MyHome extends StatefulWidget {
@@ -15,14 +16,27 @@ class _MyHomeState extends State<MyHome> {
   @override
   Widget build(BuildContext context) {
     var prov = Provider.of<MyHomeProvider>(context);
-
+    var prov1 = Provider.of<ProfilProvider>(context);
     var tmp = prov.jsonData['data'];
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: primaryColor,
+        title: Center(
+          child: Text(
+            'Selamat datang, di ${prov1.namaToko}',
+            style: TextStyle(
+                fontSize: 20, color: Colors.white, fontFamily: 'inter'),
+          ),
+        ),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // SizedBox(
+              //   height: 10,
+              // ),
               // Carousel Slider
               Stack(
                 children: [
@@ -84,7 +98,8 @@ class _MyHomeState extends State<MyHome> {
                     margin: const EdgeInsets.symmetric(horizontal: 2.0),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: prov.getIndex == index ? primaryColor : Colors.grey,
+                      color:
+                          prov.getIndex == index ? primaryColor : Colors.grey,
                     ),
                   );
                 }).toList(),
@@ -102,7 +117,7 @@ class _MyHomeState extends State<MyHome> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: Icon(Icons.shopping_bag_outlined),
                     ),
                   ],
@@ -111,6 +126,7 @@ class _MyHomeState extends State<MyHome> {
               SizedBox(
                 height: 190,
                 child: ListView.builder(
+                  
                   scrollDirection: Axis.horizontal,
                   itemCount: tmp.length,
                   itemBuilder: (context, index) => Card(

@@ -160,7 +160,7 @@ class _MyProfilState extends State<MyProfil> {
                                         );
                                       },
                                       child: const Text(
-                                        'Keluar'
+                                        'Keluar',
                                         style: TextStyle(color: primaryColor),
                                       ),
                                     ),

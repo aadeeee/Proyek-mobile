@@ -97,7 +97,6 @@ class MyRegisProvider extends ChangeNotifier {
       if (value["userName"] == _account[i]["userName"] &&
           value["password"] == _account[i]["password"]) {
         auth = true;
-        
       }
     }
 

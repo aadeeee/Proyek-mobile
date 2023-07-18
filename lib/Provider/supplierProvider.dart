@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 class MySupplierProvider extends ChangeNotifier {
   List<Map<String, dynamic>> _supplierData = [
     {
-      'nama': 'PT.ABC',
+      'nama': 'PT.Jaya Purna',
       'produk': [
-        {'namaProduk': 'sapu', "jumlah": 10, "harga": 15000},
+        {'namaProduk': 'Sapu', "jumlah": 10, "harga": 15000},
         {'namaProduk': 'Buku', "jumlah": 20, "harga": 5000}
       ],
     },
     {
-      'nama': 'PT.DEF',
+      'nama': 'PT.Rezeki',
       'produk': [
         {'namaProduk': 'Pensil', "jumlah": 30, 'harga': 2000},
         {'namaProduk': 'Tas', "jumlah": 15, 'harga': 100000}
@@ -28,7 +28,7 @@ class MySupplierProvider extends ChangeNotifier {
   TextEditingController get namaController => _namaController;
   TextEditingController get searchController => _searchController;
 
-  List<String> get availableProduk => ['sapu', 'buku', 'pensil', 'tas'];
+  List<String> get availableProduk => ['Sapu', 'Buku', 'Pensil', 'Tas'];
 
   List<Map<String, dynamic>> _filteredSupplierData = [];
 

@@ -291,6 +291,9 @@ class _MyRegisterState extends State<MyRegister> {
                                     },
                                     child: Text("Masuk disini",
                                         style: GoogleFonts.inter(
+                                            textStyle: TextStyle(
+                                                decoration:
+                                                    TextDecoration.underline),
                                             color: primaryColor,
                                             fontSize: 16))),
                               ],
