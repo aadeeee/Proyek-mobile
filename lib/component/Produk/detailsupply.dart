@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:mobile/Variabel/global.dart';
 
 class ProdukPage extends StatefulWidget {
@@ -33,6 +34,9 @@ class _ProdukPageState extends State<ProdukPage> {
   @override
   Widget build(BuildContext context) {
     final data = widget.produk['nama'];
+    final tgl = widget.produk['tanggal'] as DateTime;
+    final formattedTanggal = DateFormat('dd/MM/yyyy').format(tgl);
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Daftar Produk', style: GoogleFonts.inter()),
@@ -100,7 +104,6 @@ class _ProdukPageState extends State<ProdukPage> {
             ),
             SizedBox(
               width: 350,
-              // height: 50,
               child: Column(
                 children: [
                   Row(
@@ -108,27 +111,27 @@ class _ProdukPageState extends State<ProdukPage> {
                     children: [
                       Text(
                         'Tanggal Pembelian : ',
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
                       Text(
-                        'tgl',
-                        style: const TextStyle(
+                      formattedTanggal,
+                        style: TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.w500,
                         ),
-                      )
+                      ),
                     ],
                   ),
                   const SizedBox(height: 10.0),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
+                      const Text(
                         'Total (Rp)                  : ',
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.w500,
                         ),

@@ -121,6 +121,11 @@ class CustomerProvider with ChangeNotifier {
     return _customers;
   }
 
+  List<Map<String, dynamic>> getTopCustomer() {
+    _customers.sort((a, b) => b['order'].compareTo(a['order']));
+    return _customers.take(5).toList();
+  }
+
   List<Map<String, dynamic>> searchCustomers(String searchText) {
     if (searchText.isEmpty) {
       return customers;

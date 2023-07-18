@@ -33,6 +33,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_datetime_picker: ^1.5.1
+  flutter_launcher_icons: ^0.13.1
   google_fonts: ^4.0.4
   image_picker: ^0.8.9
   intl: ^0.18.1
@@ -43,13 +44,12 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
-# flutter_native_splash:
-#   color: "0xffFD61876E"
-#   image: "assets/images/logo.png"
+
 flutter_launcher_icons:
-  android: true
+  android: "launcher_icon"
   ios: true
   image_path: "assets/images/logo.png"
+  min_sdk_android: 21
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter packages.

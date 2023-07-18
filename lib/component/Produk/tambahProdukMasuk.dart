@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../../Provider/supplierProvider.dart';
@@ -13,7 +14,10 @@ class MyAddSupplier extends StatefulWidget {
 }
 
 class _MyAddSupplierState extends State<MyAddSupplier> {
+  List<Map<String, dynamic>> _produkLainnya = [];
+
   late List<bool> selectedProduk;
+  DateTime? _selectedDate;
   @override
   Widget build(BuildContext context) {
     var prov = Provider.of<MySupplierProvider>(context);
@@ -74,7 +78,7 @@ class _MyAddSupplierState extends State<MyAddSupplier> {
                                   labelStyle: TextStyle(color: primaryColor)),
                             ),
                             TextField(
-                              // controller: prov.getTanggalController,
+                              controller: prov.getTanggalController,
                               readOnly: true,
                               onTap: () {
                                 showDatePicker(
@@ -97,11 +101,11 @@ class _MyAddSupplierState extends State<MyAddSupplier> {
                                   lastDate: DateTime(2024),
                                 ).then((selectedDate) {
                                   if (selectedDate != null) {
-                                    // setState(() {
-                                    //   prov.getTanggalController.text =
-                                    //       DateFormat('yyyy/MM/dd')
-                                    //           .format(selectedDate);
-                                    // });
+                                    setState(() {
+                                      prov.getTanggalController.text =
+                                          DateFormat('yyyy/MM/dd')
+                                              .format(selectedDate);
+                                    });
                                   }
                                 });
                               },
@@ -123,65 +127,170 @@ class _MyAddSupplierState extends State<MyAddSupplier> {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: List.generate(
-                                prov.availableProduk.length,
+                                prov.availableProduk.length +
+                                    1 +
+                                    _produkLainnya.length,
                                 (index) {
-                                  final produk = prov.availableProduk[index];
-                                  final isSelected = selectedProduk[index];
+                                  if (index ==
+                                      prov.availableProduk.length +
+                                          _produkLainnya.length) {
+                                    return ElevatedButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          _produkLainnya.add({});
+                                        });
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        primary: primaryColor,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                        ),
+                                      ),
+                                      child: const Padding(
+                                        padding: EdgeInsets.all(10.0),
+                                        child: Text('Tambah Produk Lainnya'),
+                                      ),
+                                    );
+                                  } else if (index >=
+                                      prov.availableProduk.length) {
+                                    final otherProductIndex =
+                                        index - prov.availableProduk.length;
 
-                                  return Padding(
-                                    padding: const EdgeInsets.only(bottom: 8.0),
-                                    child: Row(
-                                      children: [
-                                        Checkbox(
-                                          value: isSelected,
-                                          activeColor: primaryColor,
-                                          onChanged: (selected) {
-                                            setState(() {
-                                              selectedProduk[index] =
-                                                  selected ?? false;
-                                            });
-                                          },
-                                        ),
-                                        const SizedBox(width: 8),
-                                        Expanded(
-                                          child: Text(produk),
-                                        ),
-                                        if (isSelected)
+                                    return Padding(
+                                      padding:
+                                          const EdgeInsets.only(bottom: 8.0),
+                                      child: Row(
+                                        children: [
+                                          IconButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                _produkLainnya.removeAt(
+                                                    otherProductIndex);
+                                              });
+                                            },
+                                            icon: Icon(Icons.delete, color: Colors.red,),
+                                          ),
+                                          const SizedBox(width: 8),
+                                          Expanded(
+                                            child: TextField(
+                                              onChanged: (value) {
+                                                _produkLainnya[
+                                                        otherProductIndex]
+                                                    ['name'] = value;
+                                              },
+                                              decoration: const InputDecoration(
+                                                labelText: 'Nama Produk',
+                                                labelStyle: TextStyle(
+                                                    color: primaryColor),
+                                              ),
+                                            ),
+                                          ),
                                           SizedBox(
                                             width: 100,
                                             child: TextField(
-                                              controller:
-                                                  _jumlahControllers[index],
+                                              onChanged: (value) {
+                                                final jumlah =
+                                                    int.tryParse(value) ?? 0;
+                                                _produkLainnya[
+                                                        otherProductIndex]
+                                                    ['jumlah'] = jumlah;
+                                              },
                                               keyboardType:
                                                   TextInputType.number,
                                               decoration: const InputDecoration(
+                                                labelText: 'Jumlah',
+                                                labelStyle: TextStyle(
+                                                    color: primaryColor),
+                                              ),
+                                            ),
+                                          ),
+                                          const SizedBox(width: 8),
+                                          SizedBox(
+                                            width: 100,
+                                            child: TextField(
+                                              onChanged: (value) {
+                                                final harga =
+                                                    int.tryParse(value) ?? 0;
+                                                _produkLainnya[
+                                                        otherProductIndex]
+                                                    ['harga'] = harga;
+                                              },
+                                              keyboardType:
+                                                  TextInputType.number,
+                                              decoration: const InputDecoration(
+                                                labelText: 'Harga',
+                                                labelStyle: TextStyle(
+                                                    color: primaryColor),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  } else {
+                                    final produk = prov.availableProduk[index];
+                                    final isSelected = selectedProduk[index];
+
+                                    return Padding(
+                                      padding:
+                                          const EdgeInsets.only(bottom: 8.0),
+                                      child: Row(
+                                        children: [
+                                          Checkbox(
+                                            value: isSelected,
+                                            activeColor: primaryColor,
+                                            onChanged: (selected) {
+                                              setState(() {
+                                                selectedProduk[index] =
+                                                    selected ?? false;
+                                              });
+                                            },
+                                          ),
+                                          const SizedBox(width: 8),
+                                          Expanded(
+                                            child: Text(produk),
+                                          ),
+                                          if (isSelected)
+                                            SizedBox(
+                                              width: 100,
+                                              child: TextField(
+                                                controller:
+                                                    _jumlahControllers[index],
+                                                keyboardType:
+                                                    TextInputType.number,
+                                                decoration:
+                                                    const InputDecoration(
                                                   labelText: 'Jumlah',
                                                   labelStyle: TextStyle(
-                                                      color: primaryColor)),
+                                                      color: primaryColor),
+                                                ),
+                                              ),
                                             ),
-                                          ),
-                                        const SizedBox(width: 8),
-                                        if (isSelected)
-                                          SizedBox(
-                                            width: 100,
-                                            child: TextField(
-                                              controller:
-                                                  _hargaControllers[index],
-                                              keyboardType:
-                                                  TextInputType.number,
-                                              decoration: const InputDecoration(
+                                          const SizedBox(width: 8),
+                                          if (isSelected)
+                                            SizedBox(
+                                              width: 100,
+                                              child: TextField(
+                                                controller:
+                                                    _hargaControllers[index],
+                                                keyboardType:
+                                                    TextInputType.number,
+                                                decoration:
+                                                    const InputDecoration(
                                                   labelText: 'Harga',
                                                   labelStyle: TextStyle(
-                                                      color: primaryColor)),
+                                                      color: primaryColor),
+                                                ),
+                                              ),
                                             ),
-                                          ),
-                                      ],
-                                    ),
-                                  );
+                                        ],
+                                      ),
+                                    );
+                                  }
                                 },
                               ),
                             ),
-                            
                             const Divider(),
                             const SizedBox(height: 16),
                             Align(
@@ -206,6 +315,8 @@ class _MyAddSupplierState extends State<MyAddSupplier> {
                               child: ElevatedButton(
                                 onPressed: () {
                                   final namaSupplier = _namaController.text;
+                                  final tanggalSupplier =
+                                      _selectedDate ?? DateTime.now();
                                   final produkSupplier = selectedProduk
                                       .asMap()
                                       .entries
@@ -233,6 +344,16 @@ class _MyAddSupplierState extends State<MyAddSupplier> {
                                         0;
                                     return harga;
                                   }).toList();
+                                  for (final produkLainnya in _produkLainnya) {
+                                    final namaProduk = produkLainnya['name'];
+                                    final jumlah = produkLainnya['jumlah'] ?? 0;
+                                    final harga = produkLainnya['harga'] ?? 0;
+
+                                    produkSupplier.add(namaProduk);
+                                    jumlahProduk.add(jumlah);
+                                    hargaProduk.add(harga);
+                                  }
+
                                   if (namaSupplier.isEmpty ||
                                       jumlahProduk.contains(0) ||
                                       hargaProduk.contains(0)) {
@@ -250,6 +371,7 @@ class _MyAddSupplierState extends State<MyAddSupplier> {
                                     produkSupplier,
                                     jumlahProduk,
                                     hargaProduk,
+                                    tanggalSupplier,
                                   );
                                   _namaController.clear();
                                   selectedProduk.clear();
@@ -257,6 +379,7 @@ class _MyAddSupplierState extends State<MyAddSupplier> {
                                       (controller) => controller.clear());
                                   _hargaControllers.forEach(
                                       (controller) => controller.clear());
+                                  _produkLainnya.clear();
                                   Navigator.pop(context);
                                 },
                                 style: ElevatedButton.styleFrom(

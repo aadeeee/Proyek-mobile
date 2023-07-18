@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:mobile/Provider/homeProvider.dart';
+import 'package:mobile/Provider/pelangganProvider.dart';
 import 'package:mobile/Provider/profilProvider.dart';
+import 'package:mobile/component/Pelanggan/detailCustomer.dart';
 import 'package:provider/provider.dart';
 
 import '../Variabel/global.dart';
@@ -78,14 +80,33 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
     final secondString = DateFormat('ss').format(_currentDateTime);
     var prov = Provider.of<MyHomeProvider>(context);
     var prov1 = Provider.of<ProfilProvider>(context);
+    var prov2 = Provider.of<CustomerProvider>(context);
+
     var tmp = prov.jsonData['data'];
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 134, 192, 137).withOpacity(0.1),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            color: Colors.blueGrey,
+          ),
+        ),
         title: Center(
-          child: Text(
-            'Selamat datang, di ${prov1.namaToko}',
-            style: GoogleFonts.inter(),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.store,
+                color: Colors.white,
+              ),
+              SizedBox(width: 8),
+              Text(
+                'Selamat datang, di ${prov1.namaToko}',
+                style: GoogleFonts.inter(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
           ),
         ),
       ),
@@ -94,7 +115,6 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Carousel Slider
               Stack(
                 children: [
                   CarouselSlider(
@@ -283,32 +303,31 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
                   ],
                 ),
               ),
-              ListTile(
-                leading: CircleAvatar(
-                  backgroundColor: primaryColor,
-                  child: Icon(Icons.person),
+              for (var i = 0; i < prov2.getTopCustomer().length; i++)
+                ListTile(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MyDetailCustomer(
+                          customer: prov2.getFrequentShoppers()[i],
+                        ),
+                      ),
+                    );
+                  },
+                  leading: const CircleAvatar(
+                    backgroundColor: primaryColor,
+                    child: Icon(Icons.person),
+                  ),
+                  title: Text("${prov2.customers[i]['name']}"),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Jumlah pembelian : ${prov2.customers[i]['order']}'),
+                      Text('Telepon : ${prov2.customers[i]['hp']}'),
+                    ],
+                  ),
                 ),
-                title: Text('Max'),
-                subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('09242464234217'),
-                  ],
-                ),
-              ),
-              ListTile(
-                leading: CircleAvatar(
-                  backgroundColor: primaryColor,
-                  child: Icon(Icons.person),
-                ),
-                title: Text('John'),
-                subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('09242464234217'),
-                  ],
-                ),
-              ),
             ],
           ),
         ),
