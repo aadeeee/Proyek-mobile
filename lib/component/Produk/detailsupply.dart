@@ -64,7 +64,6 @@ class _ProdukPageState extends State<ProdukPage> {
                 final jumlahProduk = produkData['jumlah'];
                 final hargaProduk = produkData['harga'];
                 final subtotal = jumlahProduk * (hargaProduk as num);
-
                 return Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 16.0,
@@ -110,14 +109,14 @@ class _ProdukPageState extends State<ProdukPage> {
                       Text(
                         'Tanggal Pembelian : ',
                         style: const TextStyle(
-                          fontSize: 17,
+                          fontSize: 15,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
                       Text(
                         'tgl',
                         style: const TextStyle(
-                          fontSize: 17,
+                          fontSize: 15,
                           fontWeight: FontWeight.w500,
                         ),
                       )
@@ -130,14 +129,14 @@ class _ProdukPageState extends State<ProdukPage> {
                       Text(
                         'Total (Rp)                  : ',
                         style: const TextStyle(
-                          fontSize: 17,
+                          fontSize: 15,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
                       Text(
                         '${rupiahFormat.format(totalSubtotal)}',
                         style: const TextStyle(
-                          fontSize: 17,
+                          fontSize: 15,
                           fontWeight: FontWeight.w500,
                         ),
                       )

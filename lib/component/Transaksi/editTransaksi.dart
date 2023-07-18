@@ -9,7 +9,8 @@ import '../../Variabel/global.dart';
 class MyEditTransaction extends StatefulWidget {
   final int selectedIndex;
 
-  const MyEditTransaction({Key? key, required this.selectedIndex}) : super(key: key);
+  const MyEditTransaction({Key? key, required this.selectedIndex})
+      : super(key: key);
 
   @override
   State<MyEditTransaction> createState() => _MyEditTransactionState();
@@ -26,107 +27,108 @@ class _MyEditTransactionState extends State<MyEditTransaction> {
           backgroundColor: primaryColor,
           centerTitle: true,
         ),
-        body: Column(
-          children: [
-            SizedBox(
-                child: Image.asset(
-              'assets/images/addtransaksi.png',
-              height: 250,
-            )),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: TextField(
-                controller: prov.getNamaController,
-                decoration: const InputDecoration(
-                  icon: Icon(Icons.person, color: primaryColor, size: 30),
-                  labelText: 'Nama pelanggan',
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: TextField(
-                controller: prov.getJumlahController,
-                decoration: const InputDecoration(
-                  icon: Icon(Icons.credit_card, color: primaryColor, size: 30),
-                  labelText: 'Jumlah Transaksi',
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: TextField(
-                controller: prov.getTanggalController,
-                readOnly: true,
-                onTap: () {
-                  showDatePicker(
-                    cancelText: "Batal",
-                    confirmText: 'Pilih',
-                    context: context,
-                    builder: (BuildContext context, Widget? child) {
-                      return Theme(
-                        data: ThemeData(
-                          colorScheme: const ColorScheme.light(
-                            primary: primaryColor,
-                          ),
-                        ),
-                        child: child ?? const Text(""),
-                      );
-                    },
-                    initialDate: DateTime.now(),
-                    firstDate: DateTime(2000),
-                    lastDate: DateTime(2024),
-                  ).then((selectedDate) {
-                    if (selectedDate != null) {
-                      setState(() {
-                        _selectedDate = selectedDate;
-                        prov.getTanggalController.text =
-                            DateFormat('yyyy/MM/dd').format(selectedDate);
-                      });
-                    }
-                  });
-                },
-                decoration: const InputDecoration(
-                  icon: Icon(Icons.calendar_month_outlined,
-                      color: primaryColor, size: 30),
-                  labelText: 'Pilih Tanggal',
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 20.0),
-              child: ElevatedButton(
-                onPressed: () {
-                  final data = {
-                    'nama': prov.getNamaController.text,
-                    'jumlah': double.parse(prov.getJumlahController.text),
-                    'tanggal': _selectedDate ?? DateTime.now(),
-                  };
-                  if (widget.selectedIndex != -1) {
-                    prov.editTransaction(widget.selectedIndex,
-                        data); 
-                  }
-                  prov.getNamaController.clear();
-                  prov.getJumlahController.clear();
-                  prov.getTanggalController.clear();
-                  setState(() {
-                  });
-                  Navigator.of(context).pop();
-                },
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: primaryColor,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15))),
-                child: const Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: Text(
-                    'Simpan Perubahan',
-                    style: TextStyle(fontSize: 15),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                  child: Image.asset(
+                'assets/images/addtransaksi.png',
+                height: 250,
+              )),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: TextField(
+                  controller: prov.getNamaController,
+                  decoration: const InputDecoration(
+                    icon: Icon(Icons.person, color: primaryColor, size: 30),
+                    labelText: 'Nama pelanggan',
                   ),
                 ),
               ),
-            ),
-          ],
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: TextField(
+                  controller: prov.getJumlahController,
+                  decoration: const InputDecoration(
+                    icon:
+                        Icon(Icons.credit_card, color: primaryColor, size: 30),
+                    labelText: 'Jumlah Transaksi',
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: TextField(
+                  controller: prov.getTanggalController,
+                  readOnly: true,
+                  onTap: () {
+                    showDatePicker(
+                      cancelText: "Batal",
+                      confirmText: 'Pilih',
+                      context: context,
+                      builder: (BuildContext context, Widget? child) {
+                        return Theme(
+                          data: ThemeData(
+                            colorScheme: const ColorScheme.light(
+                              primary: primaryColor,
+                            ),
+                          ),
+                          child: child ?? const Text(""),
+                        );
+                      },
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime(2000),
+                      lastDate: DateTime(2024),
+                    ).then((selectedDate) {
+                      if (selectedDate != null) {
+                        setState(() {
+                          _selectedDate = selectedDate;
+                          prov.getTanggalController.text =
+                              DateFormat('yyyy/MM/dd').format(selectedDate);
+                        });
+                      }
+                    });
+                  },
+                  decoration: const InputDecoration(
+                    icon: Icon(Icons.calendar_month_outlined,
+                        color: primaryColor, size: 30),
+                    labelText: 'Pilih Tanggal',
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 20.0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    final data = {
+                      'nama': prov.getNamaController.text,
+                      'jumlah': double.parse(prov.getJumlahController.text),
+                      'tanggal': _selectedDate ?? DateTime.now(),
+                    };
+                    if (widget.selectedIndex != -1) {
+                      prov.editTransaction(widget.selectedIndex, data);
+                    }
+                    prov.getNamaController.clear();
+                    prov.getJumlahController.clear();
+                    prov.getTanggalController.clear();
+                    setState(() {});
+                    Navigator.of(context).pop();
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: primaryColor,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15))),
+                  child: const Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Text(
+                      'Simpan Perubahan',
+                      style: TextStyle(fontSize: 15),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ));
   }
 }
