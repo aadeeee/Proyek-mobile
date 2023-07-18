@@ -7,14 +7,15 @@ import '../../Provider/transaksiProvider.dart';
 import '../../Variabel/global.dart';
 
 class MyEditTransaction extends StatefulWidget {
-  const MyEditTransaction({super.key});
+  final int selectedIndex;
+
+  const MyEditTransaction({Key? key, required this.selectedIndex}) : super(key: key);
 
   @override
   State<MyEditTransaction> createState() => _MyEditTransactionState();
 }
 
 class _MyEditTransactionState extends State<MyEditTransaction> {
-  int _selectedIndex = 1;
   DateTime? _selectedDate;
   @override
   Widget build(BuildContext context) {
@@ -101,14 +102,14 @@ class _MyEditTransactionState extends State<MyEditTransaction> {
                     'jumlah': double.parse(prov.getJumlahController.text),
                     'tanggal': _selectedDate ?? DateTime.now(),
                   };
-                  if (_selectedIndex != -1) {
-                    prov.editTransaction(_selectedIndex, data);
+                  if (widget.selectedIndex != -1) {
+                    prov.editTransaction(widget.selectedIndex,
+                        data); 
                   }
                   prov.getNamaController.clear();
                   prov.getJumlahController.clear();
                   prov.getTanggalController.clear();
                   setState(() {
-                    _selectedIndex = -1;
                   });
                   Navigator.of(context).pop();
                 },
