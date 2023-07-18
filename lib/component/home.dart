@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mobile/Provider/homeProvider.dart';
 import 'package:provider/provider.dart';
-
 import '../Variabel/global.dart';
 
 class MyHome extends StatefulWidget {

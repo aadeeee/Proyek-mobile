@@ -18,8 +18,7 @@ class _MyCustomerListState extends State<MyCustomerList> {
   Widget build(BuildContext context) {
     var prov = Provider.of<CustomerProvider>(context);
     return Scaffold(
-      body:
-      Padding(
+      body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: ListView(
             children: [
@@ -168,9 +167,9 @@ class _MyCustomerListState extends State<MyCustomerList> {
                         ),
                       );
                     },
-                    leading: Padding(
-                      padding: const EdgeInsets.only(bottom: 10.0),
-                      child: const CircleAvatar(
+                    leading: const Padding(
+                      padding: EdgeInsets.only(bottom: 10.0),
+                      child: CircleAvatar(
                         backgroundColor: primaryColor,
                         child: Icon(
                           Icons.person,
