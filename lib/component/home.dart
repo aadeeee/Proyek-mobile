@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:mobile/Provider/homeProvider.dart';
 import 'package:mobile/Provider/profilProvider.dart';
@@ -80,12 +81,11 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
     var tmp = prov.jsonData['data'];
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: primaryColor,
+        backgroundColor: Color.fromARGB(255, 134, 192, 137).withOpacity(0.1),
         title: Center(
           child: Text(
             'Selamat datang, di ${prov1.namaToko}',
-            style: TextStyle(
-                fontSize: 20, color: Colors.white, fontFamily: 'inter'),
+            style: GoogleFonts.inter(),
           ),
         ),
       ),

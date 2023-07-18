@@ -73,6 +73,45 @@ class _MyAddSupplierState extends State<MyAddSupplier> {
                                   labelText: 'Nama Penyedia',
                                   labelStyle: TextStyle(color: primaryColor)),
                             ),
+                            TextField(
+                              // controller: prov.getTanggalController,
+                              readOnly: true,
+                              onTap: () {
+                                showDatePicker(
+                                  cancelText: "Batal",
+                                  confirmText: 'Pilih',
+                                  context: context,
+                                  builder:
+                                      (BuildContext context, Widget? child) {
+                                    return Theme(
+                                      data: ThemeData(
+                                        colorScheme: const ColorScheme.light(
+                                          primary: primaryColor,
+                                        ),
+                                      ),
+                                      child: child ?? const Text(""),
+                                    );
+                                  },
+                                  initialDate: DateTime.now(),
+                                  firstDate: DateTime(2000),
+                                  lastDate: DateTime(2024),
+                                ).then((selectedDate) {
+                                  if (selectedDate != null) {
+                                    // setState(() {
+                                    //   prov.getTanggalController.text =
+                                    //       DateFormat('yyyy/MM/dd')
+                                    //           .format(selectedDate);
+                                    // });
+                                  }
+                                });
+                              },
+                              decoration: const InputDecoration(
+                                focusColor: primaryColor,
+                                icon: Icon(Icons.calendar_month_outlined,
+                                    color: primaryColor, size: 30),
+                                labelText: 'Pilih Tanggal',
+                              ),
+                            ),
                             const SizedBox(
                               height: 16,
                             ),
@@ -142,6 +181,7 @@ class _MyAddSupplierState extends State<MyAddSupplier> {
                                 },
                               ),
                             ),
+                            
                             const Divider(),
                             const SizedBox(height: 16),
                             Align(

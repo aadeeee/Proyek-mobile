@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:mobile/component/Account/login.dart';
 import 'package:mobile/component/Profil/myEditProfil.dart';
@@ -24,11 +25,10 @@ class _MyProfilState extends State<MyProfil> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: primaryColor,
-        title: const Center(
+        title:  Center(
           child: Text(
             "Toko Sejahtera",
-            style: TextStyle(
-                fontSize: 20, color: Colors.white, fontFamily: 'inter'),
+           style: GoogleFonts.inter()
           ),
         ),
       ),

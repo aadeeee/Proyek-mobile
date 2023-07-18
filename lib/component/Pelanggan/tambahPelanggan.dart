@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
@@ -38,8 +39,7 @@ class _AddCustomerDialogState extends State<AddCustomerDialog> {
         child: Scaffold(
           appBar: AppBar(
             backgroundColor: primaryColor,
-            title:
-                const Text('Tambah pelanggan', style: TextStyle(fontSize: 20)),
+            title: Text('Tambah pelanggan', style: GoogleFonts.inter()),
             centerTitle: true,
             automaticallyImplyLeading: false,
             leading: IconButton(
@@ -51,6 +51,14 @@ class _AddCustomerDialogState extends State<AddCustomerDialog> {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Column(
               children: [
+                SizedBox(
+                    child: Image.asset(
+                  'assets/images/addpelanggan.png',
+                  height: 200,
+                )),
+                const SizedBox(
+                  height: 16,
+                ),
                 TextField(
                   cursorColor: Colors.black,
                   controller: prov.nameController,
@@ -82,7 +90,7 @@ class _AddCustomerDialogState extends State<AddCustomerDialog> {
                   ),
                 ),
                 const Divider(),
-                 Row(
+                Row(
                   children: [
                     Text(
                       'Daftar Produk',

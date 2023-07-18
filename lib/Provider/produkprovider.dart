@@ -12,8 +12,8 @@ class MyProductProvider extends ChangeNotifier {
           '-Panjang Gagang Sapu Standard 110 cm\n-Bahan Non Recycle\n-Bahan Bulu Senar dan Mengkilap\n-Menggunakan bahan bulu Grade 1\n\nWarna:  pink, hijau, abu-abu, orange, biru',
       "price": 35000,
       "imageUrl": 'assets/images/sapu.png',
-      'code': 'P123ty',
-      'stock': 20,
+      'code': 'R183ty',
+      'stock': 35,
       'date': '10/06/2023',
       'amount': 40,
       "isAsset": true
@@ -25,10 +25,11 @@ class MyProductProvider extends ChangeNotifier {
           '1. Kapasitas 2000ml & 1000ml & 500ml\n2. Botol minum ringan dan mudah dibawa ,Desain modis, unik dan epik.\n3. Tidak ada bau, sehat dan aman Ini dengan kaca borosilikat tinggi dan bahan silikon food grade terbaik.\n4. Sudah BPA FREE, jadi aman untuk anak-anak dan dewasa.\n5. Tahan terhadap panas dan dingin: -20 ° C-80 ° C suhu"',
       "price": 750000,
       "imageUrl": 'assets/images/botol-minum.png',
-      'code': 'P123ty',
-      'stock': '20',
+      'code': 'F28ty',
+      'stock': '10',
       'date': '10/06/2023',
-      'amount': 40, "isAsset": true
+      'amount': 40,
+      "isAsset": true
     },
     {
       "name": 'Meja',
@@ -37,10 +38,11 @@ class MyProductProvider extends ChangeNotifier {
           'Ukuran Meja:70cm x 50cm x 70cm\n\n1. Papan Meja Terbuat Dari Multiplek 12mm\n2. Finishing Lapisan Meja Dengan Pvc/Tacosheet\n3. Kaki Besi Hollow Galvanis 25x25\n4. Wana Kaki Putih & Hitam Spray Gun Termasuk Alas Kaki Karet',
       "price": 1750000,
       "imageUrl": 'assets/images/meja.png',
-      'code': 'P123ty',
-      'stock': '20',
+      'code': 'L1IE2',
+      'stock': '25',
       'date': '10/06/2023',
-      'amount': 40, "isAsset": true
+      'amount': 40,
+      "isAsset": true
     },
     {
       "name": 'Kipas Poly',
@@ -49,10 +51,11 @@ class MyProductProvider extends ChangeNotifier {
           '- Bilah Kipas 16 Inch\n- Kaki Bulat\n- Bahan Body: Plastik\n- Pengaturan kecepatan: 3 Speed\n- Dilengkapi dengan tombol lampu \n- Daya; 45 Watt, 220V/50Hz',
       "price": 250000,
       "imageUrl": 'assets/images/kipas.png',
-      'code': 'P123ty',
-      'stock': '20',
+      'code': 'A179LP',
+      'stock': '36',
       'date': '10/06/2023',
-      'amount': 40, "isAsset": true
+      'amount': 40,
+      "isAsset": true
     },
     {
       "name": 'Kursi',
@@ -61,10 +64,11 @@ class MyProductProvider extends ChangeNotifier {
           'Tinggi Dudukan dari Lantai : +- 44 CM \nLebar Dudukan : +- 46 CM\nKedalaman Dudukan : +- 41 CM\nTinggi Sandaran - Lantai : +- 82 CM\nTinggi Sandaran - dudukan : +- 41 CM\n\nMaterial :Dudukan & sandaran : PP tebal (dove)\nRangka : Besi\nKaki : Kayu Solid',
       "price": 350000,
       "imageUrl": 'assets/images/kursi.png',
-      'code': 'P123ty',
-      'stock': '20',
+      'code': 'WI829',
+      'stock': '41',
       'date': '10/06/2023',
-      'amount': 40, "isAsset": true
+      'amount': 40,
+      "isAsset": true
     },
   ];
 
@@ -106,7 +110,7 @@ class MyProductProvider extends ChangeNotifier {
         "code": _codeController.text,
         "amount": double.parse(_amountController.text),
         "date": _dateController.text,
-        "isAsset": false, 
+        "isAsset": false,
       };
 
       _products.add(newProduct);
@@ -122,8 +126,8 @@ class MyProductProvider extends ChangeNotifier {
     }
   }
 
-  void updateProduct(
-      List<Map<String, dynamic>> productList, int index, Map<String, dynamic> updatedProduct) {
+  void updateProduct(List<Map<String, dynamic>> productList, int index,
+      Map<String, dynamic> updatedProduct) {
     productList[index] = updatedProduct;
   }
 
@@ -133,4 +137,3 @@ class MyProductProvider extends ChangeNotifier {
     print(_products);
   }
 }
-

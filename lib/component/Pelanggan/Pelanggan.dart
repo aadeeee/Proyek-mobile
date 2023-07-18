@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile/component/Pelanggan/customer.dart';
 
 import '../../Variabel/global.dart';
@@ -15,9 +16,10 @@ class _MyCustomerState extends State<MyCustomer> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        
-        title: const Center(child: Text('Data Pelanggan')), 
-      backgroundColor: primaryColor,),
+        title:
+            Center(child: Text('Data Pelanggan', style: GoogleFonts.inter())),
+        backgroundColor: primaryColor,
+      ),
       body: const MyCustomerList(),
     );
   }
