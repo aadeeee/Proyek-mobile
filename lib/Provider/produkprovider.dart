@@ -1,4 +1,4 @@
-import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
@@ -100,7 +100,6 @@ class MyProductProvider extends ChangeNotifier {
       final directory = await getApplicationDocumentsDirectory();
       final imagePath =
           '${directory.path}/image_${DateTime.now().millisecondsSinceEpoch}.png';
-      final File newImage = await File(pickedImage.path).copy(imagePath);
       final Map<String, dynamic> newProduct = {
         "name": _nameController.text,
         "merk": _merkController.text,
@@ -134,6 +133,5 @@ class MyProductProvider extends ChangeNotifier {
   void addProduct(Map<String, dynamic> newProduct) {
     _products.add(newProduct);
     notifyListeners();
-    print(_products);
   }
 }

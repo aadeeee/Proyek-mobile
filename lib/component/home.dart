@@ -241,7 +241,7 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
                   },
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(left: 15, top: 20),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -254,7 +254,7 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 10),
+                      padding: EdgeInsets.only(left: 10),
                       child: Icon(Icons.shopping_bag_outlined),
                     ),
                   ],
@@ -284,7 +284,7 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
                   ),
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(left: 15, top: 20),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.end,

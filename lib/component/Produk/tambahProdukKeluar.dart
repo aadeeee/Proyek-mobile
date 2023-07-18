@@ -5,7 +5,6 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import '../../Provider/produkprovider.dart';
 import '../../Variabel/global.dart';
-import 'dart:io';
 
 class MyAddOutCome extends StatefulWidget {
   const MyAddOutCome({super.key});
@@ -104,8 +103,6 @@ class _MyAddOutComeState extends State<MyAddOutCome> {
                                     source: ImageSource.gallery,
                                   );
                                   if (pickedImage != null) {
-                                    final File newImage =
-                                        File(pickedImage.path);
                                     setState(() {
                                       _imagePath = pickedImage.path;
                                     });
@@ -113,7 +110,7 @@ class _MyAddOutComeState extends State<MyAddOutCome> {
                                 },
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: primaryColor),
-                                child:  Row(
+                                child:  const Row(
                                   children: [
                                     Icon(Icons.add),
                                     Icon(Icons.photo_size_select_actual_rounded)
