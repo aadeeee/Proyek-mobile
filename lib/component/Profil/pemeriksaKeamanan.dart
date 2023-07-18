@@ -51,7 +51,7 @@ class MyPemeriksaKeamanan extends StatelessWidget {
               const Divider(),
               ListTile(
                 title: const Text('Kata sandi'),
-                subtitle: const Text('Buat kata sandi yang lebih kuat'),
+                subtitle: const Text('Ubah kata sandi'),
                 trailing: const Icon(Icons.keyboard_arrow_right),
                 leading: const ImageIcon(
                     size: 30, AssetImage('assets/images/keamanan.png')),
