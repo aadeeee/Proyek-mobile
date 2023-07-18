@@ -3,10 +3,10 @@ import 'package:intl/intl.dart';
 
 class TransactionProvider extends ChangeNotifier {
   final List<Map<String, dynamic>> _transactions = [
-    {'nama': "Budi", 'jumlah': 600000, 'tanggal': DateTime(2024, 6, 28)},
+    {'nama': "Budi", 'jumlah': 365000, 'tanggal': DateTime(2024, 6, 28)},
     {
       'nama': "Chris",
-      'jumlah': 600000,
+      'jumlah': 250000,
       'tanggal': DateTime(2023, 6, 1),
     },
   ];
