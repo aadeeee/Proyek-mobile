@@ -29,60 +29,66 @@ class _MyDetailCustomerState extends State<MyDetailCustomer> {
             children: [
               Center(
                 child: SizedBox(
-                    child: Image.asset(
-                  'assets/images/detailpelanggan.png',
-                  height: 250,
-                )),
+                  child: Image.asset(
+                    'assets/images/detailpelanggan.png',
+                    height: 250,
+                  ),
+                ),
               ),
               const SizedBox(
                 height: 16,
               ),
-              Container(
-                decoration: BoxDecoration(
-                    // color: primaryColor,
-                    border: Border.all(color: primaryColor),
-                    borderRadius: BorderRadius.all(Radius.circular(15))),
-                // color: primaryColor,
-                padding: EdgeInsets.all(8),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Nama Pelanggan       : ${widget.customer['name']}',
-                      style: const TextStyle(fontSize: 16),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: primaryColor),
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
                     ),
-                    const SizedBox(height: 16),
-                    Text(
-                      'Jumlah Pesanan        : ${widget.customer['order']}',
-                      style: const TextStyle(fontSize: 16),
-                    ),
-                    const SizedBox(height: 16),
-                    Text(
-                      'Nomor Telepon           : ${widget.customer['hp']}',
-                      style: const TextStyle(fontSize: 16),
-                    ),
-                    const SizedBox(height: 16),
-                    Row(
+                    padding: EdgeInsets.all(8),
+                    child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
-                          'Produk yang Dibeli     : ',
-                          style: TextStyle(fontSize: 16, height: 1.5),
+                        Text(
+                          'Nama Pelanggan: ${widget.customer['name']}',
+                          style: const TextStyle(fontSize: 16),
                         ),
-                        // const SizedBox(height: 8),
-                        Column(
+                        const SizedBox(height: 16),
+                        Text(
+                          'Jumlah Pesanan: ${widget.customer['order']}',
+                          style: const TextStyle(fontSize: 16),
+                        ),
+                        const SizedBox(height: 16),
+                        Text(
+                          'Nomor Telepon: ${widget.customer['hp']}',
+                          style: const TextStyle(fontSize: 16),
+                        ),
+                        const SizedBox(height: 16),
+                        Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: List.generate(
-                            widget.customer['produk'].length,
-                            (index) => Text(
-                              ' - ${widget.customer['produk'][index]}',
-                              style: const TextStyle(fontSize: 16, height: 1.5),
+                          children: [
+                            const Text(
+                              'Produk yang Dibeli: ',
+                              style: TextStyle(fontSize: 16, height: 1.5),
                             ),
-                          ),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: List.generate(
+                                  widget.customer['produk'].length,
+                                  (index) => Text(
+                                    ' - ${widget.customer['produk'][index]}',
+                                    style: const TextStyle(
+                                        fontSize: 16, height: 1.5),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
-                  ],
+                  ),
                 ),
               )
             ],

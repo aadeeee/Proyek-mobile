@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
       title: 'Inventory plus',
       debugShowCheckedModeBanner: false,
       theme: prov.getTheme(),
-      home:MyMain(),
+      home:MyLogin(),
     );
   }
 }

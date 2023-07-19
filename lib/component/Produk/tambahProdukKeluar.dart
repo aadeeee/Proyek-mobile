@@ -29,7 +29,7 @@ class _MyAddOutComeState extends State<MyAddOutCome> {
                 appBar: AppBar(
                   backgroundColor: primaryColor,
                   title:
-                      Text('Tambah Produk Keluar', style: GoogleFonts.inter()),
+                      Text('Tambah Produk Jual', style: GoogleFonts.inter()),
                   centerTitle: true,
                   automaticallyImplyLeading: false,
                   leading: IconButton(

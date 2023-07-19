@@ -100,9 +100,12 @@ class _MyLoginState extends State<MyLogin> {
                                       color: Colors.black,
                                     ),
                                     suffixIcon: IconButton(
-                                        icon: Icon(prov.getObsecureTextPasswword
-                                            ? Icons.visibility_off
-                                            : Icons.visibility, color: Colors.black,),
+                                        icon: Icon(
+                                          prov.getObsecureTextPasswword
+                                              ? Icons.visibility_off
+                                              : Icons.visibility,
+                                          color: Colors.black,
+                                        ),
                                         onPressed: () {
                                           setState(() {
                                             prov.setObsecureTextPassword =
@@ -197,7 +200,9 @@ class _MyLoginState extends State<MyLogin> {
                                       },
                                       child: Text("Daftar disini",
                                           style: GoogleFonts.inter(
-                                              textStyle: TextStyle(decoration: TextDecoration.underline),
+                                              textStyle: TextStyle(
+                                                  decoration:
+                                                      TextDecoration.underline),
                                               color: primaryColor,
                                               fontSize: 16))),
                                 ],

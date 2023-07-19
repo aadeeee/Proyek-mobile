@@ -34,7 +34,7 @@ class _TransactionPageState extends State<TransactionPage> {
                   title: Text(transaction['nama']),
                   isThreeLine: true,
                   subtitle: Text(
-                      'Rp. ${rupiahFormat.format(transaction['jumlah'])}\n${DateFormat('yyyy/MM/dd').format(transaction['tanggal'])}'),
+                      'Rp. ${rupiahFormat.format(transaction['jumlah'])}\n${DateFormat('dd/MM/yyyy').format(transaction['tanggal'])}'),
                   trailing: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -50,7 +50,7 @@ class _TransactionPageState extends State<TransactionPage> {
                           final transactionDate =
                               transaction['tanggal'] as DateTime;
                           final formattedDate =
-                              DateFormat('yyyy/MM/dd').format(transactionDate);
+                              DateFormat('dd/MM/yyyy').format(transactionDate);
                           prov.getTanggalController.text = formattedDate;
                           setState(() {
                             Navigator.push(

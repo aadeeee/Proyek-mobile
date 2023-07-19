@@ -38,8 +38,8 @@ class TransactionProvider extends ChangeNotifier {
   List<Map<String, dynamic>> searchTransactionByDate(DateTime date) {
     return _transactions
         .where((transaction) =>
-            DateFormat('yyyy/MM/dd').format(transaction['tanggal']) ==
-            DateFormat('yyyy/MM/dd').format(date))
+            DateFormat('dd/MM/yyyy').format(transaction['tanggal']) ==
+            DateFormat('dd/MM/yyyy').format(date))
         .toList();
   }
 }
