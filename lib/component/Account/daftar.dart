@@ -151,8 +151,8 @@ class _MyRegisterState extends State<MyRegister> {
                                   ),
                                   suffixIcon: IconButton(
                                       icon: Icon(prov.getObsecureTextPasswword
-                                          ? Icons.visibility
-                                          : Icons.visibility_off,color: Colors.black,),
+                                          ? Icons.visibility_off
+                                          : Icons.visibility,color: Colors.black,),
                                       onPressed: () {
                                         setState(() {
                                           prov.setObsecureTextPassword =

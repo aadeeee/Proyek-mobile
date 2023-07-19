@@ -162,7 +162,7 @@ class _MyCustomerListState extends State<MyCustomerList> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => MyDetailCustomer(
-                            customer: prov.customers[i],
+                            customer: prov.searchCustomers(searchText)[i],
                           ),
                         ),
                       );

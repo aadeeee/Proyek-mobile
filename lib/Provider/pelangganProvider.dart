@@ -42,7 +42,7 @@ class CustomerProvider with ChangeNotifier {
       ]
     },
     {
-      'name': 'Budi',
+      'name': 'Chris',
       'order': 1,
       'hp': "081233545659",
       'produk': ['Sapu']
