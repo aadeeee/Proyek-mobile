@@ -55,7 +55,7 @@ class _MyCustomerListState extends State<MyCustomerList> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: FilterChip(
-                        label: Row(
+                        label: const Row(
                           children: [
                             Text("Pembelian "),
                             Icon(
@@ -72,7 +72,7 @@ class _MyCustomerListState extends State<MyCustomerList> {
                       ),
                     ),
                     FilterChip(
-                      label: Row(
+                      label: const Row(
                         children: [
                           Text("Pembelian"),
                           Icon(

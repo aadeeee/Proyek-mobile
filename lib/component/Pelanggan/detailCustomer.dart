@@ -21,7 +21,7 @@ class _MyDetailCustomerState extends State<MyDetailCustomer> {
         backgroundColor: primaryColor,
       ),
       body: Container(
-        margin: EdgeInsets.all(10),
+        margin: const EdgeInsets.all(10),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -43,9 +43,9 @@ class _MyDetailCustomerState extends State<MyDetailCustomer> {
                   child: Container(
                     decoration: BoxDecoration(
                       border: Border.all(color: primaryColor),
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                      borderRadius: const BorderRadius.all(Radius.circular(15)),
                     ),
-                    padding: EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(8),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

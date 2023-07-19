@@ -151,8 +151,8 @@ class _MyRegisterState extends State<MyRegister> {
                                   ),
                                   suffixIcon: IconButton(
                                       icon: Icon(prov.getObsecureTextPasswword
-                                          ? Icons.visibility_off
-                                          : Icons.visibility,color: Colors.black,),
+                                          ? Icons.visibility
+                                          : Icons.visibility_off,color: Colors.black,),
                                       onPressed: () {
                                         setState(() {
                                           prov.setObsecureTextPassword =
@@ -296,7 +296,7 @@ class _MyRegisterState extends State<MyRegister> {
                                     },
                                     child: Text("Masuk disini",
                                         style: GoogleFonts.inter(
-                                            textStyle: TextStyle(
+                                            textStyle: const TextStyle(
                                                 decoration:
                                                     TextDecoration.underline),
                                             color: primaryColor,

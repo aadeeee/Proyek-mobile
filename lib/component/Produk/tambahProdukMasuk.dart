@@ -380,6 +380,7 @@ class _MyAddSupplierState extends State<MyAddSupplier> {
                                   _hargaControllers.forEach(
                                       (controller) => controller.clear());
                                   _produkLainnya.clear();
+                                  
                                   Navigator.pop(context);
                                 },
                                 style: ElevatedButton.styleFrom(

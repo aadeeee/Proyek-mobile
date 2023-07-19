@@ -87,11 +87,10 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
     var prov2 = Provider.of<CustomerProvider>(context);
     var prov3 = Provider.of<MyProductProvider>(context);
 
-    var tmp = prov.jsonData['data'];
     return Scaffold(
       appBar: AppBar(
         flexibleSpace: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.blueGrey,
           ),
         ),
@@ -99,11 +98,11 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
+              const Icon(
                 Icons.store,
                 color: Colors.white,
               ),
-              SizedBox(width: 8),
+              const SizedBox(width: 8),
               Text(
                 'Selamat datang, di ${prov1.namaToko}',
                 style: GoogleFonts.inter(

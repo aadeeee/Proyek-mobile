@@ -22,7 +22,7 @@ class _MyKataSandiState extends State<MyKataSandi> {
           color: Colors.white,
         ),
         centerTitle: true,
-        title: Text(
+        title: const Text(
           "Kata Sandi",
           style: TextStyle(
             fontSize: 20,
@@ -36,7 +36,7 @@ class _MyKataSandiState extends State<MyKataSandi> {
         padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 25),
         child: Column(
           children: [
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(top: 10.0),
               child: Text(
                 'Kata sandi Anda harus lebih dari enam karakter dan berisi angka.huruf, dan karakter khusus (!@%).',
@@ -48,7 +48,7 @@ class _MyKataSandiState extends State<MyKataSandi> {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(top: 8.0),
                       child: Text(
                         'Kata sandi saat ini',
@@ -57,7 +57,7 @@ class _MyKataSandiState extends State<MyKataSandi> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 8.0),
+                      padding: const EdgeInsets.only(top: 8.0),
                       child: SizedBox(
                         height: 40,
                         child: TextFormField(
