@@ -12,7 +12,7 @@ class MyProductList extends StatefulWidget {
   const MyProductList({super.key});
 
   @override
-  _MyProductListState createState() => _MyProductListState();
+  State<MyProductList> createState() => _MyProductListState();
 }
 
 class _MyProductListState extends State<MyProductList> {

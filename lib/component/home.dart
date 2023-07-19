@@ -1,14 +1,18 @@
+import 'dart:io';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:mobile/Provider/homeProvider.dart';
 import 'package:mobile/Provider/pelangganProvider.dart';
+import 'package:mobile/Provider/produkprovider.dart';
 import 'package:mobile/Provider/profilProvider.dart';
 import 'package:mobile/component/Pelanggan/detailCustomer.dart';
 import 'package:provider/provider.dart';
 
 import '../Variabel/global.dart';
+import 'Produk/deskripsi.dart';
 
 class MyHome extends StatefulWidget {
   const MyHome({super.key});
@@ -81,6 +85,7 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
     var prov = Provider.of<MyHomeProvider>(context);
     var prov1 = Provider.of<ProfilProvider>(context);
     var prov2 = Provider.of<CustomerProvider>(context);
+    var prov3 = Provider.of<MyProductProvider>(context);
 
     var tmp = prov.jsonData['data'];
     return Scaffold(
@@ -261,29 +266,58 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
                 ),
               ),
               SizedBox(
-                height: 190,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: tmp.length,
-                  itemBuilder: (context, index) => Card(
-                    color: Colors.white10,
-                    child: Column(
-                      children: [
-                        Image.asset(
-                          tmp[index]['image'],
-                          width: 130,
-                          height: 150,
-                          fit: BoxFit.fitHeight,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 9),
-                          child: Text('${tmp[index]['name']}'),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+                  height: 180,
+                  child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: prov3.getTopProduct().length,
+                      itemBuilder: (context, index) {
+                        final product = prov3.products[index];
+                        final imagePath = product['imageUrl'];
+                        final isAsset = product.containsKey('isAsset')
+                            ? product['isAsset']
+                            : false;
+                        return GestureDetector(
+                          onTap: () {
+                            File? imageFile;
+                            if (!isAsset) {
+                              imageFile = File(imagePath);
+                            }
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => MyDescription(
+                                  data: product,
+                                  imageFile: imageFile,
+                                ),
+                              ),
+                            );
+                          },
+                          child: Card(
+                            color: Colors.white10,
+                            child: Column(
+                              children: [
+                                isAsset
+                                    ? Image.asset(
+                                        imagePath,
+                                        height: 140,
+                                        width: 130,
+                                        fit: BoxFit.fitHeight,
+                                      )
+                                    : Image.file(
+                                        File(imagePath),
+                                        height: 140,
+                                        width: 130,
+                                        fit: BoxFit.fitHeight,
+                                      ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 9),
+                                  child: Text(product['name']),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      })),
               const Padding(
                 padding: EdgeInsets.only(left: 15, top: 20),
                 child: Row(

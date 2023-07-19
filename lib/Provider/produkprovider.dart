@@ -14,7 +14,6 @@ class MyProductProvider extends ChangeNotifier {
       "imageUrl": 'assets/images/sapu.png',
       'code': 'R183ty',
       'stock': 35,
-      'date': '10/06/2023',
       'amount': 40,
       "isAsset": true
     },
@@ -27,7 +26,6 @@ class MyProductProvider extends ChangeNotifier {
       "imageUrl": 'assets/images/botol-minum.png',
       'code': 'F28ty',
       'stock': '10',
-      'date': '10/06/2023',
       'amount': 40,
       "isAsset": true
     },
@@ -40,7 +38,6 @@ class MyProductProvider extends ChangeNotifier {
       "imageUrl": 'assets/images/meja.png',
       'code': 'L1IE2',
       'stock': '25',
-      'date': '10/06/2023',
       'amount': 40,
       "isAsset": true
     },
@@ -53,7 +50,6 @@ class MyProductProvider extends ChangeNotifier {
       "imageUrl": 'assets/images/kipas.png',
       'code': 'A179LP',
       'stock': '36',
-      'date': '10/06/2023',
       'amount': 40,
       "isAsset": true
     },
@@ -66,7 +62,6 @@ class MyProductProvider extends ChangeNotifier {
       "imageUrl": 'assets/images/kursi.png',
       'code': 'WI829',
       'stock': '41',
-      'date': '10/06/2023',
       'amount': 40,
       "isAsset": true
     },
@@ -108,7 +103,6 @@ class MyProductProvider extends ChangeNotifier {
         "imageUrl": imagePath,
         "code": _codeController.text,
         "amount": double.parse(_amountController.text),
-        "date": _dateController.text,
         "isAsset": false,
       };
 
@@ -133,5 +127,9 @@ class MyProductProvider extends ChangeNotifier {
   void addProduct(Map<String, dynamic> newProduct) {
     _products.add(newProduct);
     notifyListeners();
+  }
+  List<Map<String, dynamic>> getTopProduct() {
+    _products.sort((a, b) => b['amount'].compareTo(a['amount']));
+    return _products.take(5).toList();
   }
 }

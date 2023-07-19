@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import '../../Provider/produkprovider.dart';
 import '../../Variabel/global.dart';
@@ -110,7 +109,7 @@ class _MyAddOutComeState extends State<MyAddOutCome> {
                                 },
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: primaryColor),
-                                child:  const Row(
+                                child: const Row(
                                   children: [
                                     Icon(Icons.add),
                                     Icon(Icons.photo_size_select_actual_rounded)
@@ -144,45 +143,6 @@ class _MyAddOutComeState extends State<MyAddOutCome> {
                             labelText: 'Jumlah Stok',
                           ),
                         ),
-                        TextField(
-                          cursorColor: Colors.black,
-                          controller: prov.getDateController,
-                          readOnly: true,
-                          onTap: () {
-                            showDatePicker(
-                              cancelText: "Batal",
-                              confirmText: 'Pilih',
-                              context: context,
-                              builder: (BuildContext context, Widget? child) {
-                                return Theme(
-                                  data: ThemeData(
-                                    colorScheme: const ColorScheme.light(
-                                      primary: primaryColor,
-                                    ),
-                                  ),
-                                  child: child ?? const Text(""),
-                                );
-                              },
-                              initialDate: DateTime.now(),
-                              firstDate: DateTime(2000),
-                              lastDate: DateTime(2024),
-                            ).then((selectedDate) {
-                              if (selectedDate != null) {
-                                setState(() {
-                                  prov.getDateController.text =
-                                      DateFormat('yyyy/MM/dd')
-                                          .format(selectedDate);
-                                });
-                              }
-                            });
-                          },
-                          decoration: const InputDecoration(
-                            labelText: 'Tanggal Penjualan',
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
                         Padding(
                           padding: const EdgeInsets.only(top: 20.0),
                           child: Center(
@@ -194,8 +154,7 @@ class _MyAddOutComeState extends State<MyAddOutCome> {
                                     prov.getDescriptionController.text
                                         .isEmpty ||
                                     prov.getPriceController.text.isEmpty ||
-                                    prov.getAmountController.text.isEmpty ||
-                                    prov.getDateController.text.isEmpty) {
+                                    prov.getAmountController.text.isEmpty) {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(
                                       content: Text(
@@ -218,7 +177,6 @@ class _MyAddOutComeState extends State<MyAddOutCome> {
                                     "code": prov.getCodeController.text,
                                     "amount": double.parse(
                                         prov.getAmountController.text),
-                                    "date": prov.getDateController.text,
                                     'stock': prov.getStockController.text
                                   };
                                   _imagePath = null;
@@ -232,7 +190,6 @@ class _MyAddOutComeState extends State<MyAddOutCome> {
                                 prov.getPriceController.clear();
                                 prov.getAmountController.clear();
                                 prov.getStockController.clear();
-                                prov.getDateController.clear();
 
                                 Navigator.of(context).pop();
                               },
